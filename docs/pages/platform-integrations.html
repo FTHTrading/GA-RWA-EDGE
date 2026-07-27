@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Platform Integrations · Mapping the RWA Landscape to capital.unykorn.ai · GA-RWA-EDGE</title>
+<meta name="description" content="How every RWA infrastructure company (Grove, Ondo, Morpho, Centrifuge, Securitize, BitGo, and 40 others) plugs into the LDX 5-layer capital stack at capital.unykorn.ai/platform/.">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<div class="topnav"><div class="wrap topnav-inner">
+  <a href="../index.html" class="brand"><span class="mark"><span>G</span></span><span class="name">GA-RWA-EDGE</span></a>
+  <nav>
+    <a href="../index.html">Overview</a>
+    <a href="whitepaper.html">Whitepaper</a>
+    <a href="ppm.html">PPM</a>
+    <a href="locations.html">Locations</a>
+    <a href="partners.html">Partners</a>
+    <a href="revenue-model.html">Revenue</a>
+    <a href="liquidity-composability.html">Liquidity</a>
+    <a href="competitive-landscape.html">Landscape</a>
+    <a href="platform-integrations.html" class="active">Integrations</a>
+    <a href="requirements.html">Requirements</a>
+    <a href="introductory-offer.html">Intro Offer</a>
+    <a href="investor-portal/index.html" class="cta">Accredited Portal</a>
+  </nav>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <span class="eyebrow">Platform Integration Map · capital.unykorn.ai/platform/</span>
+  <h1>Where every RWA infrastructure company plugs into the existing 5-layer capital stack — and the three new sub-layers that unlock institutional warehouse credit, investor-side bankless liquidity, and yield-bearing treasury cash.</h1>
+  <p class="lede">The <a href="https://capital.unykorn.ai/platform/" style="color:var(--platinum)">capital.unykorn.ai/platform/</a> site already has clean 5-layer scaffolding (Institutional Sponsorship → Custody → Issuance → Secondary → Funding). This page maps every counterparty from the <a href="competitive-landscape.html">Competitive Landscape</a> into a specific layer or a new sub-layer, with the integration status and rationale for each.</p>
+</div></header>
+
+<main><div class="wrap">
+
+<h2 class="large">The current 5-layer stack (as documented on the platform)</h2>
+
+<pre class="ascii"><b>capital.unykorn.ai/platform/ — CURRENT ARCHITECTURE</b>
+
+Layer 01  <em>Institutional Sponsorship &amp; Underwriting</em>  ← LD Capital LLC (30-yr franchise)
+Layer 02  <em>Qualified Custody (OCC-chartered)</em>          ← BitGo Trust, N.A.
+Layer 03  <em>Digital Issuance / Record-Keeping</em>          ← Securitize / North Capital / Brickken / Tokeny (candidates)
+Layer 04  <em>Regulated Secondary Liquidity (ATS)</em>        ← TBD partner
+Layer 05  <em>Actual Funding Sources</em>                     ← Senior debt · mezz · pref equity · federal incentives
+
+Reference deal: M Helen Hotel · $29.1M · Helen, GA · SpringHill Suites Marriott
+                $25M senior debt · $4.1M mezz-land · preferred equity via 506(c)
+</pre>
+
+<div class="callout copper">
+<span class="head">What this page does</span>
+The Layer 03 candidate list on the platform reads "Securitize, North Capital, Brickken, Centrifuge." The Layer 04 line reads "TBD." The Layer 05 funding sources are mostly named traditional counterparties (CMBS, life insurance, BDCs). This page fills in the on-chain / RWA infrastructure that pairs with each layer, plus proposes three new sub-layers that don't yet exist on the platform site.
+</div>
+
+<h2 class="large">Layer 02 · Qualified Custody — add two alternates to BitGo</h2>
+
+<table class="data">
+  <tr><th>Provider</th><th>Charter / model</th><th>Role on the platform</th><th>Integration status</th></tr>
+  <tr>
+    <td class="name copper">BitGo Trust N.A.</td>
+    <td>OCC-chartered national trust bank (full approval 2025)</td>
+    <td>Primary custody — Site SPE vaults, QROF fund vault, DIGAU reserve</td>
+    <td class="ok">Onboarding executed · vault verification pending</td>
+  </tr>
+  <tr>
+    <td class="name">Anchorage Digital Bank</td>
+    <td>OCC-chartered digital-asset bank</td>
+    <td>Alternate custody · Grove-Galaxy $500M facility custodian precedent</td>
+    <td class="warn">Add to Layer 02 as second qualified custodian</td>
+  </tr>
+  <tr>
+    <td class="name">Fireblocks</td>
+    <td>MPC infrastructure (not a bank)</td>
+    <td>Operational treasury + travel-rule engine · LD Capital fee accounts</td>
+    <td class="warn">Add to Layer 02 as MPC ops rail</td>
+  </tr>
+</table>
+
+<div class="callout copper">
+<span class="head">Recommendation for the platform site</span>
+Rename Layer 02 to "Qualified Custody &amp; Operational Wallets" and split into two rows: (a) OCC-chartered qualified custodians (BitGo primary, Anchorage alternate) and (b) MPC operational (Fireblocks). This preserves the OCC/regulated framing while capturing the operational reality that fee routing and travel-rule compliance run through Fireblocks.
+</div>
+
+<h2 class="large">Layer 03 · Digital Issuance — firm up the candidate list</h2>
+
+<p>The platform currently lists four candidates. Here's how to prioritize among them based on integration surface and market traction:</p>
+
+<table class="data">
+  <tr><th>Candidate</th><th>Track record</th><th>Fit for LDX rails</th><th>Recommended role</th></tr>
+  <tr>
+    <td class="name copper">Unykorn 23-contract stack</td>
+    <td>Testnet cleared · 22 contracts compile clean · 0 critical/high findings</td>
+    <td>Native · ERC-3643 aligned · direct control</td>
+    <td class="ok">Primary underlying compliance rail (LDX-native)</td>
+  </tr>
+  <tr>
+    <td class="name copper">Tokeny (tokeny.com)</td>
+    <td>ERC-3643 T-REX standard authors · white-label infrastructure</td>
+    <td>Exact standards alignment · Unykorn stack derives from same standard</td>
+    <td class="warn">Standards partner + white-label alternate for outside sponsors</td>
+  </tr>
+  <tr>
+    <td class="name copper">Securitize</td>
+    <td>~$4B AUM issued · BlackRock BUIDL platform · integrated BD + ATS</td>
+    <td>Very strong · brings its own ATS (Securitize Markets)</td>
+    <td class="warn">BD-of-record partner (Stage 1) + institutional issuance for BUIDL-tier deals</td>
+  </tr>
+  <tr>
+    <td class="name">North Capital</td>
+    <td>Reg D transfer agent · established broker-dealer</td>
+    <td>Traditional transfer-agent path · less on-chain-native</td>
+    <td>Alt for smaller retail-adjacent 506(c) deals</td>
+  </tr>
+  <tr>
+    <td class="name">Brickken</td>
+    <td>EU issuance focus · Spanish-regulated</td>
+    <td>EU market entry option</td>
+    <td>Reserve for future Reg S / EU tranches</td>
+  </tr>
+  <tr>
+    <td class="name">Centrifuge</td>
+    <td>~$256M pool AUM · Anemoy asset manager · JTRSY $400M · ACRDX Apollo $50M · NYL corp bonds</td>
+    <td>Pool-based structure vs single-SPE issuance</td>
+    <td class="warn"><b>Move to Layer 05.A</b> (warehouse credit) — Centrifuge is not primarily an issuance platform; it's an institutional pool venue</td>
+  </tr>
+</table>
+
+<h2 class="large">Layer 04 · Regulated Secondary Liquidity — fill in the TBD</h2>
+
+<p>The three-stage BD path (see <a href="whitepaper.html#bd-path">whitepaper §12</a>) fully populates Layer 04:</p>
+
+<table class="data">
+  <tr><th>Stage</th><th>ATS venue</th><th>Timing</th><th>Notes</th></tr>
+  <tr>
+    <td class="name copper">Stage 1 · BD-of-record</td>
+    <td>Securitize Markets · tZERO · Dalmore-class alt</td>
+    <td>Q3-Q4 2026</td>
+    <td>Third-party ATS papers third-party securities · required until FTH's own BD is live</td>
+  </tr>
+  <tr>
+    <td class="name">Stage 1 alternate</td>
+    <td>INX · Prometheum · Rialto</td>
+    <td>Q4 2026</td>
+    <td>Reg-listed BD + ATS alternates</td>
+  </tr>
+  <tr>
+    <td class="name copper">Stage 3 · Own ATS</td>
+    <td>FTH Trading LDX (Form ATS)</td>
+    <td>Late 2027-2028</td>
+    <td>FTH's own Alternative Trading System · post own-BD approval</td>
+  </tr>
+</table>
+
+<div class="callout copper">
+<span class="head">Recommendation</span>
+Update Layer 04 to name Securitize Markets as the Stage 1 target (given Securitize's BUIDL relationship and existing $4B AUM footprint), with tZERO / INX / Prometheum as alternates. Add a Stage 3 line for FTH LDX with a target 2028 launch.
+</div>
+
+<h2 class="large">Layer 05 · Funding Sources — three new sub-layers</h2>
+
+<p>The current Layer 05 lists traditional sources (senior debt, mezz, preferred equity, federal incentives). Adding three new RWA-native sub-layers unlocks materially cheaper capital for seasoned deals, investor-side liquidity, and yield-bearing treasury.</p>
+
+<h3>Layer 05.A · Institutional warehouse credit (seasoned book)</h3>
+
+<p>Once a Site SPE has 6-12 months of clean payment history, the note book graduates from initial 506(c) equity + senior bank paper into institutional warehouse facilities. This is the exact upstream move Grove made from a $50M CLO investment (Dec 2025) to a $500M warehouse position with Galaxy Digital (July 2026).</p>
+
+<table class="data">
+  <tr><th>Venue</th><th>What it provides</th><th>Site SPE / M Helen use</th></tr>
+  <tr>
+    <td class="name copper">Grove Basin</td>
+    <td>Institutional programmable credit layer · USDS-denominated warehouse · Sky ecosystem</td>
+    <td>Target warehouse for seasoned Site SPE hosting-revenue notes and M Helen tranche paper</td>
+  </tr>
+  <tr>
+    <td class="name copper">Sky Lending + Spark</td>
+    <td>Governance-set rates on RWA-backed collateral · USDS access</td>
+    <td>Alternate warehouse if Grove Basin terms unfavorable</td>
+  </tr>
+  <tr>
+    <td class="name copper">Centrifuge V3 (Anemoy tier)</td>
+    <td>Institutional pool venue · precedent from Janus Henderson JTRSY $400M and Apollo ACRDX $50M</td>
+    <td>Pool the M Helen note book + Site SPE compute notes into an Anemoy-style tranche</td>
+  </tr>
+  <tr>
+    <td class="name">Maple Finance</td>
+    <td>Institutional on-chain credit · $21B loans issued cumulative</td>
+    <td>Alternate pool venue · less standards-aligned than Centrifuge</td>
+  </tr>
+</table>
+
+<h3>Layer 05.B · Investor-side bankless liquidity (deRWA composability)</h3>
+
+<p>The RealT precedent — token holders who need cash but don't want to sell wrap their permissioned tokens as deRWA and borrow stablecoins against them. Preserves OZ hold clock, preserves basis, no HELOC underwriting.</p>
+
+<table class="data">
+  <tr><th>Venue</th><th>What it provides</th><th>Site SPE / M Helen use</th></tr>
+  <tr>
+    <td class="name copper">Morpho Blue</td>
+    <td>Isolated lending markets · $76.6B TVL · Coinbase originated $2B+ loans via Morpho</td>
+    <td>Dedicated deRWA-SPE isolated market · LTV curve tuned to hosting revenue DSCR</td>
+  </tr>
+  <tr>
+    <td class="name copper">Aave Horizon</td>
+    <td>Institutional Aave for RWA collateral · $76.6B Aave V3 TVL</td>
+    <td>Alternate venue subject to Aave DAO governance approval</td>
+  </tr>
+  <tr>
+    <td class="name copper">Euler V2</td>
+    <td>Modular lending · permissioned vaults · custom risk parameters</td>
+    <td>Custom-curator venue for M Helen deRWA-note tranches</td>
+  </tr>
+  <tr>
+    <td class="name">Silo Finance</td>
+    <td>Every asset gets its own silo · pure risk isolation · $410M TVL</td>
+    <td>Alternate isolated-market path</td>
+  </tr>
+  <tr>
+    <td class="name">RealT RMM</td>
+    <td>Reference precedent · live tokenized-real-estate + DeFi lending pattern</td>
+    <td>Design template — extend the pattern to institutional hosting/hospitality</td>
+  </tr>
+</table>
+
+<h3>Layer 05.C · Treasury cash management (idle SPE working capital)</h3>
+
+<p>QROF working-capital safe harbor allows 31 months between capital raise and deployment into qualifying property. Instead of that cash sitting in a money-market bank account earning 4-5% cash drag, it holds in Ondo OUSG / BUIDL / USDY — yield-bearing but instantly liquid.</p>
+
+<table class="data">
+  <tr><th>Product</th><th>What it is</th><th>Site SPE / M Helen use</th></tr>
+  <tr>
+    <td class="name copper">Ondo OUSG</td>
+    <td>Institutional US T-bills · uses BUIDL as reserve · ~$4B Ondo AUM</td>
+    <td>Primary treasury holding for SPE working capital + QROF safe-harbor cash</td>
+  </tr>
+  <tr>
+    <td class="name copper">BlackRock BUIDL</td>
+    <td>USD Institutional Digital Liquidity Fund · ~$2.14B AUM</td>
+    <td>Family-office subscription option — BlackRock trademark on their statement</td>
+  </tr>
+  <tr>
+    <td class="name copper">Ondo USDY</td>
+    <td>Offshore yield-bearing dollar token · non-U.S. persons · $700M+ outstanding</td>
+    <td>Reg S subscription / distribution medium for non-U.S. investors</td>
+  </tr>
+  <tr>
+    <td class="name">Superstate</td>
+    <td>Short-duration tokenized treasuries · SEC-registered · $1B+ AUM</td>
+    <td>Alternate treasury holding</td>
+  </tr>
+  <tr>
+    <td class="name">Franklin Templeton BENJI</td>
+    <td>OnChain U.S. Government Money Fund · Stellar/Polygon · $500M+ AUM</td>
+    <td>Traditional-brand alternate to BUIDL</td>
+  </tr>
+  <tr>
+    <td class="name">Hashnote USYC · OpenEden TBILL · Mountain USDM</td>
+    <td>Short-duration yield · rebasing stablecoin alts</td>
+    <td>Alternates for specific investor preferences</td>
+  </tr>
+</table>
+
+<h2 class="large">Full updated stack diagram</h2>
+
+<pre class="ascii"><b>capital.unykorn.ai/platform/ — PROPOSED UPDATED 5+3 LAYER ARCHITECTURE</b>
+
+Layer 01  <em>Institutional Sponsorship &amp; Underwriting</em>
+          LD Capital LLC (30-yr franchise)
+
+Layer 02  <em>Qualified Custody &amp; Operational Wallets</em>
+          Primary custody     · <b>BitGo Trust N.A.</b> (OCC-chartered)
+          Alternate custody   · <b>Anchorage Digital Bank</b> (OCC-chartered)
+          MPC ops rail         · <b>Fireblocks</b>
+
+Layer 03  <em>Digital Issuance / Record-Keeping</em>
+          Native compliance rail · <b>Unykorn 23-contract Solidity stack</b> (ERC-3643 aligned)
+          Standards partner       · <b>Tokeny</b> (T-REX authors)
+          BD-integrated issuance  · <b>Securitize</b> (BlackRock BUIDL precedent)
+          Transfer-agent alt      · <b>North Capital</b>
+          EU / Reg S alt          · <b>Brickken</b>
+
+Layer 04  <em>Regulated Secondary Liquidity (ATS)</em>
+          Stage 1 · BD-of-record  · <b>Securitize Markets</b> (target) · tZERO · INX / Prometheum (alts)
+          Stage 3 · Own ATS       · <b>FTH Trading LDX</b> (Form ATS)  ← 2028 target
+
+Layer 05  <em>Actual Funding Sources</em>
+          <b>Traditional</b>: Senior debt · CMBS conduits · life insurance · BDCs · mezz debt funds
+                       Preferred equity via 506(c) · federal incentives (Solar ITC / USDA REAP)
+
+  <em>Layer 05.A</em>  <em>Institutional warehouse credit (seasoned book)</em>
+          <b>Grove Basin</b>                (USDS · Sky ecosystem · $500M Galaxy precedent)
+          <b>Sky Lending / Spark</b>         (governance-set on RWA)
+          <b>Centrifuge V3 Anemoy tier</b>   (JTRSY / ACRDX / NYL institutional pools)
+          Maple Finance                      (alternate institutional pools)
+
+  <em>Layer 05.B</em>  <em>Investor-side bankless liquidity (deRWA composability)</em>
+          <b>Morpho Blue</b>                 (dedicated deRWA-SPE isolated market)
+          <b>Aave Horizon</b>                (institutional Aave · DAO governance)
+          <b>Euler V2</b>                    (custom curator vaults)
+          Silo Finance                       (alternate isolated-market path)
+          RealT RMM                          (precedent design template)
+
+  <em>Layer 05.C</em>  <em>Treasury cash management (idle SPE working capital)</em>
+          <b>Ondo OUSG</b>                   (institutional US T-bills · BUIDL-backed)
+          <b>BlackRock BUIDL</b>             (family-office trust brand)
+          <b>Ondo USDY</b>                   (offshore Reg S)
+          Superstate · Franklin BENJI        (alternates)
+          Hashnote USYC · OpenEden TBILL     (alternates)
+</pre>
+
+<h2 class="large">Implementation priority — what to add to the site first</h2>
+
+<ol class="steps">
+  <li><b>Update Layer 04 from "TBD" to a named Stage 1 target</b> · Securitize Markets is the highest-value target given its BUIDL precedent and $4B AUM footprint. Add tZERO / INX / Prometheum as alternates. This one edit removes the biggest credibility gap on the site.</li>
+  <li><b>Add Layer 05.C · Treasury cash management</b> · Simplest to add and immediately factual: Ondo OUSG, BlackRock BUIDL, Ondo USDY. This shows sophistication on QROF safe-harbor cash management without requiring any commitments beyond an OUSG account.</li>
+  <li><b>Add Anchorage + Fireblocks to Layer 02</b> · Small edit, adds redundancy language. Immediately references the Grove-Galaxy $500M facility precedent where both custodians serve.</li>
+  <li><b>Add Layer 05.A · Institutional warehouse credit</b> · Cite Grove Basin, Sky, Centrifuge V3 Anemoy. Anchor the language to seasoned-book graduation — "once the M Helen distribution has 6-12 months of clean payment history..."</li>
+  <li><b>Add Layer 05.B · Investor-side bankless liquidity</b> · deRWA / Morpho / Aave Horizon / Euler. Cite the RealT precedent. Anchor to the tax preservation point — borrowing doesn't restart the OZ clock.</li>
+  <li><b>Firm up Layer 03 candidate list into a priority order</b> · Unykorn native primary, Tokeny standards partner, Securitize institutional/BD-integrated, North Capital / Brickken alternates. Move Centrifuge from this layer to Layer 05.A where it actually operates.</li>
+</ol>
+
+<h2 class="large">Companion documents to link from the platform site</h2>
+
+<p>Once the platform is updated with the new layers, each new layer can link out to the corresponding GA-RWA-EDGE page for detail:</p>
+
+<div class="grid">
+  <div class="card">
+    <span class="tag copper">Layer 02</span>
+    <h3>Custody detail</h3>
+    <p>Full BitGo / Anchorage / Fireblocks partner comparison and integration status.</p>
+    <div class="actions"><a class="action" href="partners.html">Partners page →</a></div>
+  </div>
+  <div class="card">
+    <span class="tag copper">Layer 04</span>
+    <h3>BD-of-record path</h3>
+    <p>Three-stage BD track: partnership → own BD → LDX-as-ATS.</p>
+    <div class="actions"><a class="action" href="whitepaper.html#bd-path">Whitepaper §12 →</a></div>
+  </div>
+  <div class="card">
+    <span class="tag copper">Layer 05.A</span>
+    <h3>Warehouse credit</h3>
+    <p>Grove × Galaxy strategic assessment · seasoned book graduation path.</p>
+    <div class="actions"><a class="action" href="competitive-landscape.html">Landscape →</a></div>
+  </div>
+  <div class="card">
+    <span class="tag copper">Layer 05.B</span>
+    <h3>deRWA composability</h3>
+    <p>Full mechanics: hold → wrap → supply → borrow. Risk register.</p>
+    <div class="actions"><a class="action" href="liquidity-composability.html">Liquidity page →</a></div>
+  </div>
+  <div class="card">
+    <span class="tag copper">Layer 05.C</span>
+    <h3>Treasury cash</h3>
+    <p>OUSG / BUIDL / USDY holding pattern for SPE working capital.</p>
+    <div class="actions"><a class="action" href="whitepaper.html#capital">Whitepaper §6 →</a></div>
+  </div>
+  <div class="card">
+    <span class="tag copper">All layers</span>
+    <h3>Full competitive landscape</h3>
+    <p>50+ named institutions across 7 categories.</p>
+    <div class="actions"><a class="action" href="competitive-landscape.html">Landscape →</a></div>
+  </div>
+</div>
+
+<h2 class="large">What the platform gains from each addition</h2>
+
+<table class="data">
+  <tr><th>Addition</th><th>Immediate credibility gain</th><th>Deal impact</th></tr>
+  <tr>
+    <td class="name">Named Layer 04 (Securitize Markets / tZERO)</td>
+    <td>Removes the "TBD" that lenders and investors notice first</td>
+    <td>Unlocks Stage 1 BD-of-record engagement · Q3-Q4 2026</td>
+  </tr>
+  <tr>
+    <td class="name">Layer 05.C treasury (Ondo OUSG · BUIDL)</td>
+    <td>Signals sophistication on QROF safe-harbor cash management</td>
+    <td>~4-5% yield on 31 months of QROF working capital · material IRR uplift</td>
+  </tr>
+  <tr>
+    <td class="name">Anchorage + Fireblocks in Layer 02</td>
+    <td>Grove-Galaxy $500M precedent uses both</td>
+    <td>Custody redundancy · counterparty comfort for institutional lenders</td>
+  </tr>
+  <tr>
+    <td class="name">Layer 05.A warehouse (Grove / Sky / Centrifuge)</td>
+    <td>Named institutional graduation venue with $500M+ precedents</td>
+    <td>Cheaper capital for Site 2, 3, 4, 5 once M Helen and Site SPE I season</td>
+  </tr>
+  <tr>
+    <td class="name">Layer 05.B deRWA (Morpho / Aave Horizon / Euler)</td>
+    <td>Bankless-liquidity story preserves OZ tax benefits</td>
+    <td>Removes the illiquidity objection from cap-gains investors</td>
+  </tr>
+</table>
+
+<h2 class="large">Bottom line</h2>
+
+<p>The <code>capital.unykorn.ai/platform/</code> site has good bones — 5 named layers with real partners and a specific reference deal. What it's missing is the RWA-native infrastructure layer that has emerged rapidly in 2025-2026 (Grove Basin, Ondo OUSG-scale treasury, Morpho institutional isolated markets, Centrifuge V3 Anemoy tier). Adding those as sub-layers under Funding Sources (and firming up the Layer 04 TBD to Securitize Markets) transforms the platform from a well-scaffolded documentation site into one that shows the full institutional-grade RWA plumbing that unlocks materially cheaper capital.</p>
+
+<p>None of these additions require new commitments. Every named counterparty above is already operating at scale with public disclosure. Adding them to the platform documentation is a documentation update, not a technology build. The actual integration work — deploying deRWA wrappers, launching Morpho markets, opening Ondo OUSG accounts — sequences over Q4 2026 through Q3 2027 alongside the Site SPE I close and M Helen stabilization.</p>
+
+</div></main>
+
+<footer class="foot"><div class="wrap">
+  <div class="cols">
+    <div>
+      <h5>Platform Integrations</h5>
+      <p style="color:var(--muted);font-size:12.5px">Mapping the RWA landscape into the existing capital.unykorn.ai 5-layer stack. Three new sub-layers under Layer 05.</p>
+    </div>
+    <div>
+      <h5>Related</h5>
+      <a href="whitepaper.html">Whitepaper</a>
+      <a href="competitive-landscape.html">Landscape</a>
+      <a href="partners.html">Partners</a>
+    </div>
+    <div>
+      <h5>External</h5>
+      <a href="https://capital.unykorn.ai/platform/">capital.unykorn.ai</a>
+      <a href="https://github.com/FTHTrading/GA-RWA-EDGE">GA-RWA-EDGE repo</a>
+    </div>
+  </div>
+  <div class="disclaimer">
+    <p>© 2026 FTH Trading LLC · Unykorn LLC · LD Capital LLC. Not tax, legal, or investment advice.</p>
+  </div>
+</div></footer>
+
+</body>
+</html>
