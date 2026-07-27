@@ -1,0 +1,61 @@
+/* Ring mark — upgraded brand element used in top nav
+   Conic-gradient silver-copper ring with letter G at center.
+   Replaces the older simple square mark. Kept as a separate stylesheet
+   so any page can opt in with a single <link>. */
+
+.brand .ringmark, .brand-mark, span.ringmark {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid var(--silver, #c8ccd0);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: conic-gradient(
+    from 220deg,
+    #3a3f46,
+    #c8ccd0,
+    #4a4f57,
+    #aeb4bd,
+    #c8862e,
+    #3a3f46
+  );
+  vertical-align: middle;
+}
+
+.brand .ringmark > span, span.ringmark > span {
+  color: #0a0b0d;
+  font-weight: 800;
+  font-size: 15px;
+  transform: translateY(-1px);
+  font-family: Georgia, serif;
+  letter-spacing: 0;
+}
+
+/* Hero ring — larger */
+.hero .ringmark-lg {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--silver, #c8ccd0);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: conic-gradient(
+    from 220deg,
+    #3a3f46,
+    #c8ccd0,
+    #4a4f57,
+    #aeb4bd,
+    #c8862e,
+    #3a3f46
+  );
+}
+
+.hero .ringmark-lg > span {
+  color: #0a0b0d;
+  font-weight: 800;
+  font-size: 19px;
+  transform: translateY(-1px);
+  font-family: Georgia, serif;
+}

@@ -48,12 +48,13 @@ body{
 .topnav-inner{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
 .topnav .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--silver);font-weight:700;letter-spacing:.02em}
 .topnav .brand .mark{
-  width:28px;height:28px;border-radius:50%;
+  width:30px;height:30px;border-radius:50%;
   border:2px solid var(--steel);
   display:flex;align-items:center;justify-content:center;
-  background:conic-gradient(from 220deg,#3a3f46,#c8ccd0,#4a4f57,#aeb4bd,#3a3f46);
+  background:conic-gradient(from 220deg,#3a3f46,#c8ccd0,#4a4f57,#aeb4bd,#c8862e,#3a3f46);
+  box-shadow:0 0 12px rgba(200,134,46,.15), inset 0 0 4px rgba(0,0,0,.4);
 }
-.topnav .brand .mark span{color:#0a0b0d;font-weight:800;font-size:13px}
+.topnav .brand .mark span{color:#0a0b0d;font-weight:800;font-size:14px;font-family:Georgia,serif;transform:translateY(-1px)}
 .topnav .brand .name{font-size:14px}
 .topnav nav{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
 .topnav nav a{

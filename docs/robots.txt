@@ -8,6 +8,8 @@ Allow: /pages/locations.html
 Allow: /pages/funding-sources.html
 Allow: /pages/atlanta-market.html
 Allow: /pages/government-programs.html
+Allow: /pages/the-play.html
+Allow: /pages/data-room.html
 Allow: /pages/contact.html
 Allow: /pages/competitive-landscape.html
 
