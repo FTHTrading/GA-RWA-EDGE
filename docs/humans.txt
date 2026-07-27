@@ -1,0 +1,16 @@
+/* TEAM */
+Owner & Operator: Kevan Burns
+Entities: FTH Trading LLC · Unykorn LLC · LD Capital LLC · UNYKORN 7777 INC.
+Location: Metro Atlanta, Georgia, United States
+Contact: kevan [at] ldrcllc.com
+
+/* SITE */
+Site: GA-RWA-EDGE — Institutional RWA rails for Georgia edge data centers
+Standards: HTML5, CSS3, ERC-3643 (T-REX), ERC-7540 async vaults, JSON-LD structured data
+Components: GitHub Pages, Cloudflare DNS, BitGo Enterprise custody
+Software: Solidity 0.8.36, Foundry, TypeScript, Rust (Apostle Chain)
+
+/* THANKS */
+- BitGo Enterprise (custody rail)
+- Georgia Power (Territorial Act large-load carve-out)
+- USDA Rural Development (B&I program)

@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# High-value pages for crawl priority
+Allow: /pages/
+Allow: /pages/whitepaper.html
+Allow: /pages/locations.html
+Allow: /pages/funding-sources.html
+Allow: /pages/atlanta-market.html
+Allow: /pages/competitive-landscape.html
+
+# Templates and internal build artifacts — allow but low priority
+Disallow: /build-loop/
+
+Sitemap: https://ga-rwa.unykorn.ai/sitemap.xml
