@@ -13,6 +13,18 @@
     <priority>0.95</priority>
   </url>
   <url>
+    <loc>https://ga-rwa.unykorn.ai/pages/government-programs.html</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.92</priority>
+  </url>
+  <url>
+    <loc>https://ga-rwa.unykorn.ai/pages/contact.html</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://ga-rwa.unykorn.ai/pages/locations.html</loc>
     <lastmod>2026-07-27</lastmod>
     <changefreq>weekly</changefreq>

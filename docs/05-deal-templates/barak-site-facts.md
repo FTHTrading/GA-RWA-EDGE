@@ -1,16 +1,18 @@
-# Barak Site — Verified Deal Facts
+# Barak/Brock Site — Operator Representations (Phase 0 Pending)
 
-**Working document. Confidential.** Superseded PPA sensitivity assumptions in prior artifacts.
+**Working document. Confidential.** The site facts below are per operator and require Phase 0 diligence verification per `templates/ppa-diligence-pack/phase0-asset-state.md` before use in any subscription document, credit application, or lender package.
 
-## Confirmed as of July 27, 2026
+## As represented by operator, subject to Phase 0 verification
 
-| Item | Value | Notes |
-|------|-------|-------|
-| **Current load** | **5 MW** | Existing, operating |
-| **Existing use** | **721 bitcoin miners** | Currently operational at the site |
-| **PPA rate** | **4.9 ¢/kWh** | Fixed rate, delivered |
-| **Utility posture** | **Deregulated gas zone** | Enables gas-hybrid / gas-only expansion optionality |
-| **Site status** | Operating today | Interconnect energized; utility letter effectively pre-issued via active load |
+| Item | Represented value | Diligence status |
+|------|-------------------|------------------|
+| **Location** | Rural North Georgia (candidate) | Site walk pending |
+| **Contracted load** | 5 MW | Utility interval-meter confirmation pending |
+| **Existing use** | ~721 bitcoin miners | Fleet audit pending (nameplate reconciliation: 1,200 units at 10 MW implies ~8.3 kW/unit — high for S19-class; count/model resolution required) |
+| **PPA rate** | 4.9 ¢/kWh fixed | Executed copy of PPA + last 6 months of invoices required |
+| **Electricity market posture** | Georgia regulated (Georgia Power monopoly with Territorial Act >900 kW large-load carve-out) | Carve-out applicability to THIS premise/supplier combo required from PSC filing |
+| **Gas hedge availability** | Contingent on AGL (Atlanta Gas Light) delivery territory — gas is deregulated ONLY in AGL territory | Site-specific AGL-territory confirmation required |
+| **Site operating status** | Per operator: energized · active load | RUNNING vs DARK-SHELL fork unresolved until utility invoices + pool payout records + on-site inspection complete |
 
 ## PPA cost math (locked)
 
@@ -32,7 +34,7 @@ The prior sensitivity tables in `docs/03-capital-stack/sensitivity.md` used a **
 - **Existing operational site**, not greenfield
 - **5 MW today** (not 20 MW) — expansion may be part of the plan but the anchor is the existing power position
 - **721 miners already running** — represents baseline revenue AND an operational business the SPE either buys out, coexists with, or converts to AI hosting
-- **Deregulated gas zone** — expansion path via gas gensets / gas-hybrid without regulated-utility interconnect queue
+- **Gas-hedge optionality** — contingent on AGL (Atlanta Gas Light) delivery territory. Georgia gas is deregulated only in AGL service territory; if Barak sits outside AGL (Atmos Energy or other), gas-hedge/hybrid expansion requires regulated-utility interconnect. Confirm delivery territory before modeling gas-hybrid as a base case.
 
 ## Revised base-case sizing (5 MW conversion + expansion)
 
@@ -96,7 +98,7 @@ At 60% senior LTV ($15M) at 850 bps over 15 yr:
 
 **Note:** hosting rate benchmark is Applied Digital-tier ($150/kW/month is at low end for retail AI hosting; $200-250/kW/month for high-density GPU colo). Actual rate depends on offtake counterparty tier (Lambda / CoreWeave / regional AI cloud). Underwrite with a $100/kW/month floor for downside case.
 
-## Deregulated gas zone — what it enables
+## Gas-hedge optionality (site-territory dependent)
 
 Georgia has selectively deregulated natural-gas retail markets. Being in a deregulated zone means:
 

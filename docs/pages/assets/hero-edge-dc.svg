@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-label="Edge data center architecture — containerized compute + PPA-anchored power + on-chain tokenization">
+  <defs>
+    <linearGradient id="bg-obs" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#151820"/>
+      <stop offset="100%" stop-color="#0b0d10"/>
+    </linearGradient>
+    <linearGradient id="cu" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c8862e"/>
+      <stop offset="100%" stop-color="#e0a55a"/>
+    </linearGradient>
+    <linearGradient id="em" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4ade80"/>
+      <stop offset="100%" stop-color="#22c55e"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1a1e28" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#bg-obs)"/>
+  <rect width="800" height="500" fill="url(#grid)"/>
+
+  <text x="40" y="42" font-family="'Inter', system-ui, sans-serif" font-size="11" fill="#94a3b8" letter-spacing="3">ATLANTA &amp; GEORGIA EDGE DATA CENTER RWA STACK</text>
+
+  <!-- Container rows (edge data center pods) -->
+  <g transform="translate(60 100)">
+    <text x="0" y="-8" font-family="'Inter', system-ui, sans-serif" font-size="10" fill="#c8862e" letter-spacing="2">PHYSICAL LAYER · MODULAR PODS</text>
+    <g>
+      <rect x="0"   y="0" width="130" height="60" rx="4" fill="#111318" stroke="url(#cu)" stroke-width="1.5"/>
+      <rect x="140" y="0" width="130" height="60" rx="4" fill="#111318" stroke="url(#cu)" stroke-width="1.5"/>
+      <rect x="280" y="0" width="130" height="60" rx="4" fill="#111318" stroke="url(#cu)" stroke-width="1.5"/>
+      <g fill="#c8862e" opacity="0.7">
+        <rect x="10"  y="12" width="6" height="36"/>
+        <rect x="24"  y="12" width="6" height="36"/>
+        <rect x="38"  y="12" width="6" height="36"/>
+        <rect x="52"  y="12" width="6" height="36"/>
+        <rect x="66"  y="12" width="6" height="36"/>
+        <rect x="80"  y="12" width="6" height="36"/>
+        <rect x="94"  y="12" width="6" height="36"/>
+        <rect x="108" y="12" width="6" height="36"/>
+        <rect x="150" y="12" width="6" height="36"/>
+        <rect x="164" y="12" width="6" height="36"/>
+        <rect x="178" y="12" width="6" height="36"/>
+        <rect x="192" y="12" width="6" height="36"/>
+        <rect x="206" y="12" width="6" height="36"/>
+        <rect x="220" y="12" width="6" height="36"/>
+        <rect x="234" y="12" width="6" height="36"/>
+        <rect x="248" y="12" width="6" height="36"/>
+        <rect x="290" y="12" width="6" height="36"/>
+        <rect x="304" y="12" width="6" height="36"/>
+        <rect x="318" y="12" width="6" height="36"/>
+        <rect x="332" y="12" width="6" height="36"/>
+        <rect x="346" y="12" width="6" height="36"/>
+        <rect x="360" y="12" width="6" height="36"/>
+        <rect x="374" y="12" width="6" height="36"/>
+        <rect x="388" y="12" width="6" height="36"/>
+      </g>
+      <text x="65"  y="80" text-anchor="middle" font-family="'Inter', system-ui, sans-serif" font-size="9" fill="#94a3b8">POD A · AI COMPUTE</text>
+      <text x="205" y="80" text-anchor="middle" font-family="'Inter', system-ui, sans-serif" font-size="9" fill="#94a3b8">POD B · GPU FLEET</text>
+      <text x="345" y="80" text-anchor="middle" font-family="'Inter', system-ui, sans-serif" font-size="9" fill="#94a3b8">POD C · MINING</text>
+    </g>
+  </g>
+
+  <!-- PPA layer -->
+  <g transform="translate(60 220)">
+    <text x="0" y="-8" font-family="'Inter', system-ui, sans-serif" font-size="10" fill="#4ade80" letter-spacing="2">POWER LAYER · PPA-ANCHORED</text>
+    <rect x="0" y="0" width="410" height="42" rx="4" fill="#0f1a12" stroke="url(#em)" stroke-width="1.5"/>
+    <text x="205" y="17" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#4ade80">GEORGIA POWER · TERRITORIAL ACT LARGE-LOAD CARVE-OUT (&gt;900 kW)</text>
+    <text x="205" y="33" text-anchor="middle" font-family="'Inter', system-ui, sans-serif" font-size="9" fill="#86efac" letter-spacing="1">FIXED PPA · REGULATORY-GATED SUPPLY · OR AGL COMPETITIVE GAS</text>
+  </g>
+
+  <!-- Vertical connectors -->
+  <g stroke="#c8862e" stroke-width="1" stroke-dasharray="4 4" opacity="0.5">
+    <line x1="125" y1="160" x2="125" y2="220"/>
+    <line x1="265" y1="160" x2="265" y2="220"/>
+    <line x1="405" y1="160" x2="405" y2="220"/>
+  </g>
+
+  <!-- Tokenization layer -->
+  <g transform="translate(60 300)">
+    <text x="0" y="-8" font-family="'Inter', system-ui, sans-serif" font-size="10" fill="#c8862e" letter-spacing="2">ON-CHAIN LAYER · ERC-3643 PERMISSIONED SECURITY</text>
+    <rect x="0"   y="0" width="130" height="52" rx="4" fill="#1a140a" stroke="url(#cu)" stroke-width="1.5"/>
+    <rect x="140" y="0" width="130" height="52" rx="4" fill="#1a140a" stroke="url(#cu)" stroke-width="1.5"/>
+    <rect x="280" y="0" width="130" height="52" rx="4" fill="#1a140a" stroke="url(#cu)" stroke-width="1.5"/>
+    <text x="65"  y="20" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#e5e7eb">Identity Registry</text>
+    <text x="65"  y="38" text-anchor="middle" font-family="'Inter', system-ui, sans-serif" font-size="9" fill="#94a3b8">Reg D 506(c) / KYC</text>
+    <text x="205" y="20" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#e5e7eb">Waterfall Vault</text>
+    <text x="205" y="38" text-anchor="middle" font-family="'Inter', system-ui, sans-serif" font-size="9" fill="#94a3b8">Priority-1 PPA · CMBS</text>
+    <text x="345" y="20" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#e5e7eb">Attestation Oracle</text>
+    <text x="345" y="38" text-anchor="middle" font-family="'Inter', system-ui, sans-serif" font-size="9" fill="#94a3b8">Meter · PPA · NOI</text>
+  </g>
+
+  <!-- Capital layer -->
+  <g transform="translate(60 390)">
+    <text x="0" y="-8" font-family="'Inter', system-ui, sans-serif" font-size="10" fill="#94a3b8" letter-spacing="2">CAPITAL LAYER · QROF EQUITY + GPU CREDIT + USDA + CMBS</text>
+    <rect x="0" y="0" width="410" height="44" rx="4" fill="#0f1218" stroke="#334155" stroke-width="1"/>
+    <text x="205" y="18" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#e5e7eb">4-ENTITY STACK: UNYKORN LLC · LD CAPITAL LLC · FTH TRADING · SITE SPE</text>
+    <text x="205" y="33" text-anchor="middle" font-family="'Inter', system-ui, sans-serif" font-size="9" fill="#94a3b8" letter-spacing="1">NON-CUSTODIAL · BITGO ENTERPRISE CUSTODY · BANKRUPTCY-REMOTE SPE</text>
+  </g>
+
+  <!-- Right side callout -->
+  <g transform="translate(510 100)">
+    <rect x="0" y="0" width="230" height="334" rx="8" fill="#0f1218" stroke="#334155" stroke-width="1"/>
+    <text x="115" y="30" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#c8862e" letter-spacing="1">WHAT MOVES</text>
+    <line x1="30" y1="42" x2="200" y2="42" stroke="#c8862e" opacity="0.4"/>
+
+    <text x="20" y="72" font-family="Georgia, serif" font-size="12" fill="#e5e7eb">Physical asset</text>
+    <text x="20" y="88" font-family="'Inter', system-ui, sans-serif" font-size="10" fill="#94a3b8">Modular pods · PPA · fiber</text>
+
+    <text x="20" y="118" font-family="Georgia, serif" font-size="12" fill="#e5e7eb">Cash flow</text>
+    <text x="20" y="134" font-family="'Inter', system-ui, sans-serif" font-size="10" fill="#94a3b8">Hosting revenue · NOI · SREC</text>
+
+    <text x="20" y="164" font-family="Georgia, serif" font-size="12" fill="#e5e7eb">Ownership rights</text>
+    <text x="20" y="180" font-family="'Inter', system-ui, sans-serif" font-size="10" fill="#94a3b8">Site SPE preferred equity</text>
+
+    <text x="20" y="210" font-family="Georgia, serif" font-size="12" fill="#e5e7eb">Distributions</text>
+    <text x="20" y="226" font-family="'Inter', system-ui, sans-serif" font-size="10" fill="#94a3b8">Quarterly waterfall to holders</text>
+
+    <text x="20" y="256" font-family="Georgia, serif" font-size="12" fill="#e5e7eb">Compliance events</text>
+    <text x="20" y="272" font-family="'Inter', system-ui, sans-serif" font-size="10" fill="#94a3b8">On-chain identity + attestation</text>
+
+    <text x="20" y="302" font-family="Georgia, serif" font-size="12" fill="#e5e7eb">Exit</text>
+    <text x="20" y="318" font-family="'Inter', system-ui, sans-serif" font-size="10" fill="#94a3b8">LDX secondary or Morpho borrow</text>
+  </g>
+</svg>

@@ -7,6 +7,8 @@ Allow: /pages/whitepaper.html
 Allow: /pages/locations.html
 Allow: /pages/funding-sources.html
 Allow: /pages/atlanta-market.html
+Allow: /pages/government-programs.html
+Allow: /pages/contact.html
 Allow: /pages/competitive-landscape.html
 
 # Templates and internal build artifacts — allow but low priority

@@ -254,6 +254,15 @@ code{
 .chip.warn{color:var(--gold);border-color:#7c5b0f}
 .chip.err{color:var(--rose);border-color:var(--rose-dim);background:rgba(248,113,113,.06)}
 
+/* Inline status labels — used in program-matrix tables */
+span.ok, span.warn, span.err {
+  display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  padding:3px 9px;border-radius:4px;border:1px solid;
+}
+span.ok  { color:var(--emerald); border-color:var(--emerald-dim); background:rgba(74,222,128,.06) }
+span.warn{ color:var(--gold);    border-color:#7c5b0f;             background:rgba(251,191,36,.05) }
+span.err { color:var(--rose);    border-color:var(--rose-dim);     background:rgba(248,113,113,.06) }
+
 /* Footer */
 footer.foot{
   border-top:1px solid var(--line);padding:32px 0 44px;margin-top:60px;

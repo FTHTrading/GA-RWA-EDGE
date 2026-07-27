@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="GA-RWA-EDGE mark">
+  <defs>
+    <linearGradient id="lg-copper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c8862e"/>
+      <stop offset="55%" stop-color="#e0a55a"/>
+      <stop offset="100%" stop-color="#c8862e"/>
+    </linearGradient>
+    <linearGradient id="lg-obsidian" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#151820"/>
+      <stop offset="100%" stop-color="#0b0d10"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="8" width="184" height="184" rx="24" ry="24" fill="url(#lg-obsidian)" stroke="url(#lg-copper)" stroke-width="2"/>
+  <g transform="translate(100 100)">
+    <path d="M -46 -32 L -46 32 L -22 32 L -22 8 L 6 8 L 6 32 L 32 32 L 32 -14 L 6 -14 L 6 -32 Z"
+          fill="none" stroke="url(#lg-copper)" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+    <circle cx="42" cy="-38" r="6" fill="url(#lg-copper)"/>
+  </g>
+  <text x="100" y="176" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#c8862e" letter-spacing="4">GA-RWA-EDGE</text>
+</svg>
