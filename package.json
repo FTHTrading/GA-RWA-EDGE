@@ -1,0 +1,36 @@
+{
+  "name": "ga-rwa-edge",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Institutional RWA rails for Georgia edge data centers, QROF equity, PPA-anchored deals, and hybrid energy on the Unykorn zero-balance-sheet architecture.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FTHTrading/GA-RWA-EDGE.git"
+  },
+  "license": "MIT",
+  "workspaces": [
+    "agents",
+    "frontend"
+  ],
+  "scripts": {
+    "build:contracts": "cd contracts && forge build",
+    "test:contracts": "cd contracts && forge test",
+    "gas:contracts": "cd contracts && forge test --gas-report",
+    "lint:md": "markdownlint '**/*.md' --ignore node_modules",
+    "clean": "rm -rf contracts/out contracts/cache node_modules"
+  },
+  "keywords": [
+    "rwa",
+    "opportunity-zone",
+    "qrof",
+    "edge-data-center",
+    "erc-3643",
+    "erc-7540",
+    "erc-7575",
+    "solidity",
+    "foundry"
+  ],
+  "engines": {
+    "node": ">=20"
+  }
+}

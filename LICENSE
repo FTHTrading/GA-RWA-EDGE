@@ -1,0 +1,50 @@
+MIT License with Commercial Reservation
+
+Copyright (c) 2026 FTH Trading LLC / Helen Corp
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+--- COMMERCIAL RESERVATION ---
+
+The following components are commercially reserved for licensed use only and
+require a separate commercial agreement with Unykorn LLC / FTH Trading:
+
+  1. Any deployment of the smart-contract suite to a public or permissioned
+     mainnet for the purpose of issuing securities, receiving investor capital,
+     or distributing waterfall proceeds against real-world asset collateral.
+
+  2. Any use of the "Unykorn", "FTH Trading", "LD Capital", "Helen Corp", or
+     "LDX" wordmarks, service marks, or associated brand identifiers.
+
+  3. Any commercial provision of technology rails (compliance, attestation,
+     custody, waterfall) as a service to third-party sponsors under a
+     revenue-sharing, license, or SaaS model.
+
+Commercial licensing inquiries: contact@fthtrading.com
+
+--- NO WARRANTIES ---
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+--- NOT LEGAL, TAX, OR INVESTMENT ADVICE ---
+
+This software and its accompanying documentation do not constitute legal, tax,
+or investment advice. Any use of this software in the context of securities
+issuance, tax structuring, or investor communications requires licensed
+counsel (securities, tax, OZ) and CPA administration in the relevant
+jurisdictions. Nothing in this repository is an offer to sell securities or a
+solicitation of an offer to buy securities.

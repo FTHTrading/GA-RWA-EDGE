@@ -1,0 +1,55 @@
+{
+  "$comment": "Rural QROF tract candidacy for Georgia. Final rural certification is set by Treasury after the state nomination window closes Sept 29 2026 (with a 30-day extension available to Oct 29). New zones become effective Jan 1 2027 for a 10-year designation. This file records the group's target and back-up tracts — Census tract numbers are placeholders to be filled once specific parcels are optioned. DO NOT close any equity into a tract before Treasury certifies the map.",
+  "asOfDate": "2026-07-27",
+  "nominationWindow": {
+    "opens": "2026-07-01",
+    "closes": "2026-09-29",
+    "extension": "2026-10-29",
+    "certificationExpected": "2026-Q4",
+    "effectiveDate": "2027-01-01",
+    "designationLength_years": 10
+  },
+  "ruralDefinitionStatutory": {
+    "source": "IRC §1400Z-2 as amended by OBBBA (signed July 4, 2025)",
+    "test": "Any area OTHER THAN (i) a city or town with population > 50,000, AND (ii) any Census-defined urbanized area contiguous and adjacent to such a city or town.",
+    "consequences": "Per-tract test, not per-county. Many tracts that feel rural fail if they sit inside the urbanized-area boundary contiguous to Atlanta / Marietta."
+  },
+  "benefits": {
+    "basisStepUp5yr": 0.30,
+    "substantialImprovementThreshold": 0.50,
+    "notes": "vs 10% step-up + 100% improvement threshold for standard urban QOFs"
+  },
+  "targetTracts": {
+    "primaryPathB": [
+      {
+        "county": "White",
+        "region": "Helen corridor",
+        "censusTractPlaceholder": "13-311-XXXX",
+        "notes": "Direct Helen Corp synergy; definitively rural; verify against final 2027 map."
+      },
+      {
+        "county": "Jackson",
+        "region": "Commerce / Jefferson outer",
+        "censusTractPlaceholder": "13-157-XXXX",
+        "notes": "I-85 corridor. Some tracts likely rural-qualifying — verify boundary against Atlanta urbanized area."
+      },
+      {
+        "county": "Carroll",
+        "region": "West of Carrollton",
+        "censusTractPlaceholder": "13-045-XXXX",
+        "notes": "Outer tracts likely rural. Wheeling to Atlanta market from western GA is manageable."
+      }
+    ],
+    "backupSecondary": [
+      { "county": "Rabun", "notes": "Definitively rural; TVA hydro proximity. Fiber weaker." },
+      { "county": "Union", "notes": "Definitively rural; TVA-adjacent." },
+      { "county": "Newton", "region": "east of Covington", "notes": "Verify urbanized-area boundary." },
+      { "county": "Bulloch", "notes": "South GA. Savannah PoP proximity; lowest land basis." }
+    ],
+    "borderStateExpansion": [
+      { "state": "TN", "region": "Tennessee River Valley (E TN / N AL / N MS)", "notes": "TVA territory. Cheapest US industrial rates. Rural QROF-eligible in many tracts." },
+      { "state": "VA", "region": "Southwest Virginia rural", "notes": "PJM compliance-market SREC pricing. Deep rural QROF stack." },
+      { "state": "SC", "region": "Rural upstate (Cherokee / Union / Chester)", "notes": "Duke Energy Carolinas + electric cooperatives. Charlotte AI-cloud demand overflow." }
+    ]
+  }
+}

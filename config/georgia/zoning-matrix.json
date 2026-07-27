@@ -1,0 +1,35 @@
+{
+  "$comment": "Georgia metro-area zoning posture for modular edge data-center pods. Verify per-tract before every site option. Status values: NO (do not deploy), YES_WITH_LETTER (deploy after written zoning-verification letter), BEST (industrial-friendly + cooperative EDC), UNKNOWN (screen and update).",
+  "asOfDate": "2026-07-27",
+  "jurisdictions": [
+    {
+      "name": "City of Atlanta",
+      "type": "municipal",
+      "status": "NO",
+      "reason": "Ordinance 24-O-1222 (Sept 3, 2024) — use-based definition, no size floor. 2,640 ft buffer from high-capacity transit stops. Beltline Overlay ban. Container form factor captured by definition.",
+      "references": ["https://atlantacitycouncil.medium.com/atlanta-city-council-votes-to-define-data-centers-limit-locations-1ee61f0e225b"]
+    },
+    { "name": "DeKalb County", "type": "county", "status": "NO", "reason": "Active moratorium on data-center use." },
+    { "name": "Fayetteville / South Fulton", "type": "municipal", "status": "NO", "reason": "Restrictive ordinance activity 2025-26." },
+    { "name": "Palmetto", "type": "municipal", "status": "NO", "reason": "Municipal restrictions on data-center use." },
+
+    { "name": "Coweta County (Newnan corridor)", "type": "county", "status": "BEST", "reason": "Industrial overlay welcoming; cooperative EDC. Georgia Power + Coweta-Fayette EMC. Multiple OZ-eligible tracts. Outer tracts likely rural-qualifying; Newnan corridor itself likely inside Atlanta urbanized-area extension." },
+    { "name": "Clayton County (Jonesboro corridor)", "type": "county", "status": "BEST", "reason": "Major Georgia Power sub-transmission feeds. Industrial-friendly zoning. Best latency to central Atlanta demand. NOT rural — entirely within Atlanta urbanized area, so QROF wrapper unavailable here." },
+
+    { "name": "Jackson County (Commerce / Jefferson)", "type": "county", "status": "YES_WITH_LETTER", "reason": "I-85 corridor, Atlanta / Charlotte fiber access. Jackson EMC + Georgia Power. Outer tracts likely rural-qualifying for QROF." },
+    { "name": "Newton County (east of Covington)", "type": "county", "status": "YES_WITH_LETTER", "reason": "East metro. Screen ordinance individually; most scale-triggered. Outer tracts likely rural-qualifying." },
+    { "name": "Rockdale County", "type": "county", "status": "YES_WITH_LETTER", "reason": "East metro. Screen individually." },
+    { "name": "Barrow County", "type": "county", "status": "YES_WITH_LETTER", "reason": "Northeast metro I-85 corridor. Outer tracts likely rural-qualifying." },
+    { "name": "Douglas County", "type": "county", "status": "YES_WITH_LETTER", "reason": "West metro. Some hyperscale interest (Meta area). Most inside urbanized area — QROF unlikely for most tracts." },
+    { "name": "Carroll County", "type": "county", "status": "YES_WITH_LETTER", "reason": "West metro. Outer tracts west of Carrollton likely rural-qualifying." },
+
+    { "name": "White County (Helen corridor)", "type": "county", "status": "BEST", "reason": "Rural. Cooperative county commissioners. Direct Helen Corp synergy — M Helen tract co-check available. Definitively rural for QROF." },
+    { "name": "Rabun County", "type": "county", "status": "BEST", "reason": "Definitively rural. Blue Ridge EMC + hydro proximity." },
+    { "name": "Union County", "type": "county", "status": "BEST", "reason": "Definitively rural. TVA-adjacent." },
+    { "name": "Fannin County", "type": "county", "status": "BEST", "reason": "Definitively rural." },
+    { "name": "Habersham / Hart / Franklin / Elbert", "type": "county", "status": "BEST", "reason": "Definitively rural. Wheeling / interconnect distance to Atlanta market rises the further out." },
+
+    { "name": "Bulloch / Emanuel / Jefferson (South GA)", "type": "county", "status": "BEST", "reason": "Rural. Georgia Power + strong solar potential. Savannah PoP proximity. Lowest land basis." }
+  ],
+  "urbanizedAreaCaveat": "IRC §1400Z-2 rural test requires the tract to be (i) outside any city / town with population > 50,000 AND (ii) outside any Census-defined urbanized area contiguous and adjacent to such a city / town. Verify each candidate tract against the certified 2027 QOZ map and the Census urbanized-area boundary for Atlanta / Marietta before signing any option. Per-tract test — not per-county."
+}

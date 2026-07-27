@@ -1,0 +1,51 @@
+{
+  "$schema": "../schemas/energy-params.schema.json",
+  "state": "GA",
+  "srecMarket": "voluntary_only",
+  "complianceRPS": false,
+  "notes": "Georgia has no state Renewable Portfolio Standard. GA-generated RECs sell voluntarily / bilaterally, typically to the hosting customer for their own ESG reporting. For real compliance-market SREC pricing, deploy pods in PJM states (VA, PA, MD, NJ, OH, IL, DC, DE) or ERCOT (TX).",
+  "utilityPathways": {
+    "primary": "Georgia Power (Southern Company)",
+    "interconnectPortal": "https://simpl.southernco.com/gpc",
+    "hostingCapacityTool": "https://www.georgiapower.com/business/products-programs/business-solutions/commercial-solar-solutions/distributed-generation/hosting-capacity-tool.html",
+    "coops": ["Coweta-Fayette EMC", "Jackson EMC", "Blue Ridge EMC", "Sawnee EMC", "Cobb EMC", "Walton EMC"]
+  },
+  "psc": {
+    "largeLoadRule": true,
+    "minimumBilling": true,
+    "contractReviewDays": 30,
+    "applicableAbove_MW": "hyperscale-scale (sub-5 MW pods on standard commercial tariffs)"
+  },
+  "salesTaxExemption": {
+    "code": "O.C.G.A. §48-8-3(68.1)",
+    "expires": "2031-12-31",
+    "attackedByBills": ["SB 408", "SB 410", "SB 436", "HB 559", "HB 1012"],
+    "modelWithout": true,
+    "reason": "Sub-5 MW pods never met minimum-investment threshold; treat exemption as upside if it survives, not a base-case assumption."
+  },
+  "obbba": {
+    "solarWindITC": {
+      "beginConstructionSafeHarborLapsed": "2026-07-04",
+      "placedInServiceDeadline": "2027-12-31",
+      "baseRate": 0.30
+    },
+    "storageITC": {
+      "beginConstructionThrough": "2033-12-31",
+      "baseRate": 0.30
+    },
+    "45Q": {
+      "pointSourceUsdPerTonne": 85,
+      "dacUsdPerTonne": 180,
+      "transferable": true,
+      "feocRestrictionsFrom": "2025-07-04"
+    },
+    "45V": {
+      "beginConstructionSunset": "2027-12-31"
+    }
+  },
+  "itcSprint": {
+    "solarPlacedInServiceDeadline": "2027-12-31",
+    "recommendedSolarMW": [8, 10],
+    "notes": "Solar must reach commercial operation by 12/31/2027 to earn ITC. Storage ITC survives beyond that. Modular pod schedule (90-day install) makes the deadline achievable."
+  }
+}

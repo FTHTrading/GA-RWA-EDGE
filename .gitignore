@@ -1,0 +1,53 @@
+# Foundry
+contracts/out/
+contracts/cache/
+contracts/broadcast/
+contracts/.forge-cache/
+contracts/lib/
+
+# Node / pnpm / npm
+node_modules/
+.pnpm-store/
+.npm/
+dist/
+build/
+.next/
+.turbo/
+coverage/
+
+# Python (agent-side tooling)
+__pycache__/
+*.pyc
+.venv/
+venv/
+.mypy_cache/
+.ruff_cache/
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Env files (SECRETS — never commit)
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+secrets/
+
+# Deployment artifacts
+deployments/*/
+!deployments/README.md
+
+# OS / temp
+*.log
+*.tmp
+tmp/
+
+# Local config overrides
+config/local.json
+config/*.local.json

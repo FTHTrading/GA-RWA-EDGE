@@ -1,0 +1,10 @@
+{
+  "_note": "claim/unit values are keccak256 of these exact strings - must match contract constants",
+  "claims": {
+    "KWH_GENERATED": {"contract": "SRECModule.CLAIM_WH_GENERATED", "valueUnit": "WH", "meaning": "Wh delta from revenue-grade meter"},
+    "GAS_MMBTU_CONSUMED": {"contract": "GasAttestation.CLAIM_GAS_MMBTU", "valueUnit": "MMBTU_MILLI", "meaning": "gas consumed, MMBtu x1000"},
+    "GAS_GEN_WH": {"contract": "GasAttestation.CLAIM_GAS_GEN_WH", "valueUnit": "WH", "meaning": "electricity generated from gas, Wh (NEVER REC-eligible)"},
+    "CARBON_KG_CO2E": {"contract": "CarbonModule.CLAIM_CARBON_KG", "valueUnit": "KG_CO2E", "meaning": "attested batch tonnage in kg"},
+    "RESERVE_USD": {"contract": "ReserveProofAnchor.CLAIM_RESERVE_USD", "valueUnit": "USD_CENTS", "meaning": "attested reserve valuation"}
+  }
+}
