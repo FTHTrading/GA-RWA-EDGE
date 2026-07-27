@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Competitive Landscape · RWA Tokenization + Institutional Lending · GA-RWA-EDGE</title>
+<meta name="description" content="The full RWA / DeFi lending / tokenization competitive landscape in 2026. Who does what, at what scale, where they sit relative to the GA-RWA-EDGE stack — competitor, partner, precedent, or venue.">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<div class="topnav"><div class="wrap topnav-inner">
+  <a href="../index.html" class="brand"><span class="mark"><span>G</span></span><span class="name">GA-RWA-EDGE</span></a>
+  <nav>
+    <a href="../index.html">Overview</a>
+    <a href="whitepaper.html">Whitepaper</a>
+    <a href="ppm.html">PPM</a>
+    <a href="locations.html">Locations</a>
+    <a href="partners.html">Partners</a>
+    <a href="revenue-model.html">Revenue</a>
+    <a href="liquidity-composability.html">Liquidity</a>
+    <a href="competitive-landscape.html" class="active">Landscape</a>
+    <a href="requirements.html">Requirements</a>
+    <a href="introductory-offer.html">Intro Offer</a>
+    <a href="investor-portal/index.html" class="cta">Accredited Portal</a>
+  </nav>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <span class="eyebrow">Competitive Landscape · RWA Infrastructure · July 2026</span>
+  <h1>The RWA tokenization + institutional lending landscape has consolidated. Roughly 50 names matter. Here's who does what, at what scale, and where each sits relative to our stack.</h1>
+  <p class="lede">Every entity below is either a partner (integration counterparty), a precedent (validates our category), a competitor (does something adjacent to our stack), or a venue (a place where our tokens or notes eventually trade). None of them do what GA-RWA-EDGE does end-to-end: PPA-anchored edge data-center site SPEs wrapped in QROF with contracted AI hosting revenue — but many operate the specific plumbing our stack integrates with.</p>
+</div></header>
+
+<main><div class="wrap">
+
+<div class="callout copper">
+<span class="head">Fresh precedent · Grove × Galaxy Digital · $500M warehouse (July 2026)</span>
+Grove announced a <b>$500M warehouse lending facility</b> with Galaxy Digital: Grove is the warehouse lender providing USDS capital, Galaxy originates and services BTC/ETH-backed loans, with <b>Anchorage Digital and BitGo as qualified custodians</b> and Chronicle providing price feeds. Senior secured, 2-year max original terms, 20% cap on loans exceeding one year, 50% ETH concentration cap with 50% sub-cap on staked ETH. This is the reference precedent for our Site SPE-note-book → Grove Basin warehouse graduation path in Year 3-4.
+</div>
+
+<h2 class="large">Strategic assessment — three ways this facility validates our architecture</h2>
+
+<div class="grid">
+  <div class="card copper">
+    <span class="tag copper">1 · Upstream capital position</span>
+    <h3>Warehouse vs. secondary participation</h3>
+    <p>Grove moved upstream from a $50M CLO investment in Galaxy paper (Dec 2025) to a $500M warehouse position — providing the foundational capital Galaxy uses to originate loans rather than buying secondary tranches. That's <b>closer to origination and collateral</b>.</p>
+    <p style="font-size:12px;color:var(--muted);margin-top:6px"><b>Our trajectory:</b> Site SPE notes start as 506(c) subordinate raises + senior bank paper. As they season, they graduate into institutional warehouse facilities — the same upstream trajectory Grove just demonstrated on the credit side.</p>
+  </div>
+  <div class="card copper">
+    <span class="tag copper">2 · Strict eligibility mirrors our gating</span>
+    <h3>Collateral standards + oracles + custody</h3>
+    <p>Senior-secured first-priority interest, sub-2-year terms, continuous LTV monitoring via Chronicle oracles, top-tier qualified custody at BitGo and Anchorage.</p>
+    <p style="font-size:12px;color:var(--muted);margin-top:6px"><b>Our stack mirrors this:</b> <code>ReserveProofAnchor</code> anchors every hash, <code>DSCRTrigger</code> monitors coverage continuously, <code>CustodyAdapter</code> gates minting into BitGo Bank &amp; Trust N.A. Every asset entering a Site SPE must meet transparent on-chain criteria before stablecoin liquidity can be routed.</p>
+  </div>
+  <div class="card copper">
+    <span class="tag copper">3 · Non-custodial sovereignty</span>
+    <h3>Grove Allocator = Unykorn playbook</h3>
+    <p>Grove operates entirely via non-custodial vault systems (Grove Allocator) that maintain on-chain transparency without risking institutional balance sheets or taking direct custody of underlying collateral.</p>
+    <p style="font-size:12px;color:var(--muted);margin-top:6px"><b>Direct validation:</b> Unykorn earns technology fees (setup, SaaS, per-attestation) while <b>never taking custody</b>. Asset ownership stays in bankruptcy-remote SPEs. Distribution rights live in FTH Trading. Grove's approach is the same architectural stance — different asset class, same discipline. See <a href="revenue-model.html">Revenue model</a>.</p>
+  </div>
+</div>
+
+<h2 class="large">1 · Institutional stablecoin liquidity &amp; warehouse lending</h2>
+<p>This is the Grove Basin category — programmable credit layers that finance the settlement-timing gap for tokenized RWA. Sky's PSM architecture is the design inspiration for the whole category.</p>
+
+<table class="data">
+  <tr><th>Name</th><th>What it does</th><th>Scale (2026)</th><th>Relationship to us</th></tr>
+  <tr>
+    <td class="name">Grove (grove.finance)</td>
+    <td>Institutional programmable credit layer · warehouse lending against RWA · $500M Galaxy facility live</td>
+    <td class="num">$500M+ facilities</td>
+    <td class="copper">Target integration for note-book graduation</td>
+  </tr>
+  <tr>
+    <td class="name">Sky (formerly MakerDAO)</td>
+    <td>Original PSM (Peg Stability Module) inventor · USDS stablecoin · governance-set rates on RWA-backed lending via Sky Lending / Spark</td>
+    <td class="num">$8B+ TVL across Sky/Spark</td>
+    <td>Upstream infrastructure · USDS is the stablecoin funding Grove's Galaxy facility</td>
+  </tr>
+  <tr>
+    <td class="name">Spark (spark.fi)</td>
+    <td>Sky's dedicated lending platform · governance-set rates · RWA-backed collateral accepted</td>
+    <td class="num">Part of $8B Sky ecosystem</td>
+    <td>Alternate venue for Site SPE deRWA borrowing</td>
+  </tr>
+  <tr>
+    <td class="name">Fluid (fluid.io)</td>
+    <td>Hybrid AMM + lending on Ethereum · one of the top TVL protocols in 2026</td>
+    <td class="num">Top-tier TVL</td>
+    <td>Adjacent · potential secondary venue</td>
+  </tr>
+</table>
+
+<h2 class="large">2 · Tokenized US Treasuries &amp; cash management</h2>
+<p>The largest single RWA category by AUM. Ondo, BlackRock BUIDL, and Superstate now dominate. Our Site SPEs use OUSG / USDY / BUIDL as treasury cash between distribution cycles.</p>
+
+<table class="data">
+  <tr><th>Name</th><th>Product</th><th>Scale (2026)</th><th>Relationship to us</th></tr>
+  <tr>
+    <td class="name">Ondo Finance</td>
+    <td>OUSG (institutional US T-bills, uses BUIDL as reserve) · USDY (offshore yield-bearing) · Ondo Global Markets</td>
+    <td class="num">~$4B+ AUM</td>
+    <td class="copper">Partner · treasury holding for SPE working capital</td>
+  </tr>
+  <tr>
+    <td class="name">BlackRock BUIDL</td>
+    <td>USD Institutional Digital Liquidity Fund · reference asset for OUSG</td>
+    <td class="num">~$2.14B AUM</td>
+    <td class="copper">Partner · family-office comfort brand for QROF equity</td>
+  </tr>
+  <tr>
+    <td class="name">Superstate</td>
+    <td>Short-duration tokenized treasuries · SEC-registered fund structure</td>
+    <td class="num">$1B+ AUM</td>
+    <td>Alternate for T-bill exposure · same category as OUSG</td>
+  </tr>
+  <tr>
+    <td class="name">Franklin Templeton FOBXX</td>
+    <td>OnChain U.S. Government Money Fund (BENJI token)</td>
+    <td class="num">$500M+ AUM</td>
+    <td>Traditional-brand alt to BUIDL</td>
+  </tr>
+  <tr>
+    <td class="name">Hashnote USYC</td>
+    <td>Short-duration yield · institutional focus</td>
+    <td class="num">$500M+ AUM</td>
+    <td>Adjacent</td>
+  </tr>
+  <tr>
+    <td class="name">OpenEden TBILL</td>
+    <td>Tokenized US Treasury Bills · Bermuda regulated structure</td>
+    <td class="num">$100M+ AUM</td>
+    <td>Adjacent</td>
+  </tr>
+  <tr>
+    <td class="name">Matrixdock STBT</td>
+    <td>Short-term treasury bill token · Asia focus</td>
+    <td class="num">$100M+ AUM</td>
+    <td>Adjacent · APAC investor pipeline</td>
+  </tr>
+  <tr>
+    <td class="name">Mountain Protocol USDM</td>
+    <td>Yield-bearing rebasing stablecoin backed by treasuries</td>
+    <td class="num">$200M+ AUM</td>
+    <td>Adjacent</td>
+  </tr>
+</table>
+
+<h2 class="large">3 · On-chain private credit</h2>
+<p>Direct competitors to LD Capital in the tokenized private-credit space. Different asset classes but the same underlying pattern: Reg D / Reg S issuance, tokenized notes, waterfall distribution, secondary via partner ATS or on-chain venue.</p>
+
+<table class="data">
+  <tr><th>Name</th><th>What they do</th><th>Scale (2026)</th><th>Relationship to us</th></tr>
+  <tr>
+    <td class="name">Maple Finance</td>
+    <td>Institutional on-chain credit · borrower underwriting · pool management · targets BTC/ETH-backed and receivables</td>
+    <td class="num">$21B+ loans issued cumulative</td>
+    <td class="warn">Adjacent lender · potential warehouse venue for our seasoned book · not competing on QROF asset class</td>
+  </tr>
+  <tr>
+    <td class="name">Centrifuge</td>
+    <td>Multichain RWA tokenization · V3 launchpad · Anemoy asset manager (JTRSY $400M, ACRDX $50M Apollo, NYL corp bonds)</td>
+    <td class="num">$256M+ tokenized value in pools</td>
+    <td class="copper">Partner · target Site SPE note graduation venue</td>
+  </tr>
+  <tr>
+    <td class="name">Goldfinch</td>
+    <td>Undercollateralized private-credit lending · emerging-markets focus</td>
+    <td class="num">$100M+ AUM</td>
+    <td>Adjacent · different geography focus</td>
+  </tr>
+  <tr>
+    <td class="name">TrueFi</td>
+    <td>Private credit pools · fintech-style borrower onboarding</td>
+    <td class="num">$100M+ AUM</td>
+    <td>Adjacent</td>
+  </tr>
+  <tr>
+    <td class="name">Credix</td>
+    <td>Private credit on Solana + Base · LatAm receivables focus</td>
+    <td class="num">$100M+ AUM</td>
+    <td>Adjacent</td>
+  </tr>
+  <tr>
+    <td class="name">Clearpool</td>
+    <td>Unsecured institutional lending pools · Prime for accredited</td>
+    <td class="num">$200M+ cumulative</td>
+    <td>Adjacent</td>
+  </tr>
+  <tr>
+    <td class="name">Huma Finance</td>
+    <td>PayFi network · receivables-backed lending · Stripe / Arf integration</td>
+    <td class="num">$3B+ cumulative</td>
+    <td>Adjacent · different asset class</td>
+  </tr>
+  <tr>
+    <td class="name">Untangled Finance</td>
+    <td>Private credit tokenization · Polkadot ecosystem</td>
+    <td class="num">Small · niche</td>
+    <td>Adjacent</td>
+  </tr>
+</table>
+
+<h2 class="large">4 · RWA tokenization platforms &amp; issuers</h2>
+<p>These do parts of what LD Capital + Unykorn do combined — issuing tokenized securities on rails they operate. Some are broker-dealers, some are pure infrastructure, some are both.</p>
+
+<table class="data">
+  <tr><th>Name</th><th>What they do</th><th>Scale (2026)</th><th>Relationship to us</th></tr>
+  <tr>
+    <td class="name">Securitize</td>
+    <td>Tokenized securities issuer + transfer agent + ATS (Securitize Markets) · partners with BlackRock for BUIDL</td>
+    <td class="num">$4B+ AUM issued</td>
+    <td class="copper">Potential BD-of-record partner (Stage 1) · alternate ATS venue</td>
+  </tr>
+  <tr>
+    <td class="name">Backed Finance (backed.fi)</td>
+    <td>Tokenized ETFs and equities (bIB01, bCSPX, etc.) for non-US · Swiss regulated</td>
+    <td class="num">$500M+ AUM</td>
+    <td>Adjacent · EU/Swiss geography</td>
+  </tr>
+  <tr>
+    <td class="name">Spiko</td>
+    <td>EU corporate treasury tokenization · money-market-fund tokens</td>
+    <td class="num">Growing EU presence</td>
+    <td>Adjacent · EU focus</td>
+  </tr>
+  <tr>
+    <td class="name">STOKR</td>
+    <td>Bitcoin-native structured products · Liechtenstein regulated</td>
+    <td class="num">Growing</td>
+    <td>Adjacent · BTC-native focus</td>
+  </tr>
+  <tr>
+    <td class="name">Tokeny (tokeny.com)</td>
+    <td>ERC-3643 T-REX standard authors · white-label tokenization infra</td>
+    <td class="num">Infrastructure vendor</td>
+    <td class="copper">Standards partner · our compliance stack aligns with T-REX</td>
+  </tr>
+  <tr>
+    <td class="name">Polymesh</td>
+    <td>Purpose-built L1 for tokenized securities · POLYX token</td>
+    <td class="num">Infrastructure chain</td>
+    <td>Adjacent · alternate chain path</td>
+  </tr>
+  <tr>
+    <td class="name">INX</td>
+    <td>Reg-listed BD + ATS · public company · tokenized equity offerings</td>
+    <td class="num">Public equity + tokens</td>
+    <td>Adjacent · potential ATS venue</td>
+  </tr>
+  <tr>
+    <td class="name">Prometheum</td>
+    <td>SEC-registered special-purpose broker-dealer for digital-asset securities</td>
+    <td class="num">Regulated pioneer</td>
+    <td>Adjacent · regulatory reference case</td>
+  </tr>
+  <tr>
+    <td class="name">Vertalo</td>
+    <td>Cap-table + tokenization for private companies</td>
+    <td class="num">Enterprise infrastructure</td>
+    <td>Adjacent</td>
+  </tr>
+  <tr>
+    <td class="name">Republic (republic.com)</td>
+    <td>Reg D / Reg A private-market platform · has tokenized products</td>
+    <td class="num">Retail + accredited</td>
+    <td>Adjacent · retail-focused</td>
+  </tr>
+</table>
+
+<h2 class="large">5 · DeFi lending markets accepting RWA collateral</h2>
+<p>The venue side of the Liquidity page — where Site SPE deRWA-wrapped tokens ultimately get supplied as collateral for stablecoin borrowing.</p>
+
+<table class="data">
+  <tr><th>Name</th><th>What it does</th><th>Scale (2026)</th><th>Relationship to us</th></tr>
+  <tr>
+    <td class="name">Aave V3 + Aave Horizon</td>
+    <td>Blue-chip DeFi lending · Horizon extension for institutional RWA collateral</td>
+    <td class="num">$76.6B TVL</td>
+    <td class="copper">Target venue for deRWA-SPE collateral (DAO governance)</td>
+  </tr>
+  <tr>
+    <td class="name">Morpho Blue</td>
+    <td>Isolated lending markets · each market has own collateral/oracle/IRM · Coinbase originated $2B+ loans via Morpho</td>
+    <td class="num">$76.6B TVL</td>
+    <td class="copper">Primary target venue for dedicated deRWA-SPE market</td>
+  </tr>
+  <tr>
+    <td class="name">Compound V3</td>
+    <td>Base-plus-single-collateral markets · established pedigree</td>
+    <td class="num">Multi-billion TVL</td>
+    <td>Adjacent</td>
+  </tr>
+  <tr>
+    <td class="name">Euler V2</td>
+    <td>Modular lending stack · permissioned vaults · custom risk parameters</td>
+    <td class="num">Growing post-relaunch</td>
+    <td class="copper">Alternate venue for deRWA lending with custom curator</td>
+  </tr>
+  <tr>
+    <td class="name">Silo Finance</td>
+    <td>Every asset gets its own silo · pure risk isolation · Sonic and Arbitrum focus</td>
+    <td class="num">$410M TVL (May 2026)</td>
+    <td>Adjacent · alternate isolated-market path</td>
+  </tr>
+  <tr>
+    <td class="name">Ajna Protocol</td>
+    <td>Permissionless lending without governance · custom collateral</td>
+    <td class="num">Niche</td>
+    <td>Adjacent · permissionless alt</td>
+  </tr>
+  <tr>
+    <td class="name">Gearbox</td>
+    <td>Leverage on top of Aave/Morpho · credit accounts</td>
+    <td class="num">$100M+ TVL</td>
+    <td>Adjacent · leverage layer</td>
+  </tr>
+  <tr>
+    <td class="name">Fraxlend</td>
+    <td>Frax's lending arm · isolated markets</td>
+    <td class="num">Multi-hundred-M TVL</td>
+    <td>Adjacent</td>
+  </tr>
+</table>
+
+<h2 class="large">6 · Real-estate-specific tokenization</h2>
+<p>The RealT precedent category. These are direct forebears of the fractional-real-estate + DeFi-borrowing pattern that Site SPE deRWA extends to institutional compute infrastructure.</p>
+
+<table class="data">
+  <tr><th>Name</th><th>What it does</th><th>Scale (2026)</th><th>Relationship to us</th></tr>
+  <tr>
+    <td class="name">RealT (realt.co)</td>
+    <td>Tokenized single-family rentals · Real Market Maker (RMM) for stablecoin lending against tokens</td>
+    <td class="num">700+ properties</td>
+    <td class="copper">Precedent · exact pattern we apply to compute infrastructure</td>
+  </tr>
+  <tr>
+    <td class="name">Lofty AI (lofty.ai)</td>
+    <td>Fractional real estate · Algorand-based · retail focus</td>
+    <td class="num">100+ properties</td>
+    <td>Adjacent · retail</td>
+  </tr>
+  <tr>
+    <td class="name">Homeshares</td>
+    <td>Fractional home-equity investment (residential)</td>
+    <td class="num">Growing</td>
+    <td>Adjacent</td>
+  </tr>
+  <tr>
+    <td class="name">Arrived</td>
+    <td>Fractional rental real estate · non-tokenized · SEC-qualified</td>
+    <td class="num">Multi-hundred properties</td>
+    <td>Adjacent · non-tokenized model</td>
+  </tr>
+  <tr>
+    <td class="name">Roofstock (roofstock.com)</td>
+    <td>Single-family rental marketplace · not tokenized · institutional</td>
+    <td class="num">Established platform</td>
+    <td>Adjacent · offline model</td>
+  </tr>
+  <tr>
+    <td class="name">Fundrise</td>
+    <td>Private REIT platform · established · non-tokenized</td>
+    <td class="num">$3B+ AUM</td>
+    <td>Adjacent · non-tokenized reference</td>
+  </tr>
+  <tr>
+    <td class="name">RedSwan</td>
+    <td>Institutional CRE tokenization · $4B pipeline claimed</td>
+    <td class="num">$4B+ pipeline</td>
+    <td>Adjacent · large-CRE focus</td>
+  </tr>
+</table>
+
+<h2 class="large">7 · Institutional custody + qualified-custodian rails</h2>
+<p>Not competitors — infrastructure our stack integrates with. Already covered on the Partners page but worth noting the wider landscape.</p>
+
+<table class="data">
+  <tr><th>Name</th><th>Charter / model</th><th>Scale</th><th>Relationship to us</th></tr>
+  <tr>
+    <td class="name">BitGo Bank &amp; Trust N.A.</td>
+    <td>OCC national trust bank charter</td>
+    <td class="num">1,500+ tokenized assets</td>
+    <td class="copper">Primary custody partner</td>
+  </tr>
+  <tr>
+    <td class="name">Anchorage Digital Bank</td>
+    <td>OCC-chartered digital-asset bank</td>
+    <td class="num">Multi-billion custody AUC</td>
+    <td class="copper">Alternate custody · Grove-Galaxy facility custodian</td>
+  </tr>
+  <tr>
+    <td class="name">Fireblocks</td>
+    <td>MPC infrastructure · not a bank</td>
+    <td class="num">1,800+ institutions</td>
+    <td class="copper">Operational treasury + travel-rule engine</td>
+  </tr>
+  <tr>
+    <td class="name">Coinbase Custody</td>
+    <td>NYDFS-regulated trust</td>
+    <td class="num">Multi-billion AUC</td>
+    <td>Adjacent · retail-adjacent institutional</td>
+  </tr>
+  <tr>
+    <td class="name">Komainu</td>
+    <td>Joint venture Nomura / CoinShares / Ledger · UK-regulated</td>
+    <td class="num">Multi-billion AUC</td>
+    <td>Adjacent · EU institutional</td>
+  </tr>
+  <tr>
+    <td class="name">Copper</td>
+    <td>UK · custody + prime brokerage</td>
+    <td class="num">Multi-billion AUC</td>
+    <td>Adjacent · EU institutional</td>
+  </tr>
+  <tr>
+    <td class="name">Zodia Custody</td>
+    <td>Standard Chartered · UK institutional</td>
+    <td class="num">Growing AUC</td>
+    <td>Adjacent</td>
+  </tr>
+</table>
+
+<h2 class="large">Where GA-RWA-EDGE sits in this landscape</h2>
+
+<div class="grid">
+  <div class="card copper">
+    <span class="tag copper">Not doing</span>
+    <h3>General-purpose RWA infrastructure</h3>
+    <p>We don't compete with Securitize, Tokeny, or Polymesh on generic tokenization infrastructure. Those are horizontal plays. GA-RWA-EDGE is vertical: PPA-anchored edge compute + rural QROF specifically.</p>
+  </div>
+  <div class="card copper">
+    <span class="tag copper">Not doing</span>
+    <h3>Tokenized treasuries or T-bills</h3>
+    <p>We don't compete with Ondo, BUIDL, or Superstate. We consume their products as SPE working capital via OUSG / USDY / BUIDL treasury holdings.</p>
+  </div>
+  <div class="card copper">
+    <span class="tag copper">Doing</span>
+    <h3>PPA-anchored edge data-center QROF issuance</h3>
+    <p>No competitor operates this exact vertical. The closest peers (Applied Digital, IREN, Soluna) are public compute operators — none of them are QROF-wrapped or tokenized. The closest tokenization peers (Centrifuge, Maple) don't do QROF or edge data centers.</p>
+  </div>
+  <div class="card copper">
+    <span class="tag copper">Integrating</span>
+    <h3>The venue side (Grove, Morpho, Aave, Centrifuge)</h3>
+    <p>We integrate as an asset originator into every institutional lending / warehouse venue that will accept our seasoned notes. This is where the Grove × Galaxy facility precedent matters most.</p>
+  </div>
+</div>
+
+<h2 class="large">Bottom line</h2>
+
+<p>The RWA infrastructure space is crowded and getting more competitive every quarter. What matters for GA-RWA-EDGE is that <b>no player in the landscape above is doing PPA-anchored edge compute with QROF equity distribution</b>. The pieces we don't own (custody, tokenized treasuries, warehouse lending, DeFi venues) all have named institutional providers we integrate with, not compete against. The pieces we do own (LD Capital issuance layer, Unykorn technology rails, FTH Trading BD-track distribution, Asset SPE structure) are vertically-integrated to a specific asset class where none of the horizontal players play.</p>
+
+<p>The <b>Grove × Galaxy Digital $500M facility</b> announced this month is validating in the exact way that matters: institutional-scale warehouse lending against tokenized real-world collateral is now a live, funded category. Our seasoned Site SPE note book graduates into that same category once we have 6-12 months of clean payment history. The precedent is set.</p>
+
+</div></main>
+
+<footer class="foot"><div class="wrap">
+  <div class="cols">
+    <div>
+      <h5>Competitive Landscape</h5>
+      <p style="color:var(--muted);font-size:12.5px">50+ named institutional counterparties across 7 categories. Partners, precedents, and adjacent players — not direct competitors on our exact vertical.</p>
+    </div>
+    <div>
+      <h5>Related</h5>
+      <a href="whitepaper.html">Whitepaper</a>
+      <a href="partners.html">Partners</a>
+      <a href="liquidity-composability.html">Liquidity</a>
+    </div>
+    <div>
+      <h5>Portal</h5>
+      <a href="investor-portal/index.html">Accredited portal</a>
+    </div>
+  </div>
+  <div class="disclaimer">
+    <p>© 2026 FTH Trading LLC · Unykorn LLC · LD Capital LLC. Scale figures compiled from public press / project disclosures / analyst summaries July 2026 · verify before citing. Not tax, legal, or investment advice.</p>
+  </div>
+</div></footer>
+
+</body>
+</html>
