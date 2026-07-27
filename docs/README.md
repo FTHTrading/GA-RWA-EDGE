@@ -20,7 +20,7 @@ Institutional-quality markdown documentation supporting the entire play.
 Print-ready and visually polished versions live at `fth-trading-system/docs/verticals/`:
 
 - `compute-oz-vertical.html` · Georgia zoning + OZ discipline + container-classification analysis
-- `compute-infrastructure-playbook.html` · Peer landscape + capital stack + Redivider-plus model
+- `compute-infrastructure-playbook.html` · Peer landscape + capital stack + institutional buildout model
 - `full-rwa-integration-playbook.html` · Master synthesis + Trump-cycle tailwinds + BitGo/Ondo/Centrifuge V3
 - `ppa-anchor-deal-structuring.html` · Barak 20 MW deal working document
 - `modular-epc-contract-review.html` · 12-clause EPC counsel checklist

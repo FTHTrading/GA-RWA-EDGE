@@ -112,7 +112,6 @@ cd contracts
 forge build
 ```
 
-
 ---
 
 ## 🟩 MCP Agentic Fleet
@@ -314,7 +313,6 @@ configures · 12-week sprint to Jan 1, 2027 deploy activates.
 - [Soluna 10-K (SLNH) — 4.3 GW pipeline](https://www.stocktitan.net/sec-filings/SLNH/10-k-soluna-holdings-inc-files-annual-report-200b7549b0cb.html)
 - [Crusoe $1.3B raise — AI factory pivot](https://siliconangle.com/2025/10/23/crusoe-lands-1-3b-accelerate-buildout-large-scale-ai-data-centers/)
 - [IREN Horizon Texas + Microsoft $9.7B](https://www.datacenterdynamics.com/en/news/iren-plans-75mw-liquid-cooled-ai-data-center-in-texas/)
-- [Redivider × Esperanza Homestead FL](https://www.einpresswire.com/article/556618857/redivider-blockchain-and-esperanza-opportunity-fund-announce-partnership-bringing-bitcoin-mining-to-homestead-florida)
 
 **GPU-backed lending / DC securitization:**
 
