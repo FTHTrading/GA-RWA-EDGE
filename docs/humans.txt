@@ -2,7 +2,7 @@
 Owner & Operator: Kevan Burns
 Entities: FTH Trading LLC · Unykorn LLC · LD Capital LLC · UNYKORN 7777 INC.
 Location: Metro Atlanta, Georgia, United States
-Contact: kevan [at] ldrcllc.com
+Contact: kevan [at] unykorn.org · info [at] unykorn.org
 
 /* SITE */
 Site: GA-RWA-EDGE — Institutional RWA rails for Georgia edge data centers
