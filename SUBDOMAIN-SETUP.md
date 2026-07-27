@@ -113,7 +113,7 @@ The site had almost no SEO before. This commit added:
 - `<meta name="keywords">` on high-value pages (deprecated but harmless).
 
 ### Cross-domain authority
-- Cross-links in `<head>` of index.html via `<link rel="alternate">` to `portal.unykorn.ai`, `capital.unykorn.ai/platform/`, `xrplloans.unykorn.org`.
+- Cross-links in `<head>` of index.html via `<link rel="alternate">` to `unykorn.ai`, `unykorn.org`, `xrplloans.unykorn.org`.
 - Same links appear as inbound-outbound trust signals within footer/body content.
 
 ---

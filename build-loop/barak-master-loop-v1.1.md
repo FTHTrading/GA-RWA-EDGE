@@ -81,7 +81,7 @@ repos:
   - github.com/FTHTrading/Broker-Dealer        # 5 contracts, 78/78 tests
   - github.com/FTHTrading/GA-RWA-EDGE          # the Pages site + diligence templates + Phase-0 docs live here
 portals:
-  - portal.unykorn.ai                          # master ops hub, tenant sub-portals
+  - operator-managed private ops portal (internal — not linked from public sites)
 custody: "BitGo Enterprise MPC"
 runtime_private: "local-first (RTX 5090 / Ollama) for private data; cloud NIM only on context overflow"
 audit_sink: "ops.receipts (append-only, cryptographic)"
@@ -135,7 +135,7 @@ Not every phase needs Claude Code with the monorepo mounted. Split:
 | **3** — AI/HPC conversion | Any Claude chat OR Claude Code. Python + Markdown. | Same as Phase 1. |
 | **4** — RWA vault adapter | **Claude Code with `rwa-realestate` repo mounted (REQUIRED).** | Deploys Solidity adapter into ld-capital-contracts. Needs Foundry/Hardhat toolchain + on-chain deploy path. |
 | **5** — OZ capstone + one-pager | Any Claude chat OR Claude Code. Reports + Markdown. | Written artifacts. |
-| **6** — Portal integration | **Claude Code with portal repo + Cloudflare Workers credentials.** | Deploys sub-portal to `portal.unykorn.ai`. |
+| **6** — Portal integration | **Claude Code with portal repo + Cloudflare Workers credentials.** | Deploys sub-portal to `an operator-managed private ops portal`. |
 
 The operator may run Phase 0/1/2/3/5 in this chat and hand v1.1 to a Claude Code session for Phase 4 and Phase 6.
 
@@ -197,7 +197,7 @@ The operator may run Phase 0/1/2/3/5 in this chat and hand v1.1 to a Claude Code
 ### PHASE 6 — PORTAL & OPS INTEGRATION
 - **Objective:** Surface the whole thing in the operator's live system.
 - **Skill:** `unykorn-portal-deployer`.
-- **Build:** a Barak deal sub-portal under `portal.unykorn.ai` showing live mining telemetry (if running), the diligence-gate status, the RWA cap table, and the `ops.receipts` audit trail.
+- **Build:** a Barak deal sub-portal under `an operator-managed private ops portal` showing live mining telemetry (if running), the diligence-gate status, the RWA cap table, and the `ops.receipts` audit trail.
 - **Gate:** deploy requires operator `APPROVE 6`.
 
 ---
@@ -248,7 +248,7 @@ reports/ai-upside-GATED.md
 reports/rwa-structure.md
 reports/oz-and-exit.md
 deliverables/barak-one-pager.md   # the funding artifact: ask / asset / collateral / repayment / lender exit / sponsor
-portal/barak-deal-subportal/      # under portal.unykorn.ai
+portal/barak-deal-subportal/      # under an operator-managed private ops portal
 ops.receipts                       # append-only signed log of every phase
 ```
 
