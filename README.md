@@ -35,35 +35,24 @@
 
 ```mermaid
 flowchart TB
-    HC["🏛️ Helen Corp<br/>Sponsor / Parent"]
-    U["🟩 Unykorn LLC<br/>Rails only<br/>(zero balance sheet)"]
+    U["🟩 Unykorn LLC<br/>Technology rails<br/>(zero balance sheet)"]
     LD["📜 LD Capital<br/>Issuance / servicing<br/>QROF admin"]
     FTH["📈 FTH Trading<br/>Markets layer<br/>BD-of-record → own BD → LDX"]
-    SPE1["🏗️ Asset SPE — Site 1<br/>Bankruptcy-remote<br/>Holds land + PPA + pods"]
-    SPE2["🏗️ Asset SPE — Site 2<br/>Bankruptcy-remote"]
-    DIGAU["🥇 DIGAU<br/>Gold program<br/>(isolated)"]
+    SPE1["🏗️ Asset SPE — Site 1<br/>Bankruptcy-remote borrower<br/>Holds land + PPA + pods"]
+    SPE2["🏗️ Asset SPE — Site 2<br/>Bankruptcy-remote borrower"]
 
-    HC --> U
-    HC --> LD
-    HC --> FTH
-    HC --> SPE1
-    HC --> SPE2
-    HC --> DIGAU
-
-    U -.rails.-> SPE1
-    U -.rails.-> SPE2
-    LD -.issues.-> SPE1
-    LD -.issues.-> SPE2
-    FTH -.distributes.-> SPE1
-    FTH -.distributes.-> SPE2
+    U -.rails / attestation.-> SPE1
+    U -.rails / attestation.-> SPE2
+    LD -.issues securities.-> SPE1
+    LD -.issues securities.-> SPE2
+    FTH -.distributes / secondary.-> SPE1
+    FTH -.distributes / secondary.-> SPE2
 
     style U fill:#22c55e,stroke:#166534,color:#fff
     style LD fill:#eab308,stroke:#854d0e,color:#fff
     style FTH fill:#a855f7,stroke:#6b21a8,color:#fff
-    style HC fill:#0ea5e9,stroke:#075985,color:#fff
     style SPE1 fill:#f97316,stroke:#9a3412,color:#fff
     style SPE2 fill:#f97316,stroke:#9a3412,color:#fff
-    style DIGAU fill:#facc15,stroke:#854d0e,color:#000
 ```
 
 ---
@@ -72,14 +61,13 @@ flowchart TB
 
 | Entity | Role | Never Does | Fee Model |
 |---|---|---|---|
-| **Helen Corp** | Sponsor / parent · brand · guarantees · equity carry | Directly operate rails or hold securities | Sponsor promote from SPE waterfalls |
 | **Unykorn LLC** | Technology rails · compliance · attestation · waterfall infrastructure | Hold investor capital or assets; take transaction-based securities comp | Setup + SaaS + per-attestation + per-distribution + license |
 | **LD Capital** | Issuance · structuring · QOF/QROF administration · servicing | Custody assets; operate secondary markets | 1-3% of raise + 25-100 bps servicing + fixed QOF admin |
 | **FTH Trading** | Securities distribution · BD-of-record now · own BD Stage 2 · LDX-as-ATS Stage 3 | Own SPE assets; run rails infrastructure | Placement fees (Stage 2+) + LDX listing + trading bps |
 | **Asset SPEs** | Bankruptcy-remote holders of land / PPA / pods / hosting contracts / equipment titles | Business other than the specific asset | Conduits — no earnings by design |
 
 **The rule that makes it all fundable:** money never sits in Unykorn or FTH. Assets live only in Site SPEs.
-Every claim in this repo maps to a receipt at one of these five entities.
+Every claim in this repo maps to a receipt at one of these four entities.
 
 ---
 
@@ -124,7 +112,7 @@ Scaffolding for the multi-agent operational layer. See [agents/README.md](./agen
 | `AttestationAgent` | Watch for new documents, hash them, call `ReserveProofAnchor` | `document-server` · `oracle-server` |
 | `ComplianceAgent` | Monitor `IdentityRegistry`, AML gates, travel-rule events | `kyc-server` · `chain-server` |
 | `WaterfallAgent` | Execute and monitor `CMBSWaterfall.distribute()` | `chain-server` |
-| `CapitalStackAgent` | Model QROF step-up, ITC, tax-equity sizing, DSCR, LTV | Spreadsheet / model export |
+| `CapitalStackAgent` | Model QROF step-up · MACRS + bonus · §179 · TREX sizing (storage-only ITC) · DSCR · LTV | Spreadsheet / model export |
 | `InvestorReportingAgent` | Generate on-chain + off-chain reports | `document-server` · `email-server` |
 | `RiskMonitoringAgent` | DSCR, PPA termination risk, rural qualification flags | `chain-server` · `oracle-server` |
 | `GeorgiaEnergyAgent` | GA-specific zoning, voluntary RECs, gas hybrid, rural QROF screening | `document-server` + `config/georgia/*.json` |
@@ -138,7 +126,7 @@ Institutional-grade markdown documentation. See [docs/README.md](./docs/README.m
 | Section | What's inside |
 |---|---|
 | [`01-architecture/`](./docs/01-architecture/) | System diagrams · role separation · entity flow |
-| [`02-tax-esg-incentives/`](./docs/02-tax-esg-incentives/) | QROF · ITC §48E · MACRS + bonus + §179 · Partnership Flip · ESG/SREC/carbon metrics |
+| [`02-tax-esg-incentives/`](./docs/02-tax-esg-incentives/) | QROF · MACRS + 100% bonus + §179 · Partnership Flip · ESG/SREC/carbon metrics (solar / wind ITC §48E historical — cutoff missed) |
 | [`03-capital-stack/`](./docs/03-capital-stack/) | Base case · 5 sensitivity tables · 20 MW quick reference |
 | [`04-georgia-playbook/`](./docs/04-georgia-playbook/) | Zoning matrix · rural QROF definition · site-pairing decisions |
 | [`05-deal-templates/`](./docs/05-deal-templates/) | 12-item PPA diligence · Barak worked example · risk register |
@@ -156,7 +144,8 @@ See [config/README.md](./config/README.md).
 
 ```text
 config/georgia/energy-params.json    Utility pathways · PSC large-load rule · sales-tax
-                                     exemption + 5 attacking bills · OBBBA ITC/PTC/45Q/45V.
+                                     exemption + 5 attacking bills · OBBBA storage ITC / 45Q / 45V
+                                     (solar / wind ITC cutoff missed 7/4/26 — historical only).
 config/georgia/zoning-matrix.json    18 jurisdictions ranked NO / YES_WITH_LETTER / BEST.
                                      Atlanta / DeKalb / Fayetteville / Palmetto = NO.
                                      Urbanized-area caveat baked in.
@@ -255,7 +244,7 @@ Build queue (highest-ROI internal tooling). See [docs/09-calculators/inventory.m
 **P0 (Weeks 1-2):**
 
 - 🟨 QROF / OZ 2.0 Step-Up Calculator
-- 🟨 ITC §48E Calculator (with 50% basis reduction)
+- 🟨 ITC §48E Calculator (historical reference — solar / wind cutoff missed; retained for storage-only projects)
 - 🟨 MACRS + Bonus Depreciation Calculator
 - 🟨 Combined Tax Benefit Stacker
 - 🟩 Partnership Flip / TREX Sizing Engine (99/1 → 5/95)
@@ -324,4 +313,4 @@ configures · 12-week sprint to Jan 1, 2027 deploy activates.
 
 _Non-custodial · compliance-gated · deterministic — institutional infrastructure for tokenized real-world assets._
 
-_© 2026 FTH Trading / Helen Corp group. Not tax, legal, or investment advice. Nothing in this repository is an offer to sell securities. All figures are planning-grade and require licensed counsel review before any deployment._
+_© 2026 FTH Trading / Unykorn LLC / LD Capital LLC. Not tax, legal, or investment advice. Nothing in this repository is an offer to sell securities. All figures are planning-grade and require licensed counsel review before any deployment._

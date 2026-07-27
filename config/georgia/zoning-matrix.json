@@ -23,7 +23,7 @@
     { "name": "Douglas County", "type": "county", "status": "YES_WITH_LETTER", "reason": "West metro. Some hyperscale interest (Meta area). Most inside urbanized area — QROF unlikely for most tracts." },
     { "name": "Carroll County", "type": "county", "status": "YES_WITH_LETTER", "reason": "West metro. Outer tracts west of Carrollton likely rural-qualifying." },
 
-    { "name": "White County (Helen corridor)", "type": "county", "status": "BEST", "reason": "Rural. Cooperative county commissioners. Direct Helen Corp synergy — M Helen tract co-check available. Definitively rural for QROF." },
+    { "name": "White County (Helen corridor)", "type": "county", "status": "BEST", "reason": "Rural. Cooperative county commissioners. Multiple OZ-eligible tracts. Definitively rural for QROF." },
     { "name": "Rabun County", "type": "county", "status": "BEST", "reason": "Definitively rural. Blue Ridge EMC + hydro proximity." },
     { "name": "Union County", "type": "county", "status": "BEST", "reason": "Definitively rural. TVA-adjacent." },
     { "name": "Fannin County", "type": "county", "status": "BEST", "reason": "Definitively rural." },

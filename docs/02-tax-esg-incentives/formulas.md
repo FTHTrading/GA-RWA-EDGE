@@ -67,13 +67,15 @@ Both prongs must clear. Per-tract test, not per-county. Verify each candidate tr
 
 ---
 
-## 2. Investment Tax Credit §48E / Clean Electricity
+## 2. Investment Tax Credit §48E / Clean Electricity (HISTORICAL — CUTOFF MISSED)
 
-### 2.1 Current deployment rules (post-OBBBA)
+> ⚠️ **Solar / Wind ITC no longer available for new projects.** The begin-construction safe harbor lapsed **July 4, 2026**. This section is retained as historical reference and for storage-only projects. **Do not model solar / wind ITC into any live capital stack.**
 
-- **Solar / wind sprint window:** begin construction by **July 4, 2026** OR placed in service by **Dec 31, 2027**
-- **Energy storage:** full baseline rate through **2033** (standalone or paired)
-- **Base rate:** 30% of eligible basis · + adders up to +10-20% (domestic content · energy community)
+### 2.1 Deployment rules that still apply
+
+- **Solar / wind sprint window:** ~~begin construction by July 4, 2026~~ **CUTOFF PASSED** — no longer available for new solar / wind builds
+- **Energy storage (standalone, no paired solar):** full 30% baseline rate through **2033** — still available
+- **Base rate:** 30% of eligible basis · + adders up to +10-20% (domestic content · energy community) — applies to remaining eligible technologies (storage, geothermal, nuclear PTC)
 
 ### 2.2 ITC amount
 
@@ -250,9 +252,10 @@ SREC / REC / carbon revenues sit **below senior debt service and platform fees**
 | DSCR | NOI ÷ Annual Debt Service | ≥ 1.25× – 1.40× |
 | DSCR (PPA-anchored) | **(Hosting Revenue − Utility Charges − Taxes − Opex) ÷ Debt Service** | Same ≥ 1.25× **but net of PPA demand charges** |
 | QROF equity share | QROF Equity ÷ Total Project Cost | 15-25% |
-| ITC tax equity share | Tax Equity ÷ Total Project Cost | 5-12% · scaled by solar MW |
-| Effective equity cost | Post-step-up + ITC monetization | Materially compressed vs pre-tax |
+| Effective equity cost | Post-step-up basis adjustment | Compressed by ~7% via QROF alone |
 | Total federal tax benefit per $ of QROF equity | (30% step-up × 23.8%) + state | ~7.1% federal on deferred-gain portion |
+
+_ITC tax-equity share row removed — solar / wind ITC cutoff missed. Storage-only ITC available but not modelled in base case._
 
 ---
 
@@ -260,23 +263,22 @@ SREC / REC / carbon revenues sit **below senior debt service and platform fees**
 
 | Incentive / benefit layer | Illustrative financial value |
 |---|---|
-| QROF 30% step-up (on $40M equity block) | $12,000,000 basis increase → **~$2,856,000 federal tax savings** vs no QROF |
-| Solar ITC (8-10 MW @ 30%) | $14-18M nominal credit → **$16-22M tax-equity proceeds** at 1.1-1.3× sizing |
-| 100% bonus depreciation | Year-1 deduction ~$17-20M+ (after 50% ITC basis reduction) · 99% to tax equity pre-flip |
-| Energy storage ITC | Full 30% baseline with runway through 2033 |
+| QROF 30% step-up (on $36M equity block) | $10,800,000 basis increase → **~$2,570,000 federal tax savings** vs no QROF |
+| 100% bonus depreciation (all equipment, no ITC basis reduction) | Year-1 deduction ~$20-25M · 99% to sponsor pre-flip (no tax-equity partner now) |
+| Energy storage ITC (if standalone storage added) | Full 30% baseline with runway through 2033 — optional layer |
 | Voluntary RECs / carbon (GA) | Modest residual · GA no compliance market · pair PJM sites for real SREC pricing |
 | Section 179 (2026 limit $2.56M) | Small vs stack · strategic use for early-stage equipment |
-| **Combined tax & incentive uplift** | **$15-30M** on the 20 MW deal |
+| **Combined tax & incentive uplift** | **$8-15M** on the 20 MW deal (down from $15-30M with ITC) |
 
 ### Base-case source of funds line
 
 ```text
-Senior $130M + Equipment $24M + ITC tax equity $16M + QROF $40M + Sponsor/Barak $10M
-= $220M sources vs $200M base uses
-= 10% contingency headroom
+Senior $130M + Equipment $24M + QROF $36M + Sponsor/Barak $10M
+= $200M sources vs $200M base uses
+= 0% contingency headroom (add 5-10% contingency inside project cost line)
 ```
 
-The $15-30M of tax + incentive uplift is what lets the equity layer (QROF + sponsor) accept a lower cash pref than conventional accredited equity would demand — **the cheapest equity the group will raise for the deal**.
+The $8-15M of remaining tax + incentive uplift (QROF step-up + 100% bonus on full basis + §179) is what lets the QROF equity accept a lower cash pref than conventional accredited equity would demand.
 
 ---
 

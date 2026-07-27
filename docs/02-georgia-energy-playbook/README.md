@@ -4,8 +4,8 @@ Single source: config/georgia/energy-params.json. Verified July 2026.
 ## SREC / REC reality
 Georgia has NO compliance RPS and NO SREC compliance market. GA RECs are Tier-1/Class-I certificates sold bilaterally or voluntarily (often to the pod's own hosting customer for green-compute claims). Registry: M-RETS or NAR serials, minted 1 REC / 1 MWh via the SRECModule flow. Pods sited in PJM states (VA, PA, OH, NJ, MD) earn compliance SRECs instead — screen per site.
 
-## ITC sprint (OBBBA)
-Begin-construction safe harbor lapsed 2026-07-04. New-start solar must be PLACED IN SERVICE by 2027-12-31 to earn §48E. Modular 90-day pods can make that date; gigawatt projects cannot — this is the arbitrage. Storage/geothermal/45Q survive on longer clocks. Never underwrite the GA data-center sales-tax exemption (five active bills; pods are below its thresholds anyway).
+## ITC status (OBBBA) — cutoff missed
+Solar / wind ITC §48E begin-construction safe harbor **lapsed 2026-07-04** — cutoff missed. New solar / wind builds no longer qualify for §48E. **Do not underwrite solar / wind ITC into any capital stack.** Storage-only ITC survives through 2033 (begin-construction runway). 45Q carbon capture credits remain available. Geothermal PTC survives. Never underwrite the GA data-center sales-tax exemption (five active bills; pods are below its thresholds anyway).
 
 ## Gas hybrid rules
 Allowed (gasHybridAllowed=true) but attestation is REQUIRED: every period's gas MMBtu consumed and gas-fired Wh generated must be quorum-attested (GasAttestation contract). Gas-fired MWh are NEVER REC-eligible. Carbon accounting (Scope 1) rides the same record. Hybrid without measurement is greenwash bait — structurally prevented.

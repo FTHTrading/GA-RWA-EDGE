@@ -36,28 +36,28 @@ The prior sensitivity tables in `docs/03-capital-stack/sensitivity.md` used a **
 
 ## Revised base-case sizing (5 MW conversion + expansion)
 
-Working assumption — refine after Barak diligence + site walk:
+Working assumption — refine after Barak diligence + site walk. Note: solar co-location layer removed from base case because the **solar ITC begin-construction safe harbor lapsed July 4, 2026**. Storage-only ITC survives through 2033 but is not modelled here.
 
 | Layer | Approx. Amount | Purpose |
 |------|-----------|---------|
 | Land acquisition / lease buyout | $1.0-3.0M | Take title or perpetual leasehold |
 | Miner-contract buyout (existing 721 miners) | $2.0-4.0M | Terminate or assume; assumes some contracts freely terminable |
 | Immersion retrofit (5 MW liquid) | $8.0-10.0M | Convert air-cooled miner racks to immersion for AI-workload readiness |
-| Solar + storage co-location (2-3 MW) | $6.0-8.0M | 12/31/27 ITC sprint — reaches in-service by deadline |
 | Interconnect + electrical upgrades | $2.0-3.0M | If expanding beyond 5 MW |
 | Working capital + contingency | $2.0-4.0M | Standard 10-15% headroom |
-| **Total project cost estimate** | **$21-32M** | **Base case: ~$25M** |
+| **Total project cost estimate** | **$15-24M** | **Base case: ~$20M** |
 
-## Revised capital stack (~$25M base case)
+## Revised capital stack (~$20M base case)
 
 | Layer | % | Amount | Source |
 |------|---|--------|--------|
-| Senior debt | 60% | $15.0M | CRE / USDA B&I (if rural QROF confirmed) / C-PACE |
-| Equipment / GPU debt | 12% | $3.0M | Vendor programs, GPU-backed lending |
-| ITC tax equity | 8% | $2.0M | Solar co-located, in-service by 12/31/27 |
-| QROF preferred equity | 32% | $8.0M | Cap-gains sellers, rural 30% step-up if tract clears |
-| Sponsor + Barak | 8% | $2.0M | Helen Corp + Barak (PPA contribution) |
-| **Total** | 100% | **$25M** | Assumes rural QROF; falls back to standard QOF if not |
+| Senior debt | 60% | $12.0M | CRE / USDA B&I (if rural QROF confirmed) / C-PACE |
+| Equipment / GPU debt | 15% | $3.0M | Vendor programs, GPU-backed lending |
+| QROF preferred equity | 20% | $4.0M | Cap-gains sellers, rural 30% step-up if tract clears |
+| Sponsor + Barak | 5% | $1.0M | Sponsor + Barak (PPA contribution — cash/promote/equity blend) |
+| **Total** | 100% | **$20M** | Assumes rural QROF; falls back to standard QOF if not |
+
+_ITC tax-equity layer (formerly ~$2M / 8%) removed — solar ITC cutoff missed. Equity gap absorbed by widening QROF share from 32% to 20% of a smaller total cost (project cost drops ~$5M because solar co-location is no longer being built for tax purposes)._
 
 **PPA quality note:** at 4.9¢/kWh fixed, the PPA scores exceptionally well on rate structure (max), delivery point (max), capacity firmness (max), site-use restrictions (max — active mining proves permissive use). Weakest items to verify: assignability language, term length, novation posture. Preliminary PPA scorecard: **20+/24 → senior LTV 65-70%.**
 
@@ -137,7 +137,7 @@ Expansion beyond 5 MW would look like:
 - **Q4 2026:** Fund formation (QROF or standard QOF depending on tract), 506(c) PPM
 - **Dec 31, 2026:** Do NOT deploy pre-2027 capital (OZ 2.0 rules)
 - **Jan 1, 2027:** Deploy — QROF closes, land / PPA-assignment executed, solar-co-location construction begins
-- **Q3-Q4 2027:** Solar in-service before **12/31/27 ITC deadline**, first hosting revenue
+- **Q3-Q4 2027:** First contracted hosting revenue; conversion complete
 
 ## Companion artifacts
 

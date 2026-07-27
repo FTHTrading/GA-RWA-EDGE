@@ -93,7 +93,7 @@
     <div class="card">
       <div class="tagrow">🟩 Energy</div>
       <h3>Georgia Energy Playbook</h3>
-      <p>Verified rules: voluntary-only SREC market (GA has no RPS · PJM states for compliance pricing), ITC placed-in-service sprint (Dec 31, 2027), gas-hybrid attestation requirements, PSC posture for sub-5&nbsp;MW loads, preferred vs restricted jurisdictions.</p>
+      <p>Verified rules: voluntary-only SREC market (GA has no RPS · PJM states for compliance pricing), <b>solar / wind ITC cutoff missed (July 4, 2026)</b> · storage-only ITC available through 2033, gas-hybrid attestation requirements, PSC posture for sub-5&nbsp;MW loads, preferred vs restricted jurisdictions.</p>
       <div class="actions">
         <a class="dl" href="downloads/georgia-energy-playbook.pdf">Download PDF</a>
         <a class="view" href="02-georgia-energy-playbook/">Read Markdown</a>
@@ -155,7 +155,7 @@
     <div class="card">
       <div class="tagrow">🧮 Calculators</div>
       <h3>P0 Calculator Suite</h3>
-      <p>QROF step-up · ITC §48E + MACRS · TREX sizing · PPA-aware capital stack &amp; DSCR · pod/PUE sizing · carbon intensity · attestation payload builder. Deterministic, dependency-free Python.</p>
+      <p>17 calculators: QROF step-up · MACRS + 100% bonus · §179 · TREX sizing (storage-only ITC) · PPA-aware capital stack &amp; DSCR · pod/PUE/cooling sizing · site scorecard · interconnect feasibility · carbon intensity · SREC revenue · PPA scorer · rural QROF screener · attestation payload builder. Deterministic, dependency-free Python.</p>
       <div class="actions">
         <a class="view" href="../scripts/calculators.py">View calculators.py</a>
         <a class="view" href="09-calculators/inventory.md">Full Inventory</a>
@@ -168,7 +168,7 @@
     <div class="card">
       <div class="tagrow">🟨 Formulas</div>
       <h3>Tax, ESG &amp; Incentive Formulas Reference</h3>
-      <p>Working formulas for underwriting, waterfall priority/residual logic, ReserveProofAnchor schemas, and investor PPMs. QROF · ITC §48E · MACRS + 100% bonus + §179 · Partnership Flip · ESG/SREC/carbon metrics. All post-OBBBA (July 4, 2025).</p>
+      <p>Working formulas for underwriting, waterfall priority/residual logic, ReserveProofAnchor schemas, and investor PPMs. QROF · MACRS + 100% bonus + §179 · Partnership Flip · ESG/SREC/carbon metrics. All post-OBBBA (July 4, 2025). <b>Solar / wind ITC §48E section retained as historical reference only — cutoff missed.</b></p>
       <div class="actions">
         <a class="view" href="02-tax-esg-incentives/formulas.md">Read Formulas Reference</a>
       </div>
@@ -183,23 +183,27 @@
     </div>
   </div>
 
-  <h2>📐 Architecture — the five-entity rule</h2>
-  <div class="arch"><b>THE HOUSE  ·  Five entities · zero role overlap · Unykorn holds no capital</b>
+  <h2>📐 Architecture — the four-entity rule</h2>
+  <div class="arch"><b>THE STACK  ·  Four entities · zero role overlap · Unykorn holds no capital</b>
 
-                         ┌──────────────────────────────┐
-                         │       <em>HELEN CORP</em>            │  Sponsor / parent
-                         │  (brand · guarantees · equity)│
-                         └──────────────┬───────────────┘
-        ┌───────────────┬───────────────┼────────────────┬──────────────────┐
-        ▼               ▼               ▼                ▼                  ▼
- ┌─────────────┐ ┌─────────────┐ ┌──────────────┐ ┌──────────────┐ ┌───────────────┐
- │  <em>UNYKORN</em>    │ │ <em>LD CAPITAL</em>  │ │  <em>ASSET SPEs</em>  │ │ <em>FTH TRADING</em>  │ │ <em>DIGNITY/DIGAU</em> │
- │  (rails)    │ │ (issuance)  │ │ (one per     │ │ (markets)    │ │ (gold program │
- │ contracts,  │ │ structuring,│ │  asset:      │ │ distribution,│ │  under FTH)   │
- │ portals,    │ │ 506(c)/RegS,│ │  M Helen,    │ │ BD track,    │ │ LBMA reserves,│
- │ compliance  │ │ servicing,  │ │  pods, land) │ │ LDX venue,   │ │ ERC-3643      │
- │ tech, AI    │ │ QOF admin   │ │  borrowers   │ │ secondary    │ │ migration     │
- └─────────────┘ └─────────────┘ └──────────────┘ └──────────────┘ └───────────────┘
+ ┌─────────────────┐   ┌─────────────────┐   ┌──────────────────┐
+ │   <em>UNYKORN LLC</em>   │   │   <em>LD CAPITAL</em>    │   │   <em>FTH TRADING</em>    │
+ │  (rails / tech) │   │ (issuance /     │   │ (markets /       │
+ │                 │   │  QROF admin /   │   │  distribution /  │
+ │  contracts      │   │  structuring)   │   │  BD track /      │
+ │  compliance     │   │                 │   │  LDX venue)      │
+ │  attestation    │   │  506(c) / Reg S │   │                  │
+ │  AI + portals   │   │  servicing      │   │  BD-of-record →  │
+ │                 │   │                 │   │  own BD → ATS    │
+ └────────┬────────┘   └────────┬────────┘   └────────┬─────────┘
+          │                     │                     │
+          │ rails / attestation │ issues securities   │ distributes
+          ▼                     ▼                     ▼
+      ┌─────────────────────────────────────────────────────┐
+      │                <em>ASSET SPE(s)</em>                          │
+      │  Bankruptcy-remote borrower · one per asset         │
+      │  Holds: land · PPA rights · pods · hosting contracts│
+      └─────────────────────────────────────────────────────┘
 
  <b>Money never sits in Unykorn or FTH.  Assets live ONLY in SPEs.  Securities are issued
  by SPEs/funds via LD Capital.  FTH Trading touches SECURITIES MARKETS, never custody.</b></div>
@@ -243,7 +247,7 @@
     <b>Companion HTML playbooks</b> (visual, print-ready) live at <code>fth-trading-system/docs/verticals/</code>: <code>compute-oz-vertical.html</code> · <code>compute-infrastructure-playbook.html</code> · <code>full-rwa-integration-playbook.html</code> · <code>ppa-anchor-deal-structuring.html</code> · <code>modular-epc-contract-review.html</code> · <code>tax-esg-incentive-formulas-reference.html</code>.<br><br>
     <b>Repository:</b> <a href="https://github.com/FTHTrading/GA-RWA-EDGE">github.com/FTHTrading/GA-RWA-EDGE</a><br>
     <b>License:</b> MIT + Commercial Reservation (see <a href="../LICENSE">LICENSE</a>)<br>
-    © 2026 FTH Trading · Helen Corp group · non-custodial · compliance-gated · deterministic
+    © 2026 FTH Trading / Unykorn LLC / LD Capital LLC · non-custodial · compliance-gated · deterministic
   </div>
 </div>
 </body>

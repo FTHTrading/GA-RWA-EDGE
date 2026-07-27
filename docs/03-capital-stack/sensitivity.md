@@ -1,6 +1,8 @@
 # Capital Stack Sensitivity — 20 MW Base Case
 
-Base-case working numbers pending PPA diligence lock. Modular pod all-in CapEx (land + shell + interconnect + pods + immersion + gensets + solar-plus-storage) typically ranges $8-14M per MW at institutional build spec.
+Base-case working numbers pending PPA diligence lock. Modular pod all-in CapEx (land + shell + interconnect + pods + immersion + gensets) typically ranges $8-14M per MW at institutional build spec.
+
+> ⚠️ **Solar / Wind ITC §48E — cutoff missed.** Begin-construction safe harbor lapsed July 4, 2026. Solar ITC removed from all layers below. Storage-only ITC survives through 2033 but is not modelled here.
 
 ## Base-case stack ($200M / 20 MW · $10M per MW)
 
@@ -8,19 +10,20 @@ Base-case working numbers pending PPA diligence lock. Modular pod all-in CapEx (
 |---|---|---|---|
 | Senior debt | 65% | $130M | Data-center CRE / USDA B&I (rural) / C-PACE. PPA drives higher LTV + lower spread. |
 | Equipment / GPU debt | 12% | $24M | Vendor programs · GPU-backed lending (CoreWeave IG-rated pattern) |
-| ITC tax equity | 8% | $16M | Solar co-located, placed in service by 12/31/27. 99/1 → 5/95 flip |
-| QROF preferred equity | 20% | $40M | Cap-gains sellers · rural 30% step-up · 10-yr hold · Reg D 506(c) via FTH Trading |
-| Sponsor + Barak | 5% | $10M | Helen Corp equity + Barak's PPA contribution (blended cash / promote / equity) |
+| QROF preferred equity | 18% | $36M | Cap-gains sellers · rural 30% step-up · 10-yr hold · Reg D 506(c) via FTH Trading |
+| Sponsor + Barak | 5% | $10M | Sponsor equity + Barak's PPA contribution (blended cash / promote / equity) |
 | **Total** | 100% | **$200M** | |
+
+_ITC layer (formerly 8% / $16M) removed — cutoff missed. Equity gap absorbed by widening QROF share from 20% to 18% and letting slightly higher senior LTV close the remainder (see Sensitivity 2)._
 
 ## Sensitivity 1 · Total project cost per MW
 
-| All-in $/MW | Total project | Senior 65% | Equipment 12% | ITC 8% | QROF 20% | Sponsor+Barak 5% |
-|---|---|---|---|---|---|---|
-| $8M/MW | $160M | $104M | $19M | $13M | $32M | $8M |
-| **$10M/MW (base)** | **$200M** | **$130M** | **$24M** | **$16M** | **$40M** | **$10M** |
-| $12M/MW | $240M | $156M | $29M | $19M | $48M | $12M |
-| $14M/MW | $280M | $182M | $34M | $22M | $56M | $14M |
+| All-in $/MW | Total project | Senior 65% | Equipment 12% | QROF 18% | Sponsor+Barak 5% |
+|---|---|---|---|---|---|
+| $8M/MW | $160M | $104M | $19M | $29M | $8M |
+| **$10M/MW (base)** | **$200M** | **$130M** | **$24M** | **$36M** | **$10M** |
+| $12M/MW | $240M | $156M | $29M | $43M | $12M |
+| $14M/MW | $280M | $182M | $34M | $50M | $14M |
 
 Equity scales linearly — every $2M/MW cost overrun adds ~$8-10M of equity to raise.
 
@@ -36,43 +39,46 @@ Equity scales linearly — every $2M/MW cost overrun adds ~$8-10M of equity to r
 
 **Highest-leverage diligence item — moving from 60% to 70% senior reduces QROF + sponsor equity by ~$20M.**
 
-## Sensitivity 3 · Solar co-location + ITC deadline
+## Sensitivity 3 · QROF path (Rural vs Ring)
 
-| Solar scale | ITC capital | Net equity impact | Deadline risk |
-|---|---|---|---|
-| None | $0 | +$16M equity required | N/A |
-| 5 MW solar | ~$8-10M | Base-case reduction | Low |
-| **8-10 MW solar (base)** | **$14-18M** | Base | Manageable with modular schedule |
-| 15+ MW solar | $25-30M+ | Larger reduction | Harder to hit 12/31/27 deadline |
-
-Missing the 12/31/27 placed-in-service date eliminates the ITC layer — forcing ~$15-20M more equity.
-
-## Sensitivity 4 · QROF path
+_This section replaces the prior "Solar co-location + ITC deadline" sensitivity, which no longer applies (solar ITC cutoff missed July 4, 2026)._
 
 | Path | Basis step-up | Equity size | PV of tax benefit | Recommended |
 |---|---|---|---|---|
-| Pure Atlanta ring (no rural) | 10% | $40-50M | ~$4-5M | Avoid if rural available |
-| **Path B · Rural QROF (base)** | 30% | $40-50M | ~$12-15M | **Preferred** |
+| Pure Atlanta ring (no rural) | 10% | $36-46M | ~$4-5M | Avoid if rural available |
+| **Path B · Rural QROF (base)** | 30% | $36-46M | ~$12-15M | **Preferred** |
 | Split (ring + rural) | Mixed | Higher complexity | Partial | Only if rural fails |
 
 Path B remains highest-value even after modest wheeling / transmission costs.
 
+## Sensitivity 4 · MACRS + 100% bonus depreciation (still available)
+
+MACRS + 100% bonus continues to apply to non-solar equipment (pods, IT load, cooling, land improvements). This is the primary remaining depreciation benefit.
+
+| Asset class | Recovery period | Bonus eligible? | Year-1 benefit on $1M CapEx |
+|---|---|---|---|
+| IT equipment (pods, GPUs, immersion) | 5-yr | Yes | 100% Year-1 deduction ($1.0M × 21% tax = ~$210k shield) |
+| UPS · switchgear · batteries | 5- or 7-yr | Yes | Same magnitude |
+| Land improvements | 15-yr | Yes | Same magnitude on Year-1 |
+| Building / structural | 39-yr | No | Straight-line only |
+
+_No ITC basis reduction applies (no ITC being claimed) — full CapEx is depreciable._
+
 ## Sensitivity 5 · Combined stress scenarios
 
-| Scenario | Total cost | Senior LTV | ITC | QROF | Equity required |
-|---|---|---|---|---|---|
-| **Base** | $200M | 65% | Full | Rural 30% | ~$50M |
-| Optimistic | $180M | 70% | Full | Rural 30% | ~$32-35M |
-| Pessimistic (overrun + weak PPA) | $240M | 55% | Partial | Ring 10% | ~$85-95M |
-| No ITC (missed deadline) | $200M | 65% | $0 | Rural 30% | ~$66M |
-| Best case | $190M | 72% | Full | Rural 30% | ~$28-32M |
+| Scenario | Total cost | Senior LTV | QROF | Equity required |
+|---|---|---|---|---|
+| **Base** | $200M | 65% | Rural 30% | ~$46M |
+| Optimistic | $180M | 70% | Rural 30% | ~$30-33M |
+| Pessimistic (overrun + weak PPA) | $240M | 55% | Ring 10% | ~$80-90M |
+| Best case | $190M | 72% | Rural 30% | ~$25-30M |
 
 ## What moves the needle most
 
 1. **PPA quality / assignability** → directly sets senior advance rate. Single biggest lever. 60% → 70% LTV saves ~$20M equity.
 2. **All-in project cost discipline** → every $1M/MW saved reduces equity by ~$0.4-0.5M.
-3. **Hitting the 12/31/27 ITC deadline** → preserves $15-20M of tax-equity capital.
-4. **Achieving rural QROF status** → triples basis step-up (~$8-10M investor-level tax benefit).
+3. **Achieving rural QROF status** → triples basis step-up (~$8-10M investor-level tax benefit).
+4. **MACRS + 100% bonus on non-solar equipment** → preserved. Provides ~15-20% of remaining tax shield without ITC.
 
 ## Base column locks when
 

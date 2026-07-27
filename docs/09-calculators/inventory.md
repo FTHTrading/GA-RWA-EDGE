@@ -9,7 +9,7 @@
 | Calculator | What it computes | Key inputs | Output | Priority |
 |---|---|---|---|---|
 | **QROF / OZ 2.0 Step-Up Calculator** | 10% vs 30% basis step-up · taxable gain at year 5 · federal tax savings @ 23.8% | Deferred gain amount · hold period · rural flag | Step-up $ · tax savings $ · after-tax IRR impact | **P0** |
-| **ITC §48E Calculator** | Credit amount · basis reduction (50% of ITC) · eligible vs ineligible costs | Eligible basis · credit % · adders (domestic content / energy community) · placed-in-service date | ITC $ · reduced depreciable basis · tax-equity sizing range | **P0** |
+| **ITC §48E Calculator** _(historical / storage-only)_ | Credit amount · basis reduction (50% of ITC) · eligible vs ineligible costs | Eligible basis · credit % · adders · placed-in-service date | ITC $ · reduced depreciable basis · tax-equity sizing range | **Historical** — solar / wind cutoff missed 7/4/26; storage-only projects still eligible |
 | **MACRS + Bonus Depreciation Calculator** | Year-by-year schedule (5/7/15/39-yr) · 100% bonus option · post-ITC basis | Asset category · cost · placed-in-service date · ITC claimed? | Full depreciation schedule + Year-1 deduction | **P0** |
 | **Section 179 Calculator (2026)** | Max deduction after phase-out | Total qualifying property placed in service | Available §179 amount (cap $2.56M / phase-out $4.09M) | **P1** |
 | **Combined Tax Benefit Stacker** | QROF + ITC + MACRS + §179 in one view | All of the above | Total Year-1 + multi-year tax benefit $ | **P0** |
@@ -86,7 +86,7 @@ Inputs derived from Canovate site evaluation criteria + HPC site-layout requirem
 **Phase 1 — Core Tax & Stack (Weeks 1-2)**
 
 1. QROF Step-Up Calculator
-2. ITC + MACRS + Basis Reduction Calculator
+2. MACRS + 100% Bonus Depreciation Calculator (no ITC basis reduction — solar / wind cutoff missed)
 3. Partnership Flip / TREX Sizing Model
 4. Full Capital Stack + DSCR Sensitivity
 
@@ -116,7 +116,7 @@ Every calculator ships in three formats to serve different consumers:
 
 ## 🎯 Bottom line
 
-Highest-ROI internal builds are the **QROF / ITC / MACRS / TREX suite** and the **PPA-aware capital-stack + DSCR engine**. Everything else (site scorecard, PUE, carbon, attestation payloads) feeds the same system and makes Georgia edge-DC deals repeatable and lender-ready.
+Highest-ROI internal builds are the **QROF / MACRS + 100% bonus / §179 / TREX (storage-only) suite** and the **PPA-aware capital-stack + DSCR engine**. Solar / wind ITC §48E section is retained as historical reference — the begin-construction cutoff was missed July 4, 2026. Everything else (site scorecard, PUE, carbon, attestation payloads) feeds the same system and makes Georgia edge-DC deals repeatable and lender-ready.
 
 Detailed specifications (inputs · formulas · output schema · unit tests) for each calculator ship as separate markdown files in this directory once the P0 queue enters implementation.
 

@@ -7,8 +7,11 @@ docs/09-calculators/inventory.md.
 TAX & INCENTIVES
   qrof              QROF / OZ 2.0 step-up + tax savings
   itc               ITC §48E + basis reduction + MACRS(+bonus) schedule
+                    (SOLAR / WIND CUTOFF MISSED 7/4/26 - use itc_rate_bps=0 for
+                    pure MACRS or storage-only rates for storage projects)
   section179        Section 179 expensing with 2026 phase-out
-  tax_stacker       Combined QROF + ITC + MACRS + §179 in one call
+  tax_stacker       Combined QROF + MACRS + §179 in one call
+                    (pass itc_eligible_basis_cents=0 to skip ITC layer)
 
 TAX EQUITY (TREX)
   trex_sizing       Rule-of-thumb sizing (1.0x-1.3x ITC)
@@ -74,7 +77,12 @@ def itc_macrs(eligible_basis_cents: int, itc_rate_bps: int = 3000,
               bonus_depr_bps: int = 10_000, tax_rate_bps: int = 2100,
               macrs_class: int = 5):
     """§48E ITC + adders; depreciable basis reduced by 50% of ITC; MACRS w/ optional bonus.
-    bonus_depr_bps=10_000 => 100% bonus (year-1). Placed-in-service deadline 2027-12-31 (OBBBA)."""
+
+    WARNING: Solar / wind ITC begin-construction safe harbor lapsed July 4, 2026.
+    For new solar / wind builds, pass itc_rate_bps=0 to disable the credit and
+    let this function run as a pure MACRS + bonus calculator (no ITC basis reduction).
+    Storage-only ITC still available through 2033 - use with itc_rate_bps=3000 in
+    that case."""
     rate = itc_rate_bps + (1000 if domestic_content else 0) + (1000 if energy_community else 0)
     itc = eligible_basis_cents * rate // 10_000
     depr_basis = eligible_basis_cents - itc // 2  # basis reduction = 50% of ITC
@@ -648,49 +656,48 @@ def demo():
     ppa_annual_cost_cents = 5_000 * 8760 * 49 // 10  # 4.9c in tenths, kWh
     print(f"\n[Barak site PPA annual cost @ 4.9c/kWh, 5 MW: ${ppa_annual_cost_cents/100/1e6:.2f}M]\n", file=sys.stderr)
 
-    # 5. Project cost assumption — existing site conversion (not greenfield 20 MW)
-    # Buy-out of miners + upgrade to AI hosting + immersion retrofit + solar+storage co-loc
-    total_cost = 25_000_000_00  # $25M for conversion + expansion
+    # 5. Project cost — existing site conversion (no solar co-location; ITC cutoff missed).
+    # Buy-out of miners + immersion retrofit + interconnect upgrades + working capital.
+    total_cost = 20_000_000_00  # $20M for conversion (reduced from $25M — no solar for ITC)
 
-    # 6. ITC on solar+storage slice (~$8M) — hits 12/31/27 in-service window
-    d["4_itc_macrs"] = itc_macrs(int(total_cost * 0.32), domestic_content=True, energy_community=False)
+    # 6. Section 179 on smaller equipment purchases (uses full MACRS + 100% bonus on the rest)
+    d["4_section179"] = section179(6_000_000_00)  # $6M — inside phase-out band
 
-    # 7. Section 179 on smaller equipment purchases
-    d["5_section179"] = section179(6_000_000_00)  # $6M — inside phase-out band
+    # 7. QROF step-up at $4M cap-gains rolled in (rural QROF if tract clears)
+    d["5_qrof"] = qrof_stepup(4_000_000_00, rural=True)
 
-    # 8. QROF step-up at $8M cap-gains rolled in
-    d["6_qrof"] = qrof_stepup(8_000_000_00, rural=True)
+    # 8. MACRS + 100% bonus on non-solar equipment (no ITC basis reduction applies)
+    # Immersion + IT equipment + interconnect = ~$13M eligible 5-yr property
+    d["6_macrs_bonus"] = itc_macrs(
+        eligible_basis_cents=13_000_000_00,
+        itc_rate_bps=0,          # NO ITC claimed — solar / wind cutoff missed
+        bonus_depr_bps=10_000,   # 100% bonus depreciation
+        tax_rate_bps=2100,
+    )
 
-    # 9. Combined tax stack
+    # 9. Combined tax stack — QROF + MACRS + §179 only (no ITC layer)
     d["7_tax_stack"] = tax_stacker(
         total_project_cents=total_cost,
-        deferred_gain_cents=8_000_000_00,
+        deferred_gain_cents=4_000_000_00,
         rural_qrof=True,
-        itc_eligible_basis_cents=int(total_cost * 0.32),
+        itc_eligible_basis_cents=0,       # ITC cutoff missed — set to zero
         section179_property_cents=6_000_000_00,
-        domestic_content=True,
+        domestic_content=False,           # N/A without ITC
     )
 
-    # 10. TREX sizing + partnership flip
-    d["8_trex"] = trex_sizing(d["4_itc_macrs"]["itcCents"], d["4_itc_macrs"]["year1TotalDeductionCents"])
-    d["9_flip"] = partnership_flip(
-        d["4_itc_macrs"]["itcCents"], d["4_itc_macrs"]["macrsScheduleCents"],
-        tax_equity_investment_cents=d["8_trex"]["checkLowCents"],
-    )
-
-    # 11. Capital stack with PPA-aware DSCR
+    # 10. Capital stack with PPA-aware DSCR (no ITC tax equity layer)
     # Hosting rev projection: $150/kW/month * 5000 kW * 12 = $9M/yr
-    d["10_capital_stack"] = capital_stack(
+    d["8_capital_stack"] = capital_stack(
         total_cost_cents=total_cost,
         ppa_score_0_24=22,  # 4.9c/kWh + delivery point known + firm 5 MW = high score
         hosting_rev_annual_cents=9_000_000_00,
         opex_annual_cents=800_000_00,
         demand_charges_annual_cents=ppa_annual_cost_cents,  # 4.9c power cost as opex-senior
         senior_rate_bps=850, amort_years=15,
-        itc_equity_cents=d["8_trex"]["checkLowCents"],
-        qrof_equity_cents=8_000_000_00,
+        itc_equity_cents=0,               # ITC layer removed — cutoff missed
+        qrof_equity_cents=4_000_000_00,
         equipment_debt_cents=3_000_000_00,
-        sponsor_equity_cents=2_000_000_00,
+        sponsor_equity_cents=1_000_000_00,
     )
 
     # 12. PPA scoring: 4.9c/kWh + deregulated gas zone = strong; assignability TBD
@@ -713,27 +720,45 @@ def demo():
         "site_use_restrictions": "721 miners currently operating — no site-use restriction on data-center load",
     })
 
-    # 13. Rural QROF screener — verify tract
-    d["12_rural_qrof"] = rural_qrof(
+    # 11. PPA scoring (renumbered — no ITC block above)
+    d["9_ppa_score"] = ppa_scorer({
+        "delivery_point": 2,        # known
+        "term_length": 2,           # verify duration
+        "rate_structure": 2,        # fixed 4.9c
+        "capacity_firmness": 2,     # firm 5 MW
+        "take_or_pay": 1,           # TBD
+        "assignability": 1,         # verify — go/no-go
+        "counterparty_capacity": 2, # Barak — verify entity authority
+        "site_use_restrictions": 2, # existing miners suggest permissive
+        "environmental_attributes": 1,
+        "termination_triggers": 1,
+        "psc_review_posture": 2,    # deregulated gas zone, sub-5 MW standard tariff
+        "novation_posture": 1,      # go/no-go — verify utility posture
+    }, notes={
+        "rate_structure": "4.9 cents/kWh confirmed",
+        "delivery_point": "existing operating site — utility letter effectively already issued via active load",
+        "site_use_restrictions": "721 miners currently operating — no site-use restriction on data-center load",
+    })
+
+    # 12. Rural QROF screener — verify tract
+    d["10_rural_qrof"] = rural_qrof(
         tract_id="TBD-verify-2027-map", city_pop_over_50k_nearby=False,
         inside_atlanta_urbanized_area=False, oz2027_certified=False,
         city_town_within_tract="TBD",
     )
 
-    # 14. Carbon intensity — current mining load on grid; hybrid gas + solar future state
-    d["13_carbon_current"] = carbon_intensity({"grid_serc": 43_800})  # 5 MW * 8760 hrs
-    d["14_carbon_target"] = carbon_intensity({
-        "solar_onsite": 8_760,          # 1 MW solar at 100% CF proxy
-        "gas_recip": 8_760,             # 1 MW gas backup
-        "grid_serc": 26_280,            # remaining grid draw
+    # 13. Carbon intensity — current mining on grid vs future gas-hybrid target
+    d["11_carbon_current"] = carbon_intensity({"grid_serc": 43_800})  # 5 MW * 8760 hrs
+    d["12_carbon_target"] = carbon_intensity({
+        "gas_recip": 8_760,             # 1 MW gas hybrid supplement (deregulated gas zone)
+        "grid_serc": 35_040,            # remaining grid draw
     })
 
-    # 15. SREC revenue (voluntary GA + potential PJM if expansion)
-    d["15_srec_ga_voluntary"] = srec_revenue(8_760, "GA", "voluntary")
-    d["16_srec_va_compliance"] = srec_revenue(8_760, "VA", "compliance")
+    # 14. SREC revenue (voluntary GA — no compliance market)
+    d["13_srec_ga_voluntary"] = srec_revenue(8_760, "GA", "voluntary")
 
-    # 16. Site scorecard
-    d["17_site_scorecard"] = site_scorecard({
+    # 15. Site scorecard
+    d["14_site_scorecard"] = site_scorecard({
         "power": {"firm_capacity_mw": 5, "voltage_class": "115kV", "feed_diversity": 1,
                   "utility_letter_status": "issued"},
         "cooling": {"water_source": "well", "makeup_water_gpm": 25, "climate_zone": "GA_metro",
@@ -748,8 +773,8 @@ def demo():
                        "rural_flag": None, "psc_review_required": False},
     })
 
-    # 17. Anchor payloads for the deal
-    d["18_anchor_ppa"] = anchor_payload("GA-BARAK-01", "PPA",
+    # 16. Anchor payloads for the deal
+    d["15_anchor_ppa"] = anchor_payload("GA-BARAK-01", "PPA",
                                          content=b"executed-ppa-4.9c-5mw-bytes",
                                          uri="ipfs://TBD", metadata="term=TBD_yr,rate=4.9c,firm=5MW")
 

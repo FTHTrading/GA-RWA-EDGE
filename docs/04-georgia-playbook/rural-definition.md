@@ -33,7 +33,7 @@ The **Atlanta urbanized area extends into multiple counties**. Many tracts that 
 
 **Definitively rural** (further out, but wheeling / interconnect distance rises):
 
-- **White** (Helen corridor — direct Helen Corp synergy)
+- **White** (Helen corridor)
 - **Rabun · Union · Fannin · Habersham · Hart · Franklin · Elbert**
 - **Bulloch · Emanuel · Jefferson** (South GA — Savannah PoP proximity, lowest land basis)
 

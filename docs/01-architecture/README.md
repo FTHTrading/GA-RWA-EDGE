@@ -1,38 +1,28 @@
 # Architecture
 
-**Five entities · zero role overlap · Unykorn holds no capital.**
+**Four entities · zero role overlap · Unykorn holds no capital.**
 
 ## Entity flow
 
 ```mermaid
 flowchart TB
-    HC["🏛️ Helen Corp<br/>Sponsor / Parent<br/>Brand · guarantees · equity"]
-    U["🟩 Unykorn LLC<br/>Rails only<br/>Zero balance sheet"]
+    U["🟩 Unykorn LLC<br/>Technology rails<br/>Zero balance sheet"]
     LD["📜 LD Capital<br/>Issuance · QOF admin<br/>Servicing"]
     FTH["📈 FTH Trading<br/>Markets layer<br/>BD-of-record → own BD → LDX"]
-    SPE["🏗️ Asset SPE(s)<br/>Bankruptcy-remote<br/>Holds land · PPA · pods · contracts"]
-    DIG["🥇 DIGAU<br/>Gold program<br/>Isolated module"]
+    SPE["🏗️ Asset SPE(s)<br/>Bankruptcy-remote borrower<br/>Holds land · PPA · pods · contracts"]
 
-    HC --> U
-    HC --> LD
-    HC --> FTH
-    HC --> SPE
-    HC --> DIG
-
-    U -.rails.-> SPE
-    LD -.issues.-> SPE
-    FTH -.distributes.-> SPE
-    SPE -.attests.-> U
-    SPE -.pays waterfall.-> FTH
+    U -.rails / attestation.-> SPE
+    LD -.issues securities.-> SPE
+    FTH -.distributes / secondary.-> SPE
+    SPE -.attests / pays fees.-> U
     SPE -.pays waterfall.-> LD
-    SPE -.pays waterfall.-> HC
+    SPE -.pays waterfall.-> FTH
 ```
 
 ## Role separation table
 
 | Entity | Does | Never Does | Fee model |
 |---|---|---|---|
-| **Helen Corp** | Sponsor · brand · guarantees · equity carry | Directly operate rails or hold securities | Sponsor promote from SPE waterfalls |
 | **Unykorn LLC** | Technology rails · compliance · attestation · waterfall infra | Hold investor capital or assets · take transaction-based securities comp | Setup + SaaS + per-attestation + per-distribution + license (routed via `FeeCollector`) |
 | **LD Capital** | Issuance · structuring · QOF/QROF administration · servicing | Custody assets · operate secondary markets | 1-3% of raise + 25-100 bps servicing + fixed QOF admin |
 | **FTH Trading** | Securities distribution · BD-of-record now · own BD Stage 2 · LDX-as-ATS Stage 3 | Own SPE assets · run rails | Placement fees (Stage 2+) + LDX listing + trading bps |
