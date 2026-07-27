@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revenue Model · Unykorn Toll-Booth Economics · GA-RWA-EDGE</title>
+<meta name="description" content="How Unykorn earns without balance sheet. Toll-booth economics for RWA rails. 30-event fee matrix per 5-site QROF fund cycle. Zero broker-dealer threshold exposure.">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<div class="topnav"><div class="wrap topnav-inner">
+  <a href="../index.html" class="brand"><span class="mark"><span>G</span></span><span class="name">GA-RWA-EDGE</span></a>
+  <nav>
+    <a href="../index.html">Overview</a>
+    <a href="whitepaper.html">Whitepaper</a>
+    <a href="ppm.html">PPM</a>
+    <a href="locations.html">Locations</a>
+    <a href="partners.html">Partners</a>
+    <a href="revenue-model.html" class="active">Revenue</a>
+    <a href="liquidity-composability.html">Liquidity</a>
+    <a href="requirements.html">Requirements</a>
+    <a href="introductory-offer.html">Intro Offer</a>
+    <a href="investor-portal/index.html" class="cta">Accredited Portal</a>
+  </nav>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <span class="eyebrow">Unykorn Revenue Architecture · Toll-Booth Economics</span>
+  <h1>Deterministic payment and compliance processing for real-world assets. Fees on every capital movement. Zero balance-sheet risk. Zero broker-dealer threshold exposure.</h1>
+  <p class="lede">Unykorn LLC does not custody assets, hold investor capital, or take transaction-based securities compensation. It operates the compliance and attestation rails through which every dollar flowing across the four-entity stack must pass. Each pass triggers a named, deterministic fee — extracted through the on-chain <code>FeeCollector</code> contract with pull-and-immediate-forward routing to the Unykorn treasury.</p>
+</div></header>
+
+<main><div class="wrap">
+
+<h2 class="large">The economic frame</h2>
+
+<p>Think of Unykorn as a payment and compliance processor for tokenized real-world assets. Every event that a securities counsel, senior lender, or CPA administrator would want documented — subscription funds moving into escrow, identity verification, PPA assignment attestation, EPC milestone certification, waterfall distribution — passes through a Unykorn contract. That contract emits an event, hashes the evidence, and (where the fee schedule applies) routes a basis-point or fixed fee to the treasury.</p>
+
+<p>This is not novel financially. It is the same model that Visa, Mastercard, and Stripe use in the payment-processing industry: pass-through infrastructure that captures a small fraction of every transaction while never taking custody of the underlying value. What is novel is applying it to the RWA layer where the transactions are securities issuance, distribution, compliance-gated transfer, and attestation-anchored draws.</p>
+
+<div class="callout copper">
+<span class="head">The regulatory geometry</span>
+Because Unykorn is not a broker-dealer, not a custodian, and not the issuer of any security, its fees are technology fees. Setup, monthly SaaS, per-attestation, per-distribution, issuance basis points on primary mints (paid by the SPE, not by the investor), and license fees are all technology-service fees under standard commercial-services accounting. There is no securities compensation, no custody licensing, no MTL exposure. The regulatory footprint is trivial relative to the revenue scale.
+</div>
+
+<h2 class="large">The six revenue mechanisms</h2>
+
+<table class="data">
+  <tr><th>#</th><th>Mechanism</th><th>When it fires</th><th>Typical amount</th></tr>
+  <tr>
+    <td class="name copper">1</td>
+    <td class="name">Setup fee</td>
+    <td>Once per SPE spin-up. Configuring the <code>IdentityRegistry</code>, wiring <code>ModularCompliance</code>, deploying tranche tokens, configuring the waterfall priority list.</td>
+    <td class="num copper">$150k-$300k</td>
+  </tr>
+  <tr>
+    <td class="name copper">2</td>
+    <td class="name">SaaS monthly</td>
+    <td>Every month per live SPE / fund. Covers registry maintenance, on-chain compliance updates, agent operation, event monitoring.</td>
+    <td class="num copper">$10k-$25k/mo</td>
+  </tr>
+  <tr>
+    <td class="name copper">3</td>
+    <td class="name">Attestation fee</td>
+    <td>Per document hash-anchored via <code>ReserveProofAnchor</code>. PPA execution, EPC FAT/SAT/IST certificates, quarterly hosting revenue attestation, SREC serial minting, gas emissions period record.</td>
+    <td class="num copper">Basis points via oracle rev-share</td>
+  </tr>
+  <tr>
+    <td class="name copper">4</td>
+    <td class="name">Distribution fee</td>
+    <td>Per <code>CMBSWaterfall.distribute()</code> execution — typically quarterly. Basis-point fee on total distributed amount, routed at Priority 3 of the waterfall.</td>
+    <td class="num copper">5-15 bps of distribution</td>
+  </tr>
+  <tr>
+    <td class="name copper">5</td>
+    <td class="name">Issuance basis points</td>
+    <td>Per primary mint via <code>CustodyAdapter</code> 4-eyes flow. Paid by the SPE at token issuance, not by the investor. Not securities compensation because Unykorn is not selling securities.</td>
+    <td class="num copper">5-15 bps of raise</td>
+  </tr>
+  <tr>
+    <td class="name copper">6</td>
+    <td class="name">License fee (outside operators)</td>
+    <td>Full-stack license to an outside sponsor (a Redivider-type QOF operator, other data-center groups). Includes setup + monthly for their SPEs. Recurring revenue with high margin because the code is already built.</td>
+    <td class="num copper">Same setup + monthly × N SPEs</td>
+  </tr>
+</table>
+
+<h2 class="large">Zero balance sheet — how the toll booth stays clean</h2>
+
+<ol class="steps">
+  <li><b>No custody</b> · Subscription funds go to bank / trust escrow. Distributions go from Site SPE to token holder wallets or to BitGo Bank &amp; Trust. Nothing ever touches a Unykorn wallet or bank account.</li>
+  <li><b>No securities compensation</b> · Unykorn does not sell securities, does not refer investors for compensation, does not paper subscriptions. All securities work runs through LD Capital (issuer) and FTH Trading (distributor with BD-of-record / own BD).</li>
+  <li><b>Pull-and-immediate-forward fee routing</b> · The on-chain <code>FeeCollector</code> contract collects fee events but does not retain balance. Each fee is pulled from the payer (Site SPE) and immediately forwarded to the Unykorn treasury multisig. Zero float between transferFrom and transfer means zero custody exposure.</li>
+  <li><b>Non-transaction-based comp until BD-of-record executes</b> · Prior to FTH Trading's BD-of-record engagement, no compensation flows to Unykorn or FTH that could be construed as securities compensation. Post-engagement, distribution fees flow to FTH under BD engagement letter, still not to Unykorn.</li>
+  <li><b>Named counterparty every step</b> · Senior lenders interact only with the Site SPE. QROF fund investors interact only with LD Capital as fund administrator. Custody interacts only with BitGo. Unykorn is invisible to counterparties who don't need to know about the rails.</li>
+</ol>
+
+<h2 class="large">The 30-event fee matrix — 5-site QROF fund cycle</h2>
+
+<p>A single 5-site QROF fund produces roughly 30 distinct Unykorn fee events over the fund's initial 24-month setup-to-stabilization window. Sites are near-identical after the first one, so the second through fifth sites benefit from template reuse but still trigger the same event set. The matrix below shows the six event categories × five sites = 30 fee events per fund.</p>
+
+<pre class="ascii"><b>PER 5-SITE QROF FUND — 30 FEE EVENTS (INITIAL 24-MONTH CYCLE)</b>
+
+Site 1  ┌────────┐┌────────┐┌────────┐┌────────┐┌────────┐┌────────┐
+        │ Setup  ││ SaaS   ││Attest. ││Distrib.││Issuance││License │
+        │$150k+  ││$10-25k ││ per    ││ 5-15   ││ 5-15   ││ Track-A│
+        │one-time││/month  ││ event  ││ bps    ││ bps    ││ resale │
+        └────────┘└────────┘└────────┘└────────┘└────────┘└────────┘
+Site 2  ┌────────┐┌────────┐┌────────┐┌────────┐┌────────┐┌────────┐
+        │ Setup  ││ SaaS   ││Attest. ││Distrib.││Issuance││License │
+        └────────┘└────────┘└────────┘└────────┘└────────┘└────────┘
+Site 3  ┌────────┐┌────────┐┌────────┐┌────────┐┌────────┐┌────────┐  <em>same six</em>
+Site 4  ┌────────┐┌────────┐┌────────┐┌────────┐┌────────┐┌────────┐  <em>events per</em>
+Site 5  ┌────────┐┌────────┐┌────────┐┌────────┐┌────────┐┌────────┐  <em>site × 5 = 30</em>
+
+              ══════════════════════════════════════════
+                 <em>30 TOTAL FEE EVENTS · ZERO BALANCE SHEET</em>
+              ══════════════════════════════════════════
+</pre>
+
+<h2 class="large">Illustrative economics per 5-site fund</h2>
+
+<div class="callout warn">
+<span class="head">Illustrative only</span>
+Numbers below are for demonstration of the economic model, not projections. Actual fees depend on deal size, complexity, and fee-schedule negotiations at the master services agreement (MSA) level.
+</div>
+
+<table class="data">
+  <tr><th>Fee category</th><th>Per event</th><th>Events / 5-site fund</th><th>Total (24 months)</th></tr>
+  <tr>
+    <td class="name">Setup</td>
+    <td class="num">$225k avg</td>
+    <td class="num">5</td>
+    <td class="num copper">$1,125,000</td>
+  </tr>
+  <tr>
+    <td class="name">SaaS monthly</td>
+    <td class="num">$17.5k avg</td>
+    <td class="num">24 × 5 = 120</td>
+    <td class="num copper">$2,100,000</td>
+  </tr>
+  <tr>
+    <td class="name">Attestation</td>
+    <td class="num">$2.5k avg</td>
+    <td class="num">~150 (30 per site)</td>
+    <td class="num copper">$375,000</td>
+  </tr>
+  <tr>
+    <td class="name">Distribution (Q ×8 quarters)</td>
+    <td class="num">10 bps of $500k</td>
+    <td class="num">40</td>
+    <td class="num copper">$200,000</td>
+  </tr>
+  <tr>
+    <td class="name">Issuance (primary mint)</td>
+    <td class="num">10 bps of $4M</td>
+    <td class="num">5</td>
+    <td class="num copper">$200,000</td>
+  </tr>
+  <tr>
+    <td class="name">Track-A license (external SPE)</td>
+    <td class="num">Optional</td>
+    <td class="num">variable</td>
+    <td class="num">TBD</td>
+  </tr>
+  <tr>
+    <td class="name copper"><b>Total Unykorn revenue over 24 months</b></td>
+    <td class="num">—</td>
+    <td class="num">30+</td>
+    <td class="num copper"><b>~$4,000,000</b></td>
+  </tr>
+</table>
+
+<p style="font-size:12.5px;color:var(--muted);margin-top:8px">At zero balance-sheet risk. No transaction-based securities compensation. All fees are technology-services revenue paid by SPEs / funds, not by investors.</p>
+
+<h2 class="large">Comparison to conventional models</h2>
+
+<table class="data">
+  <tr><th>Model</th><th>Revenue mechanism</th><th>Balance sheet risk</th><th>Regulatory footprint</th></tr>
+  <tr>
+    <td class="name">Traditional PE fund manager</td>
+    <td>2 &amp; 20 (2% management, 20% carry)</td>
+    <td class="err">GP carry exposed to fund performance</td>
+    <td class="warn">SEC-registered investment adviser typically</td>
+  </tr>
+  <tr>
+    <td class="name">Traditional broker-dealer</td>
+    <td>Placement fees on securities</td>
+    <td class="warn">Escrow float, cap-intro rebates</td>
+    <td class="err">FINRA registration, 15c3-1 net capital, ongoing exams</td>
+  </tr>
+  <tr>
+    <td class="name">Data-center operator (Applied Digital pattern)</td>
+    <td>Hosting revenue net of opex</td>
+    <td class="err">Full asset ownership, GPU depreciation, tenant credit</td>
+    <td class="warn">Standard commercial + utility contract</td>
+  </tr>
+  <tr>
+    <td class="name copper">Unykorn (this model)</td>
+    <td>Technology fees at 6 named attach points</td>
+    <td class="ok">Zero — pull-and-forward routing</td>
+    <td class="ok">Standard commercial services — no BD, no custody, no MTL</td>
+  </tr>
+</table>
+
+<h2 class="large">Why external sponsors license the stack (Track-A)</h2>
+
+<p>The economic case for an outside QROF operator (a Redivider-adjacent group, other data-center sponsors, hospitality tokenization groups) to license Unykorn's rails rather than build custom compliance code is straightforward:</p>
+
+<ul>
+  <li><b>Time-to-market</b> — Unykorn's stack is ~$3-5M and 18-24 months of engineering to replicate from scratch, with dual audits before any live value. Licensing costs $150-300k setup + $10-25k/mo.</li>
+  <li><b>Regulatory safety</b> — The 4-eyes flow, IdentityRegistry, and travel-rule gate are already audit-tested. Building custom risks compliance mistakes that the SEC or FINRA will find later.</li>
+  <li><b>Interoperability</b> — Licensed SPEs can plug into partner ATSs and Centrifuge V3 pools that recognize ERC-3643 with the specific compliance modules Unykorn has deployed. Custom implementations don't get that recognition.</li>
+  <li><b>Focus</b> — External sponsors are experts in their asset class (hospitality, mining, healthcare real estate). They aren't smart-contract firms and don't want to be. Licensing lets them focus on origination and deal-making.</li>
+</ul>
+
+<h2 class="large">Master Services Agreement (MSA) structure</h2>
+
+<p>Each SPE that uses the rails signs an MSA with Unykorn LLC covering:</p>
+
+<ul>
+  <li>Setup fee (one-time) and payment terms</li>
+  <li>Monthly SaaS fee and payment cadence</li>
+  <li>Per-attestation and per-distribution fee schedule</li>
+  <li>Issuance bps schedule at primary mint</li>
+  <li>Service levels (uptime, response time to attestation requests, incident response)</li>
+  <li>Data ownership and portability (SPE owns its data)</li>
+  <li>Term and termination (12-month initial, then month-to-month)</li>
+  <li>License scope (SPE's specific deal, not resellable without separate license)</li>
+</ul>
+
+<div class="callout copper">
+<span class="head">The Master Services Agreement is technology-services, not securities</span>
+The MSA is a commercial-services contract like any Stripe, AWS, or Twilio agreement. It is not a securities placement engagement, not a custody agreement, and not a broker-dealer engagement letter. Securities counsel reviews the MSA to confirm it does not inadvertently create securities-compensation exposure.
+</div>
+
+<h2 class="large">Related</h2>
+
+<div class="grid">
+  <div class="card">
+    <span class="tag copper">Composability</span>
+    <h3>Bankless liquidity for token holders</h3>
+    <p>Once Site SPE tokens exist, holders can wrap them as deRWA and borrow stablecoins on Morpho / Grove Basin — no bank required. This is the demand side of the model.</p>
+    <div class="actions"><a class="action" href="liquidity-composability.html">Read →</a></div>
+  </div>
+  <div class="card">
+    <span class="tag copper">Architecture</span>
+    <h3>Four-entity operating stack</h3>
+    <p>The full architecture placing Unykorn as one of four separated entities.</p>
+    <div class="actions"><a class="action" href="whitepaper.html#rails">Read →</a></div>
+  </div>
+  <div class="card">
+    <span class="tag copper">Partners</span>
+    <h3>Institutional counterparties</h3>
+    <p>Named custody, KYC, BD, senior debt, EPC, and warehouse counterparties.</p>
+    <div class="actions"><a class="action" href="partners.html">Read →</a></div>
+  </div>
+</div>
+
+</div></main>
+
+<footer class="foot"><div class="wrap">
+  <div class="cols">
+    <div>
+      <h5>Unykorn Revenue Model</h5>
+      <p style="color:var(--muted);font-size:12.5px">Six fee mechanisms · 30 events per 5-site QROF fund · zero balance sheet · zero BD threshold exposure.</p>
+    </div>
+    <div>
+      <h5>Related</h5>
+      <a href="whitepaper.html">Whitepaper</a>
+      <a href="liquidity-composability.html">Composability</a>
+      <a href="partners.html">Partners</a>
+    </div>
+    <div>
+      <h5>Portal</h5>
+      <a href="investor-portal/index.html">Accredited portal</a>
+    </div>
+  </div>
+  <div class="disclaimer">
+    <p>© 2026 FTH Trading LLC · Unykorn LLC · LD Capital LLC. Illustrative economics. Not tax, legal, or investment advice.</p>
+  </div>
+</div></footer>
+
+</body>
+</html>

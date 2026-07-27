@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liquidity &amp; Composability · deRWA · Morpho · Grove Basin · GA-RWA-EDGE</title>
+<meta name="description" content="Bankless liquidity for tokenized RWA holders. Wrap Site SPE tokens as deRWA, supply to Morpho lending markets, borrow stablecoins on demand — no HELOC, no bank underwriter, no waiting weeks.">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<div class="topnav"><div class="wrap topnav-inner">
+  <a href="../index.html" class="brand"><span class="mark"><span>G</span></span><span class="name">GA-RWA-EDGE</span></a>
+  <nav>
+    <a href="../index.html">Overview</a>
+    <a href="whitepaper.html">Whitepaper</a>
+    <a href="ppm.html">PPM</a>
+    <a href="locations.html">Locations</a>
+    <a href="partners.html">Partners</a>
+    <a href="revenue-model.html">Revenue</a>
+    <a href="liquidity-composability.html" class="active">Liquidity</a>
+    <a href="requirements.html">Requirements</a>
+    <a href="introductory-offer.html">Intro Offer</a>
+    <a href="investor-portal/index.html" class="cta">Accredited Portal</a>
+  </nav>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <span class="eyebrow">Liquidity &amp; Composability · deRWA · Morpho · Grove Basin</span>
+  <h1>Bankless liquidity for tokenized real-world asset holders. Wrap your Site SPE tokens as deRWA. Borrow stablecoins against them instantly. No credit check. No HELOC. No waiting weeks.</h1>
+  <p class="lede">Traditional real estate investors who want cash without selling go to a bank for a HELOC or cash-out refinance — credit checks, underwriting, weeks of paperwork, high closing costs. Tokenized RWA holders bypass that entirely. Once a token is wrapped as deRWA and supplied to a Morpho lending market, borrowing USDC against it is a single on-chain transaction.</p>
+</div></header>
+
+<main><div class="wrap">
+
+<h2 class="large">The RealT precedent — over 700 tokenized rental properties</h2>
+
+<p><a href="https://realt.co" style="color:var(--platinum)">RealT</a> operates the largest tokenized single-family rental portfolio in the market — more than 700 U.S. properties available as fractional digital tokens. RealT's Real Market Maker (RMM) system was the first practical demonstration that a tokenized rental property could serve as instant DeFi loan collateral without any bank involvement. An investor deposits their yield-bearing property tokens into the RMM smart contract, and the contract instantly permits them to borrow stablecoins against the value of that real estate. No credit check. No underwriter. No wait.</p>
+
+<p>GA-RWA-EDGE applies the same pattern to tokenized edge data-center Site SPE interests — with two important upgrades: (a) the underlying asset generates contracted AI hosting revenue (not just residential rental income), and (b) the Site SPE tokens are already ERC-3643 permissioned securities with counsel-opined transfer restrictions.</p>
+
+<h2 class="large">How it works — the 4-step deRWA lending flow</h2>
+
+<ol class="steps">
+  <li><b>Hold a Site SPE token</b> · You are a verified-accredited investor who has subscribed to Site SPE I preferred equity tokens. The tokens sit in your BitGo, Anchorage, or Fireblocks wallet.</li>
+  <li><b>Wrap as deRWA</b> · You wrap your permissioned Site SPE token into a freely-transferable deRWA wrapper. The wrapper preserves the underlying compliance rules on the wrapped token but exposes an ERC-20-compatible interface for DeFi composability. Wrapping is a single on-chain transaction.</li>
+  <li><b>Supply to Morpho or Grove Basin market</b> · You supply your deRWA tokens to a dedicated lending market — either on Morpho (institutional prime-broker-style) or Grove Basin (Anemoy-affiliated warehouse credit). The market has been set up specifically for your asset class with an appropriate loan-to-value (LTV) and interest-rate model.</li>
+  <li><b>Borrow stablecoins</b> · You borrow USDC (or DAI, USDY, or another stablecoin) against your supplied collateral. The loan is over-collateralized — you can typically borrow up to 60-75% of the deRWA token's assessed value depending on the market's risk parameters. Interest accrues; you can repay any time; if the collateral value falls to a liquidation threshold, the market can partially liquidate your position.</li>
+</ol>
+
+<h2 class="large">Why this changes the investment case</h2>
+
+<p>Traditional Reg D private placements have historically been highly illiquid. You lock up capital for 5-10 years with no ability to access the cash until sale or maturity. The QROF structure amplifies this: you commit to a 10-year hold specifically to get the OZ tax benefit, and any sale before year 10 forfeits the 10-year tax-free appreciation.</p>
+
+<p>deRWA composability creates a middle path. You hold the underlying token for the full 10 years — preserving the OZ tax benefit — but you can borrow against it whenever you need working capital, tuition, a home purchase, or another investment opportunity. You retain economic exposure to the site's cash flows and appreciation. You just monetize the collateral value of your position temporarily.</p>
+
+<div class="callout copper">
+<span class="head">The tax preservation point</span>
+Borrowing against your Site SPE token is not a taxable event. You don't sell, you don't recognize gain, you don't restart the OZ hold clock. Your basis stays the same. Your OZ benefits keep accruing while you use the borrowed cash for other purposes. This is the same tax logic that makes HELOCs attractive for traditional real estate — the tokenized version just happens instantly instead of taking six weeks.
+</div>
+
+<h2 class="large">The lending market ecosystem</h2>
+
+<div class="grid">
+  <div class="card silver">
+    <span class="tag copper">Morpho</span>
+    <h3>Isolated lending markets · institutional</h3>
+    <p>Morpho enables permissioned isolated lending markets where each market has its own collateral asset, borrow asset, LTV curve, oracle, and interest-rate model. Blue-chip institutional users. Composable with tokenized RWA via deRWA wrappers.</p>
+    <p style="font-size:11.5px;color:var(--muted)"><b>Fit for GA-RWA-EDGE:</b> a dedicated Morpho market for Site SPE deRWA tokens, with LTV curve tuned to hosting-revenue DSCR realization.</p>
+  </div>
+  <div class="card silver">
+    <span class="tag copper">Grove Basin</span>
+    <h3>Anemoy-affiliated warehouse credit</h3>
+    <p>Grove Basin operates instant-redemption facilities for high-quality tokenized paper. The $1B Grove facility against Anemoy's JTRSY Treasury Fund is the reference precedent. Institutional warehouse-scale liquidity.</p>
+    <p style="font-size:11.5px;color:var(--muted)"><b>Fit for GA-RWA-EDGE:</b> once Site SPE contracted revenue notes season 6-12 months, they graduate to a Grove Basin-style facility for institutional warehouse advance.</p>
+  </div>
+  <div class="card silver">
+    <span class="tag copper">Aave Horizon</span>
+    <h3>Institutional Aave · RWA collateral</h3>
+    <p>Aave Horizon extends the Aave V3 lending market to institutional RWA collateral. deRWA-wrapped Site SPE tokens can be listed as collateral assets subject to Aave DAO governance.</p>
+  </div>
+  <div class="card silver">
+    <span class="tag copper">Euler</span>
+    <h3>Modular lending stack</h3>
+    <p>Euler V2 supports permissioned lending vaults with customizable collateral acceptance. Alternative venue for deRWA lending markets.</p>
+  </div>
+  <div class="card silver">
+    <span class="tag copper">RealT RMM</span>
+    <h3>The proven precedent</h3>
+    <p>RealT's Real Market Maker has been live for years lending against tokenized single-family rental. The demand and mechanics are proven. GA-RWA-EDGE applies the same pattern to institutional edge-DC hosting revenue.</p>
+  </div>
+</div>
+
+<h2 class="large">The deRWA wrapper — how it preserves compliance</h2>
+
+<p>A Site SPE token is an ERC-3643 permissioned security. It cannot be transferred to a wallet that hasn't passed <code>IdentityRegistry</code> accreditation verification. Direct listing on a permissionless DeFi lending market would be blocked by the compliance modules.</p>
+
+<p>The deRWA wrapper solves this. The wrapper is itself an ERC-20 token that represents ownership of the underlying Site SPE token held by the wrapper contract. The <b>underlying token stays compliant</b> — it never leaves the wrapper contract's compliance-approved address. The <b>wrapper token is composable</b> — it can move through DeFi lending markets, DEXs, and other on-chain venues.</p>
+
+<pre class="ascii"><b>THE deRWA WRAPPER PATTERN</b>
+
+    ┌────────────────────────────────────┐
+    │  Investor's wallet (KYC/accredited)│
+    │  ┌──────────────────────────┐      │
+    │  │  Site SPE token (ERC-3643)│     │
+    │  │  Compliance-gated          │     │
+    │  └──────────────────────────┘      │
+    └───────────────┬────────────────────┘
+                    │  wrap()
+                    ▼
+    ┌────────────────────────────────────┐
+    │  deRWA Wrapper Contract             │
+    │  (compliance-approved holder)       │
+    │  ┌──────────────────────────┐      │
+    │  │  Locked Site SPE token   │       │
+    │  └──────────────────────────┘      │
+    │  Mints deRWA-SPE (ERC-20)          │
+    └───────────────┬────────────────────┘
+                    │  mint deRWA-SPE
+                    ▼
+    ┌────────────────────────────────────┐
+    │  Investor's wallet                  │
+    │  ┌──────────────────────────┐      │
+    │  │  deRWA-SPE (ERC-20)      │       │
+    │  │  <em>Freely composable</em>          │       │
+    │  └──────────────────────────┘      │
+    └───────────────┬────────────────────┘
+                    │  supply to Morpho / Grove / Aave / Euler
+                    ▼
+    ┌────────────────────────────────────┐
+    │  Lending market (Morpho isolated)   │
+    │  ┌──────────────────────────┐      │
+    │  │  deRWA-SPE as collateral │       │
+    │  │  Borrow USDC / USDY      │       │
+    │  └──────────────────────────┘      │
+    └────────────────────────────────────┘
+</pre>
+
+<h2 class="large">Illustrative borrowing scenario</h2>
+
+<div class="callout warn">
+<span class="head">Illustrative</span>
+Numbers below assume dedicated Morpho market for Site SPE deRWA is live, market LTV is set at 60%, and market APR is 6% on USDC borrows. Live parameters will be set by market operators at launch.
+</div>
+
+<pre class="ascii"><b>Scenario · $100k Site SPE I preferred equity subscription</b>
+
+Investor position:
+   Site SPE I preferred equity token FMV      $100,000
+   Preferred return earned Year 1              $  8,000
+   Basis in position                           $100,000 (no gain recognized)
+
+Wrap to deRWA-SPE-01:
+   Single tx · gas cost                        $     10-30
+
+Supply to Morpho market · borrow USDC:
+   Collateral posted                           $100,000 deRWA-SPE
+   Max borrow @ 60% LTV                        $ 60,000 USDC
+   Interest rate (annual)                      6%
+
+Uses of borrowed cash:
+   Other investment opportunity                $ 45,000
+   Working capital                             $ 10,000
+   Interest reserve (6 months)                 $  5,000
+                                               ─────────
+   Total deployed                              $ 60,000
+
+Tax status:
+   Recognition of Site SPE gain?               <em>NO — borrow is not a sale</em>
+   OZ 10-yr hold clock impact?                 <em>NONE — position unchanged</em>
+   OZ 5-yr step-up impact?                     <em>NONE — position unchanged</em>
+</pre>
+
+<h2 class="large">Why this is more powerful than a bank HELOC</h2>
+
+<table class="data">
+  <tr><th>Feature</th><th>Bank HELOC</th><th>deRWA + Morpho</th></tr>
+  <tr>
+    <td class="name">Application time</td>
+    <td class="warn">2-6 weeks</td>
+    <td class="ok">Single transaction (~30 sec on Ethereum)</td>
+  </tr>
+  <tr>
+    <td class="name">Credit check</td>
+    <td class="warn">Yes</td>
+    <td class="ok">No — position-collateralized only</td>
+  </tr>
+  <tr>
+    <td class="name">Underwriter approval</td>
+    <td class="warn">Yes — subjective</td>
+    <td class="ok">No — smart-contract deterministic</td>
+  </tr>
+  <tr>
+    <td class="name">Closing costs</td>
+    <td class="warn">$2-5k typical</td>
+    <td class="ok">Gas only (~$10-30)</td>
+  </tr>
+  <tr>
+    <td class="name">Draw availability</td>
+    <td class="warn">Business hours, phone / wire</td>
+    <td class="ok">24/7 · instant</td>
+  </tr>
+  <tr>
+    <td class="name">Interest rate</td>
+    <td class="warn">Prime + 100-300 bps</td>
+    <td class="warn">Depends on market · 4-9% typical</td>
+  </tr>
+  <tr>
+    <td class="name">Repayment flexibility</td>
+    <td class="warn">Fixed schedule with prepayment fees</td>
+    <td class="ok">Repay any amount any time · no prepayment penalty</td>
+  </tr>
+  <tr>
+    <td class="name">Loss on collateral event</td>
+    <td class="warn">Foreclosure process</td>
+    <td class="warn">Automatic liquidation at LT ratio</td>
+  </tr>
+</table>
+
+<h2 class="large">Risks of the composability layer</h2>
+
+<div class="callout err">
+<span class="head">Real risks — read carefully</span>
+Bankless liquidity is powerful and also carries real risks. Investors should not use deRWA + Morpho / Grove Basin lending without understanding the following:
+</div>
+
+<ol>
+  <li><b>Liquidation risk</b> · If the deRWA collateral value falls to the market's liquidation threshold (LT), the market can partially or fully liquidate your position to recover the borrowed principal. This can result in loss of Site SPE token exposure. Maintain a healthy buffer between LTV and LT.</li>
+  <li><b>Smart-contract risk</b> · The deRWA wrapper, Morpho market, and Grove Basin facility are all smart contracts. Vulnerabilities can result in loss of both collateral and borrowed amounts. Only use audited contracts on chains with strong operator diligence.</li>
+  <li><b>Oracle risk</b> · The market relies on an on-chain oracle to price the deRWA collateral. Oracle manipulation or lag can trigger unfair liquidations.</li>
+  <li><b>Interest-rate risk</b> · Utilization-based interest-rate curves mean the borrow rate can spike if the market becomes heavily utilized. Model your carrying cost with a rate-stress scenario.</li>
+  <li><b>Regulatory risk</b> · Using tokenized securities as DeFi collateral is a live regulatory frontier. Sanctions, tax treatment, and disclosure obligations vary by jurisdiction. Consult tax and securities counsel before engaging.</li>
+  <li><b>Illiquid underlying</b> · If the underlying Site SPE tokens experience a covenant breach (DSCR trigger, cash trap) or a valuation event (revenue miss), the deRWA collateral value can fall sharply. Site SPE risks propagate through the wrapper.</li>
+</ol>
+
+<h2 class="large">Roadmap for launch</h2>
+
+<ol class="steps">
+  <li><b>Year 1 (Site SPE I stabilization)</b> · Site SPE tokens issued, distributions begin. No lending market yet — first year focuses on demonstrating clean DSCR + waterfall reconciliation.</li>
+  <li><b>Year 2 · deRWA wrapper deployment</b> · Audited deRWA wrapper contract for Site SPE tokens. Accredited-investor-only wrap access initially (wrapper still permissioned in v1).</li>
+  <li><b>Year 2-3 · dedicated Morpho market</b> · Morpho market curator (potentially Anemoy, Steakhouse, or another institutional curator) proposes and operates a dedicated market for Site SPE deRWA collateral. Initial LTV conservative (40-50%) pending track record.</li>
+  <li><b>Year 3-4 · Grove Basin institutional warehouse</b> · Seasoned Site SPE notes graduate to Grove Basin instant-redemption facility. Institutional-scale (>$10M) borrowing available.</li>
+  <li><b>Year 4+ · additional venues</b> · Aave Horizon listing pending DAO governance. Euler V2 vault deployment. Cross-chain deployment (Base, Arbitrum, Monad).</li>
+</ol>
+
+<h2 class="large">Related</h2>
+
+<div class="grid">
+  <div class="card">
+    <span class="tag copper">Revenue side</span>
+    <h3>Unykorn's toll-booth economics</h3>
+    <p>Every deRWA wrap, borrow, and repay is an on-chain event that runs through the compliance rails — one more attach point.</p>
+    <div class="actions"><a class="action" href="revenue-model.html">Read →</a></div>
+  </div>
+  <div class="card">
+    <span class="tag copper">Partners</span>
+    <h3>DeFi lending counterparties</h3>
+    <p>Morpho, Grove Basin, Aave Horizon, Euler — the institutional lending stack.</p>
+    <div class="actions"><a class="action" href="partners.html">Read →</a></div>
+  </div>
+  <div class="card">
+    <span class="tag copper">Investors</span>
+    <h3>Access the portal</h3>
+    <p>Verified-accredited investors get access to deRWA wrapper documentation once launched.</p>
+    <div class="actions"><a class="action" href="investor-portal/index.html">Portal →</a></div>
+  </div>
+</div>
+
+</div></main>
+
+<footer class="foot"><div class="wrap">
+  <div class="cols">
+    <div>
+      <h5>Liquidity &amp; Composability</h5>
+      <p style="color:var(--muted);font-size:12.5px">Bankless liquidity for tokenized RWA holders. deRWA wrapper + Morpho / Grove Basin / Aave / Euler.</p>
+    </div>
+    <div>
+      <h5>Related</h5>
+      <a href="whitepaper.html">Whitepaper</a>
+      <a href="revenue-model.html">Revenue model</a>
+      <a href="partners.html">Partners</a>
+    </div>
+    <div>
+      <h5>Portal</h5>
+      <a href="investor-portal/index.html">Accredited portal</a>
+    </div>
+  </div>
+  <div class="disclaimer">
+    <p>© 2026 FTH Trading LLC · Unykorn LLC · LD Capital LLC. Illustrative only. Bankless liquidity is powerful and risky — read the risks section carefully. Not tax, legal, or investment advice.</p>
+  </div>
+</div></footer>
+
+</body>
+</html>
