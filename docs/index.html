@@ -3,252 +3,323 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GA-RWA-EDGE — Deployment Documentation &amp; Client Center</title>
-<meta name="description" content="FTH Trading / Unykorn LLC · Institutional RWA rails for Georgia edge data centers, QROF equity, PPA-anchored deals, and hybrid energy. Field-ready playbooks, contract checklists, PDF downloads, and integration schemas.">
-<style>
-  :root{
-    --obsidian:#0a0b0d;--panel:#14161a;--panel2:#1b1e23;--line:#2a2e35;
-    --silver:#e6e8ea;--muted:#9096a0;--steel:#c8ccd0;--platinum:#aeb4bd;
-    --copper:#c8862e;--copper-w:#3d2a12;
-    --emerald:#4ade80;--rose:#f87171;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{background:linear-gradient(180deg,#0a0b0d,#101216 60%,#0a0b0d);color:var(--silver);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;line-height:1.55;padding:0 0 80px;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
-  header{border-bottom:1px solid var(--line);padding:48px 0 32px;background:radial-gradient(1000px 200px at 20% -40%,rgba(200,204,208,.06),transparent)}
-  .ring{display:inline-flex;align-items:center;gap:14px;margin-bottom:16px}
-  .ringmark{width:36px;height:36px;border-radius:50%;border:2px solid var(--steel);display:flex;align-items:center;justify-content:center;background:conic-gradient(from 220deg,#3a3f46,#c8ccd0,#4a4f57,#aeb4bd,#3a3f46)}
-  .ringmark span{color:#0a0b0d;font-weight:800;font-size:15px}
-  h1{font-size:30px;font-weight:700;letter-spacing:-.02em;color:var(--silver)}
-  .sub{color:var(--muted);font-size:15px;margin-top:8px;max-width:840px}
-  .tags{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
-  .tag{font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;padding:3px 9px;border-radius:2px;background:var(--panel);color:var(--platinum);border:1px solid var(--line)}
-  .tag.ok{border-color:#166534;color:var(--emerald)}
-  h2{font-size:13px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin:44px 0 16px;font-weight:600;padding-bottom:8px;border-bottom:1px solid var(--line)}
-  .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
-  .grid-2{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(420px,1fr))}
-  .card{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:10px}
-  .card h3{font-size:15px;font-weight:650;color:var(--silver)}
-  .card p{font-size:12.5px;color:var(--muted);flex:1;line-height:1.6}
-  .card .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:2px}
-  .card a.dl, .card a.view{display:inline-block;font-size:11.5px;font-weight:600;color:var(--platinum);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:6px 11px;text-align:center;transition:all .15s}
-  .card a.dl:hover, .card a.view:hover{border-color:var(--steel);color:var(--silver);background:rgba(255,255,255,.03)}
-  .card a.view{color:var(--muted)}
-  .tagrow{font-size:10px;color:var(--copper);letter-spacing:.08em;text-transform:uppercase;font-weight:600}
-  .callout{margin:20px 0 0;padding:14px 18px;border:1px solid var(--line);border-left:3px solid var(--steel);border-radius:8px;background:var(--panel);font-size:13px;color:var(--steel);line-height:1.65}
-  .callout b{color:var(--silver)}
-  .callout.warn{border-left-color:var(--copper);background:rgba(200,134,46,.05)}
-  .look{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px 26px}
-  .look ol{margin:10px 0 0 22px;font-size:13px;color:var(--steel)}
-  .look li{margin:8px 0;padding-left:6px}
-  .look b{color:var(--silver)}
-  .look li::marker{color:var(--copper);font-weight:700}
-  .foot{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-size:11px;color:var(--muted);line-height:1.7}
-  a{color:var(--platinum)}
-  .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-  .badge{font-size:10.5px;padding:4px 9px;border-radius:3px;background:var(--panel);border:1px solid var(--line);color:var(--platinum)}
-  .arch{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 24px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;color:var(--steel);white-space:pre;overflow-x:auto;line-height:1.7}
-  .arch b{color:var(--silver);font-weight:700}
-  .arch em{color:var(--copper);font-style:normal}
-  @media(max-width:640px){h1{font-size:24px}.grid,.grid-2{grid-template-columns:1fr}}
-</style>
+<title>GA-RWA-EDGE · Institutional RWA Rails · FTH Trading / Unykorn / LD Capital</title>
+<meta name="description" content="Institutional real-world asset infrastructure for Georgia edge data centers, contracted AI hosting, QROF equity, and PPA-anchored deals. Non-custodial rails. Zero balance-sheet risk. Audited compliance gates.">
+<link rel="stylesheet" href="pages/assets/site.css">
 </head>
 <body>
-<header><div class="wrap">
-  <div class="ring"><span class="ringmark"><span>G</span></span>
-    <div style="font-size:11.5px;letter-spacing:.22em;color:var(--muted);text-transform:uppercase">FTH Trading · Unykorn LLC · Deployment Documentation</div></div>
-  <h1>GA-RWA-EDGE — Georgia Edge Infrastructure &amp; RWA Client Center</h1>
-  <p class="sub">Institutional Real-World Asset rails for Georgia edge data centers, QROF equity, PPA-anchored deals, renewables, and hybrid energy on the Unykorn zero-balance-sheet architecture. Every document is downloadable as PDF; every output maps to a named on-chain attestation.</p>
-  <div class="tags">
-    <span class="tag">Solidity 0.8.36</span>
-    <span class="tag">27 contracts compiling</span>
-    <span class="tag">ERC-3643 · 7540 · 7575</span>
-    <span class="tag">Foundry</span>
-    <span class="tag ok">OZ 2.0 · QROF 30% step-up</span>
-    <span class="tag ok">OBBBA · post-July 2025</span>
+
+<!-- ─── Top nav ────────────────────────────────────────────────────── -->
+<div class="topnav"><div class="wrap topnav-inner">
+  <a href="./index.html" class="brand">
+    <span class="mark"><span>G</span></span>
+    <span class="name">GA-RWA-EDGE</span>
+  </a>
+  <nav>
+    <a href="./index.html" class="active">Overview</a>
+    <a href="pages/whitepaper.html">Whitepaper</a>
+    <a href="pages/ppm.html">PPM</a>
+    <a href="pages/locations.html">Locations</a>
+    <a href="pages/partners.html">Partners</a>
+    <a href="pages/requirements.html">Requirements</a>
+    <a href="pages/introductory-offer.html">Intro Offer</a>
+    <a href="pages/investor-portal/index.html" class="cta">Accredited Portal</a>
+  </nav>
+</div></div>
+
+<!-- ─── Hero ───────────────────────────────────────────────────────── -->
+<header class="hero"><div class="wrap">
+  <span class="eyebrow">FTH Trading · Unykorn LLC · LD Capital LLC · 2026</span>
+  <h1>Institutional Real-World Asset rails for Georgia edge data centers, contracted AI hosting, and QROF equity — non-custodial, audited-elsewhere seeds, deterministic.</h1>
+  <p class="lede">A four-entity operating stack for tokenized ownership of power-anchored compute infrastructure. Assets live only in bankruptcy-remote SPEs. Money never sits with the technology or markets entities. Every claim maps to an on-chain attestation and an off-chain legal package.</p>
+  <div class="hero-actions">
+    <a href="pages/whitepaper.html" class="btn btn-primary">Read the whitepaper →</a>
+    <a href="pages/investor-portal/index.html" class="btn btn-secondary">Accredited investor portal</a>
+    <a href="downloads/client-requirements-and-diligence-guide.pdf" class="btn btn-secondary">Client diligence PDF</a>
   </div>
 </div></header>
-<div class="wrap">
 
-  <h2>Start here — clients &amp; asset originators</h2>
-  <div class="grid">
+<main>
+
+<!-- ─── KPI band ───────────────────────────────────────────────────── -->
+<section class="wrap">
+  <div class="kpi-row">
+    <div class="kpi copper"><div class="val">27</div><div class="lbl">Solidity contracts compiling</div></div>
+    <div class="kpi copper"><div class="val">4.9¢</div><div class="lbl">Barak site PPA (per kWh)</div></div>
+    <div class="kpi copper"><div class="val">5 MW</div><div class="lbl">Current operational load</div></div>
+    <div class="kpi emerald"><div class="val">30%</div><div class="lbl">Rural QROF basis step-up</div></div>
+    <div class="kpi emerald"><div class="val">$2.15M</div><div class="lbl">Annual power cost @ 5 MW</div></div>
+    <div class="kpi"><div class="val">17</div><div class="lbl">Deterministic calculators</div></div>
+  </div>
+</section>
+
+<!-- ─── What we offer ──────────────────────────────────────────────── -->
+<section class="wrap">
+  <h2 class="large">A four-entity stack that keeps every counterparty on the right side of the line</h2>
+  <p style="max-width:840px">Senior lenders demand a clean SPE borrower. Securities regulators want issuance under exemptions and a registered BD doing only BD things. Investors want qualified custody. Sponsors want equity carry without direct operational risk. The stack below satisfies each of them separately.</p>
+
+  <div class="grid" style="margin-top:30px">
+    <div class="card copper">
+      <span class="tag copper">Unykorn LLC</span>
+      <h3>Technology rails</h3>
+      <p>27 Solidity contracts (ERC-3643 · ERC-7540 · ERC-7575) that enforce identity verification, AML travel-rule gates, m-of-n attestation, and waterfall priorities before value can move. Non-custodial by construction. Fee revenue only.</p>
+      <div class="actions">
+        <a class="action" href="pages/whitepaper.html#rails">Architecture →</a>
+      </div>
+    </div>
+    <div class="card copper">
+      <span class="tag copper">LD Capital LLC</span>
+      <h3>Issuance & QOF/QROF admin</h3>
+      <p>Reg D 506(c) and Reg S offerings, servicing, and Qualified Opportunity Fund / Qualified Rural Opportunity Fund administration. CPA-attested 90% asset test filings. Rule 144 opinion of counsel on every tokenized security.</p>
+      <div class="actions">
+        <a class="action" href="pages/ppm.html">PPM →</a>
+      </div>
+    </div>
+    <div class="card copper">
+      <span class="tag copper">FTH Trading</span>
+      <h3>Markets · BD track · LDX</h3>
+      <p>Stage 1: BD-of-record partnership. Stage 2: own FINRA broker-dealer. Stage 3: LDX-as-ATS registered under Form ATS. Distribution, secondary trading, and eventual venue economics all live here — never in Unykorn or LD.</p>
+      <div class="actions">
+        <a class="action" href="pages/whitepaper.html#bd-path">BD Track →</a>
+      </div>
+    </div>
+    <div class="card emerald">
+      <span class="tag emerald">Asset SPEs</span>
+      <h3>Bankruptcy-remote borrowers</h3>
+      <p>One SPE per site or asset. Holds land, PPA rights, modular pods, hosting contracts, equipment titles. Conduits with no other business. Every senior lender interfaces with a clean single-purpose entity.</p>
+      <div class="actions">
+        <a class="action" href="pages/locations.html">Sites →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout copper" style="margin-top:22px">
+    <span class="head">The rule that makes it fundable</span>
+    Money never sits in Unykorn or FTH. Assets live only in Site SPEs. Every claim in this repository maps to a receipt at one of these four entities.
+  </div>
+</section>
+
+<!-- ─── Live deal ──────────────────────────────────────────────────── -->
+<section class="wrap">
+  <h2 class="large">The live deal — Barak 5 MW Atlanta-market site</h2>
+  <p style="max-width:840px">An operational 5 MW site currently hosting 721 bitcoin miners, at 4.9 cents per kWh under a fixed-rate PPA, in a deregulated gas zone. This is the first Path B rural-QROF conversion candidate — the anchor tenant becomes AI hosting under contracted revenue, with optional gas-hybrid expansion beyond the 5 MW envelope.</p>
+
+  <div class="grid-2" style="margin-top:24px">
+    <div class="card silver">
+      <span class="tag">Confirmed facts</span>
+      <h3>What we know</h3>
+      <table class="data" style="margin-top:8px">
+        <tr><td class="name">Current load</td><td>5 MW operational</td></tr>
+        <tr><td class="name">Existing use</td><td>721 bitcoin miners</td></tr>
+        <tr><td class="name">PPA rate</td><td class="copper">4.9¢/kWh fixed</td></tr>
+        <tr><td class="name">Zone</td><td>Deregulated gas</td></tr>
+        <tr><td class="name">Site status</td><td class="ok">Energized · active load</td></tr>
+        <tr><td class="name">Annual power cost</td><td class="num">$2,146,200</td></tr>
+      </table>
+    </div>
+    <div class="card silver">
+      <span class="tag">Open diligence</span>
+      <h3>What we need from Barak</h3>
+      <ol style="margin:12px 0 0 22px;font-size:13px;color:var(--steel);line-height:1.9">
+        <li>PPA <b>term length</b> — years remaining at 4.9¢</li>
+        <li><b>Assignability language</b> — free / consent / restricted</li>
+        <li>Entity <b>corporate authority</b> to assign</li>
+        <li>Utility posture — <b>novation vs assignment-only</b></li>
+        <li>Existing <b>721 miner contracts</b> — assumable or terminable</li>
+      </ol>
+      <div class="actions" style="margin-top:14px">
+        <a class="action primary" href="pages/investor-portal/deal-book.html">Full deal book →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Multi-location ─────────────────────────────────────────────── -->
+<section class="wrap">
+  <h2 class="large">Repeatable — the same rails scale to N locations</h2>
+  <p style="max-width:840px">Every site follows the same construction: bankruptcy-remote Site SPE takes title / PPA assignment · Unykorn rails wire identity + attestation + waterfall · LD Capital issues QROF or QOF equity · FTH Trading distributes to accredited investors. Each site produces contracted hosting revenue, waterfall distributions, and — for rural QROF sites — 30% basis step-up equity.</p>
+
+  <div class="grid" style="margin-top:22px">
     <div class="card">
-      <div class="tagrow">Client · intake + diligence</div>
+      <span class="tag emerald">Live</span>
+      <h3>GA-BARAK-01</h3>
+      <p>5 MW Atlanta-market · 4.9¢ PPA · deregulated gas zone. First conversion candidate. Existing 721-miner site converting to AI hosting anchor.</p>
+    </div>
+    <div class="card">
+      <span class="tag copper">Pipeline</span>
+      <h3>North Georgia rural</h3>
+      <p>White · Rabun · Union · Fannin counties. Definitively rural for QROF 30% step-up. Blue Ridge EMC + TVA-adjacent hydro.</p>
+    </div>
+    <div class="card">
+      <span class="tag copper">Pipeline</span>
+      <h3>Metro ring counties</h3>
+      <p>Coweta · Clayton · Jackson · Newton · Douglas · Carroll. Outer tracts pending 2027 QROF map certification.</p>
+    </div>
+    <div class="card">
+      <span class="tag">Border expansion</span>
+      <h3>TVA · SW Virginia · Upstate SC</h3>
+      <p>Tennessee River Valley (cheapest US industrial rates). Southwest Virginia (PJM SREC compliance market). Rural upstate SC (Duke Energy).</p>
+    </div>
+  </div>
+
+  <div class="actions" style="margin-top:20px">
+    <a class="btn btn-secondary" href="pages/locations.html">Full location analysis →</a>
+  </div>
+</section>
+
+<!-- ─── Documentation grid ─────────────────────────────────────────── -->
+<section class="wrap">
+  <h2 class="large">Documentation, downloads, and calculators</h2>
+  <p style="max-width:840px">Every claim on this page is backed by a specific document. All documents are downloadable as PDF. All formulas are implemented in deterministic Python. All contracts compile clean under solc 0.8.36.</p>
+
+  <h4>Client-facing PDFs</h4>
+  <div class="grid" style="margin-top:8px">
+    <div class="card">
+      <span class="tag">Intake · diligence</span>
       <h3>Client Requirements &amp; Diligence Guide</h3>
-      <p><b>Part A:</b> everything we need from you (entity, site, power, offtake, financials — power data gates intake). <b>Part B:</b> the ten questions you should demand answers to from us and any platform in this industry. <b>Part C:</b> the specifics to read closely in every document. <b>Part D:</b> the complete data-room index.</p>
-      <div class="actions">
-        <a class="dl" href="downloads/client-requirements-and-diligence-guide.pdf">Download PDF</a>
-        <a class="view" href="client-requirements-guide.md">Read Markdown</a>
-      </div>
+      <p>What we need from you (entity, site, power, offtake, financials). What you should demand from us. Specifics to read closely.</p>
+      <div class="actions"><a class="action" href="downloads/client-requirements-and-diligence-guide.pdf">PDF</a></div>
     </div>
     <div class="card">
-      <div class="tagrow">🟨 Site</div>
+      <span class="tag">Site</span>
       <h3>Rural QROF Site Screen</h3>
-      <p>Per-site checklist: OZ 2.0 tract eligibility, statutory rural test (30% step-up tier · both prongs: no >50k city/town AND no urbanized-area contiguity), county ordinance screen, zoning verification letter, load letter, fiber, option-not-purchase discipline.</p>
-      <div class="actions">
-        <a class="dl" href="downloads/rural-qrof-site-screen.pdf">Download PDF</a>
-        <a class="view" href="04-georgia-playbook/rural-definition.md">Read Markdown</a>
-      </div>
+      <p>OZ 2.0 tract eligibility, statutory rural test, county ordinance screen, zoning verification letter workflow.</p>
+      <div class="actions"><a class="action" href="downloads/rural-qrof-site-screen.pdf">PDF</a></div>
     </div>
     <div class="card">
-      <div class="tagrow">🟩 Energy</div>
+      <span class="tag">Energy</span>
       <h3>Georgia Energy Playbook</h3>
-      <p>Verified rules: voluntary-only SREC market (GA has no RPS · PJM states for compliance pricing), <b>solar / wind ITC cutoff missed (July 4, 2026)</b> · storage-only ITC available through 2033, gas-hybrid attestation requirements, PSC posture for sub-5&nbsp;MW loads, preferred vs restricted jurisdictions.</p>
-      <div class="actions">
-        <a class="dl" href="downloads/georgia-energy-playbook.pdf">Download PDF</a>
-        <a class="view" href="02-georgia-energy-playbook/">Read Markdown</a>
-      </div>
-    </div>
-  </div>
-
-  <h2>Contract &amp; construction documents</h2>
-  <div class="grid">
-    <div class="card">
-      <div class="tagrow">🟧 EPC</div>
-      <h3>Modular EPC — 12-Clause Contract Review</h3>
-      <p>Counsel + PM sign-off sheet. Hard fails on scope, milestones-with-lien-waivers, commissioning gates, and lender assignment. No execution with a FAIL on clauses A/B/C/D/E/J.</p>
-      <div class="actions">
-        <a class="dl" href="downloads/modular-epc-12-clause-review.pdf">Download PDF</a>
-        <a class="view" href="06-epc-and-ppa/epc-review.md">Read Markdown</a>
-      </div>
+      <p>Voluntary-only SREC market · solar/wind ITC cutoff status · gas-hybrid attestation · PSC posture for sub-5 MW loads.</p>
+      <div class="actions"><a class="action" href="downloads/georgia-energy-playbook.pdf">PDF</a></div>
     </div>
     <div class="card">
-      <div class="tagrow">⬛ Templates</div>
-      <h3>PPA / Offtake — 12-Item Scored Diligence</h3>
-      <p>Go/No-Go scoring pack. Zero tolerance on credit, term, pricing, attribute ownership. DSCR is underwritten <b>net of PPA demand charges</b> — Priority 1 in every waterfall.</p>
-      <div class="actions">
-        <a class="dl" href="downloads/ppa-12-item-scored-diligence.pdf">Download PDF</a>
-        <a class="view" href="05-deal-templates/ppa-diligence.md">Read Markdown</a>
-      </div>
+      <span class="tag">EPC</span>
+      <h3>Modular EPC 12-Clause Review</h3>
+      <p>Counsel + PM sign-off sheet. Hard fails on scope, milestones, commissioning gates, lender assignment.</p>
+      <div class="actions"><a class="action" href="downloads/modular-epc-12-clause-review.pdf">PDF</a></div>
     </div>
     <div class="card">
-      <div class="tagrow">⬛ Templates</div>
-      <h3>Commissioning Certificate — FAT / SAT / IST</h3>
-      <p>Three test gates. Each signed certificate is hash-anchored on-chain via <code>ReserveProofAnchor</code>, and the linked EPC milestone draw does not release until its anchor exists.</p>
-      <div class="actions">
-        <a class="dl" href="downloads/commissioning-certificate-fat-sat-ist.pdf">Download PDF</a>
-        <a class="view" href="../templates/commissioning-certificates/fat-sat-ist-template.md">Read Template</a>
-      </div>
-    </div>
-  </div>
-
-  <h2>Operations &amp; rails integration</h2>
-  <div class="grid">
-    <div class="card">
-      <div class="tagrow">🟥 Operations</div>
-      <h3>Operational Metrics Specification</h3>
-      <p>PUE targets (≤1.15 site · immersion 1.03–1.10), carbon intensity by attested source mix, and the DSCR feed format that drives the on-chain covenant triggers via <code>DSCRTrigger</code>.</p>
-      <div class="actions">
-        <a class="dl" href="downloads/operational-metrics-spec.pdf">Download PDF</a>
-        <a class="view" href="../operations/pue-carbon-metrics/metrics-spec.md">Read Markdown</a>
-      </div>
+      <span class="tag">PPA</span>
+      <h3>PPA 12-Item Scored Diligence</h3>
+      <p>Go/No-Go scoring pack. Zero tolerance on credit, term, pricing, attribute ownership. Priority-1 utility discipline.</p>
+      <div class="actions"><a class="action" href="downloads/ppa-12-item-scored-diligence.pdf">PDF</a></div>
     </div>
     <div class="card">
-      <div class="tagrow">🟪 Integration</div>
+      <span class="tag">Commissioning</span>
+      <h3>FAT / SAT / IST Certificate</h3>
+      <p>Three test gates. Each certificate hash-anchored on-chain via <code>ReserveProofAnchor</code>.</p>
+      <div class="actions"><a class="action" href="downloads/commissioning-certificate-fat-sat-ist.pdf">PDF</a></div>
+    </div>
+    <div class="card">
+      <span class="tag">Operations</span>
+      <h3>Operational Metrics Spec</h3>
+      <p>PUE targets (≤1.15 site · 1.03–1.10 immersion), carbon intensity, DSCR feed format for <code>DSCRTrigger</code>.</p>
+      <div class="actions"><a class="action" href="downloads/operational-metrics-spec.pdf">PDF</a></div>
+    </div>
+    <div class="card">
+      <span class="tag">Integration</span>
       <h3>RWA Rails Integration Schemas</h3>
-      <p>Exact hand-off formats to <code>GA-RWA-EDGE</code> contracts: EIP-712 attestation struct with quorum/replay rules, the document-anchor <code>docType</code> set, and the period waterfall signal with the Priority-1 utility amount.</p>
-      <div class="actions">
-        <a class="dl" href="downloads/rwa-rails-integration-schemas.pdf">Download PDF</a>
-        <a class="view" href="../integration/reserve-proof-schemas/">Read Schemas</a>
-      </div>
-    </div>
-    <div class="card">
-      <div class="tagrow">🧮 Calculators</div>
-      <h3>P0 Calculator Suite</h3>
-      <p>17 calculators: QROF step-up · MACRS + 100% bonus · §179 · TREX sizing (storage-only ITC) · PPA-aware capital stack &amp; DSCR · pod/PUE/cooling sizing · site scorecard · interconnect feasibility · carbon intensity · SREC revenue · PPA scorer · rural QROF screener · attestation payload builder. Deterministic, dependency-free Python.</p>
-      <div class="actions">
-        <a class="view" href="../scripts/calculators.py">View calculators.py</a>
-        <a class="view" href="09-calculators/inventory.md">Full Inventory</a>
-      </div>
+      <p>EIP-712 attestation struct · document-anchor <code>docType</code> set · period waterfall signal with Priority-1 utility amount.</p>
+      <div class="actions"><a class="action" href="downloads/rwa-rails-integration-schemas.pdf">PDF</a></div>
     </div>
   </div>
 
-  <h2>Tax, incentive &amp; capital-stack references</h2>
+  <h4>Calculator suite (Python, deterministic, dependency-free)</h4>
   <div class="grid-2">
     <div class="card">
-      <div class="tagrow">🟨 Formulas</div>
-      <h3>Tax, ESG &amp; Incentive Formulas Reference</h3>
-      <p>Working formulas for underwriting, waterfall priority/residual logic, ReserveProofAnchor schemas, and investor PPMs. QROF · MACRS + 100% bonus + §179 · Partnership Flip · ESG/SREC/carbon metrics. All post-OBBBA (July 4, 2025). <b>Solar / wind ITC §48E section retained as historical reference only — cutoff missed.</b></p>
+      <span class="tag copper">Tax &amp; incentives</span>
+      <h3>QROF · MACRS + bonus · §179 · TREX</h3>
+      <p>QROF 10%/30% step-up. MACRS 5/7/15/39-yr with 100% bonus. §179 with 2026 phase-out. Partnership Flip 99/1 → 5/95. Combined stacker for one-call totals.</p>
       <div class="actions">
-        <a class="view" href="02-tax-esg-incentives/formulas.md">Read Formulas Reference</a>
+        <a class="action" href="02-tax-esg-incentives/formulas.md">Formulas ref</a>
+        <a class="action" href="09-calculators/inventory.md">All 17 calcs</a>
       </div>
     </div>
     <div class="card">
-      <div class="tagrow">🟨 Sensitivity</div>
-      <h3>Capital Stack Sensitivity — 20 MW Base Case</h3>
-      <p>Base case ($200M) plus 5 sensitivity tables: project cost per MW, senior LTV, ITC deadline, QROF path, combined stress scenarios. What moves the needle most, ranked by leverage.</p>
+      <span class="tag copper">Deal underwriting</span>
+      <h3>PPA-aware capital stack · DSCR · scorers</h3>
+      <p>Senior LTV scaled by PPA score. DSCR tested net of PPA demand charges. PPA 12-item auto-scorer. Rural QROF screener. Site scorecard. Interconnect feasibility.</p>
       <div class="actions">
-        <a class="view" href="03-capital-stack/sensitivity.md">Read Sensitivity Tables</a>
+        <a class="action" href="../scripts/calculators.py">calculators.py</a>
+        <a class="action" href="03-capital-stack/sensitivity.md">Sensitivity</a>
       </div>
     </div>
   </div>
+</section>
 
-  <h2>📐 Architecture — the four-entity rule</h2>
-  <div class="arch"><b>THE STACK  ·  Four entities · zero role overlap · Unykorn holds no capital</b>
+<!-- ─── Client discipline ──────────────────────────────────────────── -->
+<section class="wrap">
+  <h2 class="large">What clients should look for — the 10 items that separate real platforms from marketing</h2>
+  <p style="max-width:840px">If a platform you're evaluating cannot answer each of these in one sentence with a specific reference, they haven't built what they claim.</p>
 
- ┌─────────────────┐   ┌─────────────────┐   ┌──────────────────┐
- │   <em>UNYKORN LLC</em>   │   │   <em>LD CAPITAL</em>    │   │   <em>FTH TRADING</em>    │
- │  (rails / tech) │   │ (issuance /     │   │ (markets /       │
- │                 │   │  QROF admin /   │   │  distribution /  │
- │  contracts      │   │  structuring)   │   │  BD track /      │
- │  compliance     │   │                 │   │  LDX venue)      │
- │  attestation    │   │  506(c) / Reg S │   │                  │
- │  AI + portals   │   │  servicing      │   │  BD-of-record →  │
- │                 │   │                 │   │  own BD → ATS    │
- └────────┬────────┘   └────────┬────────┘   └────────┬─────────┘
-          │                     │                     │
-          │ rails / attestation │ issues securities   │ distributes
-          ▼                     ▼                     ▼
-      ┌─────────────────────────────────────────────────────┐
-      │                <em>ASSET SPE(s)</em>                          │
-      │  Bankruptcy-remote borrower · one per asset         │
-      │  Holds: land · PPA rights · pods · hosting contracts│
-      └─────────────────────────────────────────────────────┘
+  <ol class="steps" style="margin-top:20px">
+    <li><b>Show me the code</b> — inspectable contracts with published mainnet addresses. Marketing sites describing nonexistent systems are the industry's #1 red flag.</li>
+    <li><b>Who holds the keys</b> — qualified custody, model named. Our target: 2-of-3 with client holding one key; platform can never move alone.</li>
+    <li><b>Where money sits pre-close</b> — bank / trust escrow only, never a platform operating account. Never send subscription funds to a "platform wallet."</li>
+    <li><b>Explicit fees</b> — every fee a named bps or dollar line. Opaque spreads are unauditable fees.</li>
+    <li><b>No promised returns</b> — guaranteed yield, SBLC "monetization," or upfront release fees = walk away.</li>
+    <li><b>Licenses verified</b> — issuers may sell their own paper (506(c)); anyone selling others' securities for compensation must be a registered BD (check FINRA BrokerCheck).</li>
+    <li><b>Registry-backed ESG</b> — a REC or carbon credit without a tracking-registry serial is a story, not an asset. Our contracts refuse to mint without one.</li>
+    <li><b>Compliance as a gate</b> — an unverified wallet must be structurally unable to receive tokens. Enforcement before movement, not review after.</li>
+    <li><b>Reproducible math</b> — waterfall distributions reconcile to an independent model to the cent.</li>
+    <li><b>Engineered downside</b> — DSCR triggers, cash traps, loss order, and key-recovery answers should be crisp.</li>
+  </ol>
+</section>
 
- <b>Money never sits in Unykorn or FTH.  Assets live ONLY in SPEs.  Securities are issued
- by SPEs/funds via LD Capital.  FTH Trading touches SECURITIES MARKETS, never custody.</b></div>
-
-  <h2>What clients should look for — the 10 items that separate real platforms from marketing</h2>
-  <div class="look">
-    <ol>
-      <li><b>Show me the code</b> — inspectable contracts, published addresses at deploy. Marketing sites describing nonexistent systems are the industry's #1 red flag.</li>
-      <li><b>Who holds the keys</b> — qualified custody, model named. Ours: 2-of-3 with the client holding the backup key; the platform can never move funds alone.</li>
-      <li><b>Where money sits pre-close</b> — bank/trust escrow only, never a platform operating account. Never send subscription funds to a "platform wallet."</li>
-      <li><b>Explicit fees</b> — every fee a named bps or dollar line. Opaque spreads are unauditable fees.</li>
-      <li><b>No promised returns</b> — guaranteed yield, SBLC "monetization," or upfront release fees = walk away, from anyone.</li>
-      <li><b>Licenses verified</b> — issuers may sell their own paper (506(c)); anyone selling others' securities for compensation must be a registered BD (check FINRA BrokerCheck).</li>
-      <li><b>Registry-backed ESG</b> — a REC or carbon credit without a tracking-registry serial is a story, not an asset. Our contracts refuse to mint without one.</li>
-      <li><b>Compliance as a gate</b> — an unverified wallet must be structurally unable to receive tokens. Enforcement before movement, not review after.</li>
-      <li><b>Reproducible math</b> — waterfall distributions reconcile to an independent model to the cent. Ask for the reconciliation any period.</li>
-      <li><b>Engineered downside</b> — DSCR triggers, cash traps, loss order, and key-recovery answers should be crisp. If they aren't, the downside was never designed.</li>
-    </ol>
+<!-- ─── Investor CTA ───────────────────────────────────────────────── -->
+<section class="wrap">
+  <h2 class="large">For accredited investors</h2>
+  <div class="callout copper">
+    <span class="head">Access the investor portal</span>
+    Verified-accredited investors (Reg D 506(c)) receive access to the full deal book — Barak 5 MW deal facts, capital stack sizing, subscription mechanics, tax analysis, and the introductory offer. Verification via Persona / Parallel Markets before portal access.
+    <div class="actions" style="margin-top:16px;display:flex;gap:10px">
+      <a class="btn btn-primary" href="pages/investor-portal/index.html">Enter accredited portal →</a>
+      <a class="btn btn-secondary" href="pages/introductory-offer.html">Read introductory offer</a>
+    </div>
   </div>
+</section>
 
-  <h2>🚦 The deal sprint — 20 MW Atlanta PPA (Barak)</h2>
-  <div class="callout">
-    <b>Critical path — the four PPA diligence items:</b><br>
-    (1) Delivery point / substation / voltage · (2) Term length + rate structure · (3) Assignability language + entity authority · (4) Utility posture on novation vs assignment-only.<br><br>
-    Once these land: capital-stack base column locks · lender teasers issue · <code>ReserveProofAnchor</code> schema configures · 12-week sprint to Jan 1, 2027 deploy activates.
-    <br><br>
-    <b>See:</b> <a href="05-deal-templates/ppa-diligence.md">PPA diligence pack</a> · <a href="03-capital-stack/sensitivity.md">capital-stack sensitivity</a> · <a href="04-georgia-playbook/rural-definition.md">rural QROF definition</a>.
-  </div>
-
-  <h2>🟥 Security &amp; pre-mainnet blockers</h2>
+<!-- ─── Pre-mainnet ───────────────────────────────────────────────── -->
+<section class="wrap">
   <div class="callout warn">
-    <b>What this repository IS:</b> scaffolding + audited-elsewhere seeds. Compilable Solidity foundation (27 files · solc 0.8.36 · EVM Cancun). Institutional-quality documentation. Georgia-specific configuration seeds.<br><br>
-    <b>What it IS NOT (yet):</b> a production-deployable securities infrastructure.<br><br>
+    <span class="head">Pre-mainnet blockers · what this is / what this is not</span>
+    <b>This repository IS:</b> scaffolding + seeds. Compilable Solidity (27 files, solc 0.8.36, EVM Cancun). Institutional-quality documentation. Georgia-specific configuration seeds.<br><br>
+    <b>What it IS NOT yet:</b> production-deployable securities infrastructure.<br><br>
     <b>Pre-mainnet blockers:</b> dual independent audits · securities counsel Rule 144 opinion · legal SPV package behind every <code>ReserveProofAnchor</code> · BD registration or BD-of-record · BitGo Bank &amp; Trust N.A. (or Anchorage) custody engagement · CPA administrator for QOF 90% asset test.<br><br>
     Nothing here is an offer to sell securities. Not legal, tax, or investment advice.
   </div>
+</section>
 
-  <div class="foot">
-    <b style="color:var(--platinum)">FTH Trading / Unykorn LLC · GA-RWA-EDGE</b><br>
-    <b>Deploy this site as GitHub Pages:</b> Repository Settings → Pages → Deploy from branch → <code>main</code> → <code>/docs</code>. Documents are version-controlled; the repository commit hash is the document version of record.<br><br>
-    <b>Companion HTML playbooks</b> (visual, print-ready) live at <code>fth-trading-system/docs/verticals/</code>: <code>compute-oz-vertical.html</code> · <code>compute-infrastructure-playbook.html</code> · <code>full-rwa-integration-playbook.html</code> · <code>ppa-anchor-deal-structuring.html</code> · <code>modular-epc-contract-review.html</code> · <code>tax-esg-incentive-formulas-reference.html</code>.<br><br>
-    <b>Repository:</b> <a href="https://github.com/FTHTrading/GA-RWA-EDGE">github.com/FTHTrading/GA-RWA-EDGE</a><br>
-    <b>License:</b> MIT + Commercial Reservation (see <a href="../LICENSE">LICENSE</a>)<br>
-    © 2026 FTH Trading / Unykorn LLC / LD Capital LLC · non-custodial · compliance-gated · deterministic
+</main>
+
+<!-- ─── Footer ─────────────────────────────────────────────────────── -->
+<footer class="foot"><div class="wrap">
+  <div class="cols">
+    <div>
+      <h5>GA-RWA-EDGE · FTH Trading / Unykorn / LD Capital</h5>
+      <p style="color:var(--muted);font-size:12.5px">Institutional real-world asset rails for Georgia edge data centers, contracted AI hosting, and QROF equity. Non-custodial. Compliance-gated. Deterministic.</p>
+      <p style="color:var(--muted);font-size:11.5px;margin-top:10px">Repository: <a href="https://github.com/FTHTrading/GA-RWA-EDGE" style="display:inline">github.com/FTHTrading/GA-RWA-EDGE</a></p>
+    </div>
+    <div>
+      <h5>For investors</h5>
+      <a href="pages/introductory-offer.html">Introductory offer</a>
+      <a href="pages/ppm.html">PPM</a>
+      <a href="pages/whitepaper.html">Whitepaper</a>
+      <a href="pages/investor-portal/index.html">Accredited portal</a>
+    </div>
+    <div>
+      <h5>For sponsors &amp; partners</h5>
+      <a href="pages/locations.html">Locations</a>
+      <a href="pages/partners.html">Builder partners</a>
+      <a href="pages/requirements.html">Intake requirements</a>
+      <a href="downloads/client-requirements-and-diligence-guide.pdf">Client PDF</a>
+    </div>
   </div>
-</div>
+  <div class="disclaimer">
+    <p><b>Not tax, legal, or investment advice.</b> Nothing on this site is an offer to sell or a solicitation of an offer to buy any security. Any offering of securities will be made only pursuant to definitive offering documents (PPM), only to verified accredited investors under Regulation D Rule 506(c) or non-U.S. persons under Regulation S, and only after all pre-mainnet blockers have cleared. Securities involve risk including potential loss of principal. Past performance does not indicate future results. Rural QROF benefits depend on tract designation which is not certified until Q4 2026.</p>
+    <p style="margin-top:14px">© 2026 FTH Trading LLC · Unykorn LLC · LD Capital LLC · non-custodial · compliance-gated · deterministic</p>
+  </div>
+</div></footer>
+
 </body>
 </html>

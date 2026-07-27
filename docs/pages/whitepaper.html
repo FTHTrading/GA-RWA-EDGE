@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GA-RWA-EDGE Whitepaper · Institutional RWA Rails for Georgia Edge Data Centers</title>
+<meta name="description" content="Full whitepaper: architecture, rails, capital stack, tax framework, deal execution, and roadmap. Institutional real-world asset infrastructure — FTH Trading / Unykorn / LD Capital.">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<div class="topnav"><div class="wrap topnav-inner">
+  <a href="../index.html" class="brand"><span class="mark"><span>G</span></span><span class="name">GA-RWA-EDGE</span></a>
+  <nav>
+    <a href="../index.html">Overview</a>
+    <a href="whitepaper.html" class="active">Whitepaper</a>
+    <a href="ppm.html">PPM</a>
+    <a href="locations.html">Locations</a>
+    <a href="partners.html">Partners</a>
+    <a href="requirements.html">Requirements</a>
+    <a href="introductory-offer.html">Intro Offer</a>
+    <a href="investor-portal/index.html" class="cta">Accredited Portal</a>
+  </nav>
+</div></div>
+
+<header class="hero"><div class="wrap-narrow">
+  <span class="eyebrow">Whitepaper · v1.0 · July 2026</span>
+  <h1>GA-RWA-EDGE: Non-custodial rails for tokenized ownership of Georgia edge data centers, PPA-anchored deals, and QROF equity.</h1>
+  <p class="lede">This paper describes the operating stack, technical primitives, capital-formation mechanics, tax framework, and repeatable deal execution for a four-entity institutional infrastructure. It is intended for accredited investors, senior lenders, EPC contractors, custodians, and regulators evaluating the scaffolding before any live offering.</p>
+</div></header>
+
+<main><div class="wrap-narrow body-content">
+
+<h2 class="large">Table of contents</h2>
+<ol style="margin-left:22px;font-size:14px;color:var(--steel);line-height:2">
+  <li><a href="#exec">Executive summary</a></li>
+  <li><a href="#thesis">Investment thesis</a></li>
+  <li><a href="#rails" id="rails-anchor">Architecture — the four-entity operating stack</a></li>
+  <li><a href="#contracts">Smart contracts and technical primitives</a></li>
+  <li><a href="#compliance">Compliance framework · ERC-3643 · IdentityRegistry · AML</a></li>
+  <li><a href="#capital">Capital stack and financing mechanics</a></li>
+  <li><a href="#tax">Tax framework · QROF · MACRS · Section 179</a></li>
+  <li><a href="#waterfall">Waterfall priority and DSCR discipline</a></li>
+  <li><a href="#deal">Deal execution — the Barak 5 MW case</a></li>
+  <li><a href="#locations">Multi-location strategy</a></li>
+  <li><a href="#partners">Builder and custody partners</a></li>
+  <li><a href="#bd-path" id="bd-path-anchor">BD-of-record → own BD → LDX-as-ATS</a></li>
+  <li><a href="#risk">Risk factors</a></li>
+  <li><a href="#roadmap">Roadmap and milestones</a></li>
+  <li><a href="#disclosure">Disclosures</a></li>
+</ol>
+
+<h2 class="large" id="exec">1 · Executive summary</h2>
+
+<p>GA-RWA-EDGE is an institutional infrastructure for issuing, servicing, and distributing tokenized ownership interests in Georgia-based edge data-center sites. The stack is optimized for existing operational sites with locked PPA power positions — the anchor case is a 5 MW Atlanta-market site currently hosting 721 bitcoin miners at 4.9 cents per kilowatt-hour under a fixed-rate power purchase agreement in a deregulated gas zone.</p>
+
+<p>The stack separates four operating roles into four distinct legal entities. This separation is not stylistic. It is what allows senior lenders (typically CRE, USDA B&amp;I, or C-PACE) to interface with a clean single-purpose entity that owes them senior debt, while securities regulators observe issuance under Regulation D Rule 506(c) with counsel-opined Rule 144 tacking language, while custodians hold assets in a bank-chartered qualified vault, and while the technology company earns fees without balance-sheet risk or FINRA licensing exposure.</p>
+
+<p>The four entities are Unykorn LLC (technology rails), LD Capital LLC (issuance and Qualified Opportunity Fund administration), FTH Trading (securities distribution and secondary markets), and Asset SPEs (bankruptcy-remote borrowers holding physical assets and revenue contracts). Money never sits with Unykorn or FTH. Assets live only in Site SPEs.</p>
+
+<div class="callout copper">
+<span class="head">One-line thesis</span>
+Contracted AI hosting revenue backed by locked PPA power, wrapped in a Qualified Rural Opportunity Fund equity tranche, distributed via ERC-3643 permissioned securities on non-custodial rails with waterfall discipline that treats the utility payment as Priority 1.
+</div>
+
+<h2 class="large" id="thesis">2 · Investment thesis</h2>
+
+<p>Four factors intersect. Any two of them constitute a real deal. All four together are rare.</p>
+
+<ol>
+  <li><b>Locked-in power at a below-market rate.</b> The Barak site has a fixed-rate PPA at 4.9 cents per kilowatt-hour. Wholesale power in most metro Southeast markets currently runs 6–9 cents. Locked-in below-market power is the largest single input cost advantage in compute infrastructure.</li>
+  <li><b>Existing operational site.</b> This is not a greenfield build with a two-year interconnect queue and a three-year construction schedule. It is a running facility with 721 miners currently drawing power, revenue-generating today. Conversion is a retrofit, not a construction project.</li>
+  <li><b>OZ 2.0 Qualified Rural Opportunity Fund tier (pending tract designation).</b> If the site's census tract is designated rural under the 2027 OZ 2.0 map, cap-gains investors receive a 30% basis step-up at year 5 (vs. 10% for standard QOF) and a 50% substantial-improvement threshold. On $4M of QROF equity that means roughly $1.2M of federal tax benefit before any project-level appreciation is considered.</li>
+  <li><b>Non-custodial rails with public code.</b> The 27-contract smart-contract suite is open-source, audit-track, and compiling under solc 0.8.36 with EVM Cancun. Every distribution, every attestation, and every transfer runs through published contracts. There is no black box operational risk.</li>
+</ol>
+
+<h2 class="large" id="rails">3 · Architecture — the four-entity operating stack</h2>
+
+<pre class="ascii"><b>THE STACK  ·  Four entities · zero role overlap · Unykorn holds no capital</b>
+
+ ┌─────────────────┐   ┌─────────────────┐   ┌──────────────────┐
+ │   <em>UNYKORN LLC</em>   │   │   <em>LD CAPITAL</em>    │   │   <em>FTH TRADING</em>    │
+ │  (rails / tech) │   │ (issuance /     │   │ (markets /       │
+ │                 │   │  QROF admin /   │   │  distribution /  │
+ │  contracts      │   │  structuring)   │   │  BD track /      │
+ │  compliance     │   │                 │   │  LDX venue)      │
+ │  attestation    │   │  506(c) / Reg S │   │                  │
+ │  AI + portals   │   │  servicing      │   │  BD-of-record →  │
+ │                 │   │                 │   │  own BD → ATS    │
+ └────────┬────────┘   └────────┬────────┘   └────────┬─────────┘
+          │                     │                     │
+          │ rails / attestation │ issues securities   │ distributes
+          ▼                     ▼                     ▼
+      ┌─────────────────────────────────────────────────────┐
+      │                <em>ASSET SPE(s)</em>                          │
+      │  Bankruptcy-remote borrower · one per asset         │
+      │  Holds: land · PPA rights · pods · hosting contracts│
+      └─────────────────────────────────────────────────────┘
+
+ <b>Money never sits in Unykorn or FTH.  Assets live ONLY in SPEs.</b>
+ <b>Securities are issued by SPEs/funds via LD Capital.</b>
+ <b>FTH Trading touches SECURITIES MARKETS, never custody.</b>
+</pre>
+
+<h3>3.1 Why four entities and not one</h3>
+
+<p>Consolidation attracts problems from every side. A single-entity operator that holds assets, issues securities, custody funds, and operates rails needs (a) a broker-dealer registration for any transaction-based securities compensation, (b) qualified-custodian licensing for held customer assets, (c) SPE-clean separation for every senior debt facility, and (d) a compliance calendar spanning FINRA, SEC, state MTL, and any tokenization-specific rules. The regulatory footprint is enormous and the audit fees compound.</p>
+
+<p>Four entities with disciplined role separation solves each problem in its natural place: senior lenders sign against Site SPEs, custody sits at BitGo Bank &amp; Trust N.A. or equivalent OCC-chartered institution, securities distribution runs through FTH Trading (BD-of-record in Stage 1, own BD Stage 2, LDX-as-ATS Stage 3), and Unykorn earns technology fees only — never transaction-based securities compensation.</p>
+
+<h2 class="large" id="contracts">4 · Smart contracts and technical primitives</h2>
+
+<p>The 27-contract Solidity suite is organized into six domains. All contracts compile under solc 0.8.36 with EVM Cancun target using integer minor units throughout. Custom errors, event emission on every state change, and role-based access control (Owner ≠ Agent) are enforced.</p>
+
+<table class="data">
+  <tr><th>Domain</th><th>Contracts</th><th>Purpose</th></tr>
+  <tr><td class="name">Core</td><td>Roles · ECDSALib · AttestationVerifier · ReserveProofAnchor · DealRegistry · CustodyAdapter · AMLTravelRuleGate · LDTimelock · ReentrancyGuard · FeeCollector</td><td>Shared primitives: identity, attestation quorum, deal registration, fee routing</td></tr>
+  <tr><td class="name">Compliance</td><td>IdentityRegistry · ModularCompliance · LDSecurityToken (ERC-3643) · Rule144Lockup · CountryRestrict · MaxHolders · ModuleBase</td><td>Permissioned security token stack. Every transfer runs through the compliance gate.</td></tr>
+  <tr><td class="name">Capital paths</td><td>TrancheToken · DSCRTrigger · CMBSWaterfall</td><td>Structured-credit path: senior/junior tranches, coverage triggers, deterministic waterfall</td></tr>
+  <tr><td class="name">Vaults</td><td>AsyncVault (ERC-7540) · MultiAssetEntry (ERC-7575)</td><td>Async request/pending/claimable/claimed lifecycle; one Share Token accepting many entry assets</td></tr>
+  <tr><td class="name">ESG</td><td>SRECModule · CarbonModule · GasAttestation</td><td>Serial-anchored REC/SREC ledger, voluntary+compliance carbon ledger, gas emissions attestation</td></tr>
+  <tr><td class="name">Interfaces</td><td>ICompliance · IERC20</td><td>ERC-3643-aligned compliance interface, standard token interface</td></tr>
+</table>
+
+<h3>4.1 ReserveProofAnchor — the evidence chain</h3>
+
+<p>Every material real-world fact underlying a deal is hashed and anchored on-chain via <code>ReserveProofAnchor</code>. This includes the executed PPA document, EPC scope + FAT/SAT/IST certificates, hosting-contract counterparty and terms, appraisals, zoning verification letters, utility load letters, SREC registry serials, and gas-generation emissions attestations. The anchor produces a permanent, auditable proof that the SPE controls the asset and that the underwriting facts existed at claimed time.</p>
+
+<p>The contract does not constitute legal ownership by itself. It evidences that a specific document existed at a specific time with a specific hash, signed by an m-of-n oracle quorum. Legal collateralization (the SPV structure, security agreement, control agreement, and counsel opinion) lives off-chain and is referenced by <code>legalRef</code>.</p>
+
+<h3>4.2 CMBSWaterfall — deterministic distribution</h3>
+
+<p>Distributions execute deterministically. Priority 1 is always the utility / PPA payment. Priority 2 is senior debt service. Priority 3 is platform fees (Unykorn + LD Capital). Priority 4 is tax-equity allocations if applicable. Priority 5 is subordinate / QROF equity. Priority 6 is sponsor promote.</p>
+
+<p>Priority 1 is Priority 1 because a missed utility payment triggers PPA termination, which collapses the deal thesis. The waterfall math tests DSCR net of PPA demand charges — not gross of them. This is the single most important underwriting distinction between a compute-hosting deal and a traditional real-estate deal.</p>
+
+<h2 class="large" id="compliance">5 · Compliance framework</h2>
+
+<p>The tokenized security is an ERC-3643 permissioned token. Every transfer runs through <code>IdentityRegistry</code> (which maps wallet to verified identity + accreditation status + country) and <code>AMLTravelRuleGate</code> (which enforces travel-rule data payload for over-threshold transfers). Modular compliance additionally supports <code>Rule144LockupModule</code> (holding-period enforcement per counsel opinion), <code>CountryRestrictModule</code> (jurisdictional gating for Reg S), and <code>MaxHoldersModule</code> (Reg D 506(c) beneficial-holder count cap).</p>
+
+<p>Compliance is a hard gate — value cannot move unless the compliance check passes. An unverified wallet is structurally unable to receive tokens. This is enforcement before movement, not review after.</p>
+
+<h2 class="large" id="capital">6 · Capital stack and financing mechanics</h2>
+
+<p>The base case for the Barak 5 MW conversion. Total project cost ~$20M after removing solar co-location (solar ITC cutoff missed July 4, 2026).</p>
+
+<table class="data">
+  <tr><th>Layer</th><th>%</th><th>Amount</th><th>Source</th></tr>
+  <tr><td class="name">Senior debt</td><td>60%</td><td class="num">$12.0M</td><td>Data-center CRE · USDA B&amp;I (if rural QROF) · C-PACE</td></tr>
+  <tr><td class="name">Equipment / GPU debt</td><td>15%</td><td class="num">$3.0M</td><td>Vendor programs · GPU-backed lending</td></tr>
+  <tr><td class="name">QROF preferred equity</td><td>20%</td><td class="num">$4.0M</td><td>Cap-gains sellers · rural 30% step-up · 10-yr hold · Reg D 506(c) via FTH</td></tr>
+  <tr><td class="name">Sponsor + Barak</td><td>5%</td><td class="num">$1.0M</td><td>Sponsor + Barak PPA contribution (cash / promote / equity blend)</td></tr>
+  <tr><td class="name">Total</td><td>100%</td><td class="num">$20.0M</td><td>—</td></tr>
+</table>
+
+<p>Senior LTV of 60% is conservative for a locked PPA site with existing operational load. As PPA diligence items 1–5 confirm, the senior advance rate could rise to 65–70%, reducing residual equity by roughly $1–2M.</p>
+
+<h2 class="large" id="tax">7 · Tax framework</h2>
+
+<h3>7.1 QROF (Qualified Rural Opportunity Fund) — the primary tax lever</h3>
+
+<p>A cap-gains investor with $4M in eligible gains rolls the gains into the QROF within 180 days. The gains are deferred. After a continuous 5-year hold, the investor receives a <b>30% basis step-up</b> (versus 10% for standard QOF). On $4M of deferred gain, that is $1.2M of basis increase — worth roughly $286k in federal tax savings at the 23.8% LTCG + NIIT rate.</p>
+
+<p>After a 10-year hold, appreciation on the QROF interest itself is generally excluded from tax (basis reset to fair market value on sale, subject to OZ 2.0 30-year FMV election rules). This is separate from the 5-year step-up.</p>
+
+<h3>7.2 MACRS + 100% bonus depreciation</h3>
+
+<p>The 100% bonus depreciation restored permanently under OBBBA applies to non-solar equipment placed in service after January 19, 2025. This includes IT equipment (5-year), immersion cooling and racks (5-year), UPS and switchgear (5- or 7-year), and land improvements (15-year). No solar ITC basis reduction applies because no solar ITC is being claimed (see 7.4).</p>
+
+<p>On the Barak site, roughly $13M of the $20M project cost qualifies as 5-year MACRS property with 100% bonus. That produces a Year-1 deduction of $13M against ordinary income for the taking partner — most valuable to a partnership-flip tax-equity partner if one is retained, or to the sponsor otherwise.</p>
+
+<h3>7.3 Section 179</h3>
+
+<p>The 2026 §179 limit is $2.56M with phase-out beginning at $4.09M and fully phased out at $6.65M. On a Barak-scale project this is meaningful for early-stage equipment purchases before bonus depreciation kicks in on other property.</p>
+
+<h3>7.4 Solar / wind ITC §48E — cutoff missed</h3>
+
+<p>The begin-construction safe harbor for solar and wind ITC under Section 48E lapsed on July 4, 2026. New solar / wind builds no longer qualify. The Barak project accordingly does not model solar ITC into the base capital stack. Storage-only ITC survives through 2033 with begin-construction runway, and 45Q carbon capture credits remain available, but neither is modeled as a live layer in the base case.</p>
+
+<h2 class="large" id="waterfall">8 · Waterfall priority and DSCR discipline</h2>
+
+<pre class="ascii"><b>CMBSWaterfall.distribute()  ·  Barak 5 MW / 4.9¢ PPA</b>
+
+Period revenue in:          <em>$750,000</em>  (illustrative monthly hosting rev)
+   │
+   ▼
+Priority 1  Utility / PPA:  <em>$179,000</em>  ← 4.9¢ × 5 MW × 730 hr, monthly
+Priority 2  Senior debt:    <em>$152,000</em>  ← $12M @ 8.5%, 15yr amort
+Priority 3  Platform fees:  <em>$ 15,000</em>  ← Unykorn SaaS + LD servicing
+Priority 4  Equipment debt: <em>$ 30,000</em>  ← if outstanding
+Priority 5  Opex reserve:   <em>$ 68,000</em>  ← taxes + insurance + maintenance
+Priority 6  QROF equity:    <em>$180,000</em>  ← distributed pro-rata
+Priority 7  Sponsor promote:<em>$126,000</em>  ← after hurdle
+                             ───────
+Total distributed:          <em>$750,000</em>
+                             ═══════
+</pre>
+
+<p>DSCR is tested net of PPA demand charges:</p>
+
+<pre class="ascii">DSCR = <em>(Hosting Revenue − Utility Charges − Opex − Taxes) ÷ Annual Debt Service</em>
+     = (9,000,000 − 2,146,200 − 800,000 − 150,000) ÷ 1,824,000
+     = 5,903,800 ÷ 1,824,000
+     = <em>3.24x</em>   ← comfortable over 1.25x underwrite gate
+
+Gate thresholds:
+   PASS underwrite       1.25x
+   CASH_TRAP             1.20x
+   TURBO_AMORT           1.10x
+   COVENANT_BREACH       1.00x
+</pre>
+
+<h2 class="large" id="deal">9 · Deal execution — the Barak 5 MW case</h2>
+
+<h3>9.1 Confirmed facts</h3>
+<ul>
+  <li>Current load: 5 MW existing operational</li>
+  <li>Existing use: 721 bitcoin miners currently at the site</li>
+  <li>PPA rate: 4.9¢/kWh fixed</li>
+  <li>Zone: deregulated gas — enables gas-hybrid expansion</li>
+  <li>Site status: energized · active load · utility letter effectively pre-issued</li>
+  <li>Annual electricity cost @ 5 MW baseload: $2,146,200</li>
+</ul>
+
+<h3>9.2 Open diligence — the five Go/No-Go items</h3>
+<p>Do not sign an equity term sheet before these are resolved:</p>
+<ol>
+  <li>PPA term length remaining at 4.9¢</li>
+  <li>Assignability language (free / consent-required / restricted)</li>
+  <li>Barak entity corporate authority to assign</li>
+  <li>Utility posture — full novation vs assignment-only</li>
+  <li>Existing 721 miner contracts — assumable or terminable</li>
+</ol>
+
+<h3>9.3 The 12-week sprint (post-diligence)</h3>
+<ol class="steps">
+  <li><b>Weeks 1-2</b> · Complete Barak's 12-item PPA diligence pack. Zoning + rural qualification screen. Decision: Path B (rural QROF) confirmed or fallback to standard QOF.</li>
+  <li><b>Weeks 3-5</b> · Site SPE formed. PPA assigned or novated into SPE. First <code>ReserveProofAnchor</code> attestation of PPA + key commercial terms. Senior debt process launched with three lenders.</li>
+  <li><b>Weeks 6-9</b> · QROF documents finalized by OZ counsel + CPA. Reg D 506(c) PPM issued via FTH Trading BD-of-record partnership. Investor onboarding through <code>IdentityRegistry</code> + <code>AMLTravelRuleGate</code>.</li>
+  <li><b>Weeks 10-12</b> · Equity + senior debt close into bank escrow. Funds release to SPE only after compliance gates clear. Modular pods ordered. Immersion retrofit begins.</li>
+  <li><b>Post-close</b> · Hosting contracts signed with AI-cloud counterparty. <code>CMBSWaterfall</code> distributions begin. Seasoned revenue notes eligible for Centrifuge warehouse leverage after 6-12 months payment history.</li>
+</ol>
+
+<h2 class="large" id="locations">10 · Multi-location strategy</h2>
+
+<p>The four-entity stack is asset-class-agnostic and location-agnostic. Site SPEs are formed per parcel; the same LD Capital / Unykorn / FTH rails support each without re-engineering. Detailed location analysis lives in the <a href="locations.html">Locations page</a>.</p>
+
+<div class="grid">
+  <div class="card"><span class="tag emerald">Live</span><h3>Barak · Atlanta market · 5 MW</h3><p>4.9¢ PPA, deregulated gas zone, existing 721 miners. Path B rural-QROF conversion candidate.</p></div>
+  <div class="card"><span class="tag copper">Pipeline</span><h3>North Georgia rural</h3><p>White, Rabun, Union, Fannin counties. Definitively rural for QROF 30% step-up.</p></div>
+  <div class="card"><span class="tag copper">Pipeline</span><h3>Metro ring counties</h3><p>Coweta, Clayton, Jackson, Newton, Douglas, Carroll — outer tracts.</p></div>
+  <div class="card"><span class="tag">Border</span><h3>TVA · SW VA · Upstate SC</h3><p>Cheapest US industrial rates. PJM SREC compliance market access via VA.</p></div>
+</div>
+
+<h2 class="large" id="partners">11 · Builder and custody partners</h2>
+
+<p>The stack integrates with named institutional counterparties in each category. Detailed partner matrix lives in the <a href="partners.html">Partners page</a>. In brief:</p>
+
+<ul>
+  <li><b>Custody</b>: BitGo Bank &amp; Trust N.A. (primary), Anchorage Digital Bank (alternate)</li>
+  <li><b>KYC / accreditation</b>: Persona, Parallel Markets, or comparable</li>
+  <li><b>BD-of-record (Stage 1)</b>: Dalmore-class or Securitize Markets pattern</li>
+  <li><b>Senior lenders</b>: Peachtree, CIM Group, USDA B&amp;I direct, C-PACE providers</li>
+  <li><b>EPC / modular pods</b>: Schneider Electric prefab, Vertiv modular, or vendor-integrated (Dell, SMC, Supermicro modular arms)</li>
+  <li><b>Immersion cooling</b>: Submer, GRC, LiquidStack, or Iceotope</li>
+  <li><b>Warehouse credit (Stage 2)</b>: Centrifuge V3 pools, Maple Finance</li>
+  <li><b>Auditors</b>: PCAOB-registered for attestation letters; Solidity audit firms TBD</li>
+</ul>
+
+<h2 class="large" id="bd-path">12 · BD-of-record → own BD → LDX-as-ATS</h2>
+
+<p>FTH Trading follows a disciplined three-stage broker-dealer path. Stage 1 is a BD-of-record partnership: a registered broker-dealer papers third-party securities placement, FTH refers investors and handles all non-securities work. Stage 2 is FTH filing Form NMA to become its own FINRA-registered BD (12-18 months, $250-750k). Stage 3 is FTH's LDX venue filing Form ATS to operate as an Alternative Trading System for secondary trading.</p>
+
+<p>Until Stage 2 closes, FTH takes no transaction-based securities compensation. Its 2026-27 revenue is (a) technology fees under the Unykorn / LD Capital service agreements and (b) the BD-of-record partnership economics. Skipping Stage 1 and taking finder fees on third-party paper is the classic unregistered-BD trap — SEC rescission rights kill cap tables.</p>
+
+<h2 class="large" id="risk">13 · Risk factors</h2>
+
+<p>An investment in tokenized Site SPE interests involves substantial risk including the possible loss of the entire investment. Key risks include:</p>
+
+<ul>
+  <li><b>PPA counterparty risk</b>: If the PPA is not cleanly assignable or the counterparty utility does not accept novation, the deal restructures around a different anchor asset.</li>
+  <li><b>Interconnect and utility risk</b>: Sub-5 MW loads are ordinary commercial customers on standard tariffs, but any utility policy shift or tariff increase directly reduces DSCR.</li>
+  <li><b>Rural QROF designation risk</b>: The 2027 QOZ map is not certified until Q4 2026. If the target tract is not designated as rural, the fund reverts to standard QOF (10% step-up).</li>
+  <li><b>Regulatory risk</b>: OZ 2.0 rules, ERC-3643 recognition, Reg D interpretation, and BD-of-record economics all involve regulatory framework that may change.</li>
+  <li><b>Technology risk</b>: The smart-contract suite is unaudited. Pre-mainnet blockers include dual independent audits before any value moves on chain.</li>
+  <li><b>Tenant concentration risk</b>: Hosting contracts with a single AI-cloud counterparty concentrate credit risk. The stack encourages multi-tenant, multi-workload discipline.</li>
+  <li><b>Liquidity risk</b>: Site SPE interests are illiquid. Secondary trading via partner ATS (Stage 1) or LDX (Stage 3) provides limited liquidity subject to Rule 144 holding periods.</li>
+  <li><b>Tax risk</b>: QROF benefits depend on tract designation, hold period, and investor-specific facts. Not all cap-gains rollovers qualify. State tax conformity varies.</li>
+</ul>
+
+<h2 class="large" id="roadmap">14 · Roadmap and milestones</h2>
+
+<ol class="steps">
+  <li><b>Q3 2026</b> · Complete this whitepaper, PPM template, and public GitHub Pages site. Retain OZ counsel, securities counsel, and CPA administrator. Engage BitGo custody. Sign BD-of-record partnership. Complete Barak PPA diligence.</li>
+  <li><b>Q4 2026</b> · Barak Site SPE formed. PPA assigned. Senior debt term sheet negotiated. QROF vehicle formed. Reg D 506(c) PPM finalized. Investor pipeline warmed. First dual smart-contract audit engagement.</li>
+  <li><b>Jan 1, 2027</b> · New OZ 2.0 zones effective. Deploy: QROF closes, senior debt closes, Site SPE takes title / PPA assignment, immersion retrofit begins.</li>
+  <li><b>Q1-Q2 2027</b> · First contracted AI hosting revenue. First waterfall distribution. Second smart-contract audit. FTH files Form NMA (own BD).</li>
+  <li><b>Q3 2027 →</b> · Seasoned note book (6+ months payment history) begins graduation to Centrifuge V3 institutional pool. Second Site SPE spinning up. Third site under diligence.</li>
+  <li><b>Mid 2027 - 2028</b> · FTH's own BD goes live (Stage 2). LDX venue files Form ATS. Rated securitization conversations begin against 3-5 seasoned sites.</li>
+</ol>
+
+<h2 class="large" id="disclosure">15 · Disclosures</h2>
+
+<div class="callout warn">
+<span class="head">Not an offer · not advice</span>
+Nothing in this whitepaper is an offer to sell or a solicitation of an offer to buy any security. Any offering of securities will be made only pursuant to definitive offering documents (a Private Placement Memorandum), only to verified accredited investors under Regulation D Rule 506(c) or non-U.S. persons under Regulation S, and only after all pre-mainnet blockers have cleared. This whitepaper does not constitute legal, tax, or investment advice. Consult your own counsel.
+</div>
+
+<div class="callout">
+<span class="head">Pre-mainnet blockers</span>
+Dual independent smart-contract security audits · Securities counsel Rule 144 opinion + 506(c) / Reg S offering documents · Off-chain legal SPV package behind every ReserveProofAnchor reserve · BD registration (own) or BD-of-record engagement executed · BitGo Bank &amp; Trust N.A. (or Anchorage) custody engagement live · CPA administrator retained for QOF 90% asset test · Multisig owner deployed (3-of-5 minimum) · Agent keys provisioned in BitGo / Fireblocks with velocity caps.
+</div>
+
+<p style="margin-top:36px;color:var(--muted);font-size:12px">Whitepaper v1.0 · July 2026 · Repository commit: <code>github.com/FTHTrading/GA-RWA-EDGE</code></p>
+
+</div></main>
+
+<footer class="foot"><div class="wrap">
+  <div class="cols">
+    <div>
+      <h5>GA-RWA-EDGE Whitepaper</h5>
+      <p style="color:var(--muted);font-size:12.5px">The full architectural, financial, tax, and regulatory framework for tokenized Georgia edge data-center ownership.</p>
+    </div>
+    <div>
+      <h5>Companion documents</h5>
+      <a href="ppm.html">PPM</a>
+      <a href="introductory-offer.html">Intro offer</a>
+      <a href="../downloads/client-requirements-and-diligence-guide.pdf">Client PDF</a>
+    </div>
+    <div>
+      <h5>Portal</h5>
+      <a href="investor-portal/index.html">Accredited portal</a>
+      <a href="locations.html">Locations</a>
+      <a href="partners.html">Partners</a>
+    </div>
+  </div>
+  <div class="disclaimer">
+    <p>© 2026 FTH Trading LLC · Unykorn LLC · LD Capital LLC. Not tax, legal, or investment advice. Nothing here is an offer to sell securities.</p>
+  </div>
+</div></footer>
+
+</body>
+</html>
