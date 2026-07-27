@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Funding Sources · Origination vs. Levering — Honest Map · GA-RWA-EDGE</title>
+<meta name="description" content="Named funding sources for the FTH Trading / Unykorn / LD Capital / SPE stack — separating who originates (Stage 1) from who levers a seasoned book (Stage 2-3). Two verticals: CRE (M Helen) vs Compute (Atlanta OZ). Real 2026 counterparties.">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<div class="topnav"><div class="wrap topnav-inner">
+  <a href="../index.html" class="brand"><span class="mark"><span>G</span></span><span class="name">GA-RWA-EDGE</span></a>
+  <nav>
+    <a href="../index.html">Overview</a>
+    <a href="whitepaper.html">Whitepaper</a>
+    <a href="ppm.html">PPM</a>
+    <a href="locations.html">Locations</a>
+    <a href="partners.html">Partners</a>
+    <a href="revenue-model.html">Revenue</a>
+    <a href="liquidity-composability.html">Liquidity</a>
+    <a href="funding-sources.html" class="active">Funding</a>
+    <a href="competitive-landscape.html">Landscape</a>
+    <a href="platform-integrations.html">Integrations</a>
+    <a href="requirements.html">Requirements</a>
+    <a href="introductory-offer.html">Intro Offer</a>
+    <a href="investor-portal/index.html" class="cta">Accredited Portal</a>
+  </nav>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <span class="eyebrow">Funding Sources · Honest Map by Lifecycle Stage</span>
+  <h1>Where the money actually comes from — separating who <em>originates</em> a raw single-asset deal from who <em>levers, refinances, or exits</em> a seasoned book. Two verticals with different answers: CRE hospitality (M Helen) vs. AI compute (Atlanta OZ).</h1>
+  <p class="lede">The most common failure mode in RWA planning is treating a Centrifuge, Maple, or Grove Basin as an origination lender. They aren't. They price <em>seasoned, cash-flowing, already-tokenized paper</em>. So "who funds the RWA" splits into two very different questions: (1) who writes the first check into origination and (2) who levers or refinances the seasoned book. This page maps both — with 2026 H2 named counterparties and the honest constraint for each vertical.</p>
+</div></header>
+
+<main><div class="wrap">
+
+<h2 class="large">The framing correction</h2>
+
+<div class="callout copper">
+<span class="head">Origination and levering are not the same conversation</span>
+Protocols like Centrifuge, Maple, Clearpool, and Grove Basin are Stage-2/3 refinancing rails. None of them writes the first check into a raw single-asset deal like M Helen or a pre-construction Atlanta compute site. They price seasoned, cash-flowing, already-tokenized paper — meaning 12+ months of clean attested cash flow, ideally pooled across multiple assets. Stage-1 origination is <em>still a TradFi conversation</em>: CMBS, bridge, private credit, Reg D 506(c), Reg S, and QROF equity. On-chain rails plug in later — either as refinance takeout (Stage 2-3) or as parallel investor liquidity (Morpho/Fluid on tokenized equity).
+</div>
+
+<h3>The Grove clarification, because it's load-bearing</h3>
+
+<p>The July 2026 $500M Grove × Galaxy facility often gets cited as "on-chain RWA finance." It isn't. That facility is <b>crypto-collateralized institutional credit</b>: Grove is the warehouse lender, Galaxy Digital originates the loans, and the loans are <em>overcollateralized with BTC and ETH</em> — not real estate, not compute assets. Collateral is held at qualified custodians <b>Anchorage Digital and BitGo</b>. The facility is denominated in USDS, the Sky-ecosystem stablecoin.</p>
+
+<p>Grove's real-world-asset-facing product is <a href="liquidity-composability.html">Basin</a>, but the deployed capital in the headline transaction is digital-asset collateral. "Plug M Helen into Grove" is a category error today. The <em>useful</em> signal from that transaction is the custody rail: <b>BitGo is already on the approved-custodian list for institutional-scale on-chain credit</b> — which is exactly the rail LD Capital / Unykorn already use. Grove-class facilities become reachable at Stage 3 <em>once a seasoned pooled book exists</em>, not at origination.</p>
+
+<hr />
+
+<h2 class="large">The corrected four-stage map</h2>
+
+<table class="data">
+  <tr><th>Stage</th><th>Who actually funds it</th><th>Applicability to this stack</th></tr>
+  <tr>
+    <td class="name copper">1 — Origination / primary raise</td>
+    <td>TradFi CMBS &amp; bridge lenders; private-credit direct-lending funds; accredited / family-office capital via Reg D 506(c) + Reg S; QROF cap-gains equity; USDA B&amp;I; for compute: GPU-collateralized on-chain credit funds (USD.AI, Trad.Fi/W3, Framework's AI infra fund).</td>
+    <td>This is where M Helen and Barak live <em>now</em>. On-chain does <em>not</em> originate CRE here. On-chain <em>does</em> originate compute here — that's the sharper wedge.</td>
+  </tr>
+  <tr>
+    <td class="name copper">2 — Mid-book scaling</td>
+    <td>Centrifuge V3 (structured-credit infra), Maple Finance (institutional pools), Clearpool (crypto-institutional pools).</td>
+    <td>Requires a seasoned, pooled note book with predictable cash flow. One hotel ≠ a pool. Path: 3-5 assets, 12+ months attested cash flow.</td>
+  </tr>
+  <tr>
+    <td class="name copper">3 — Institutional warehouse</td>
+    <td>Grove-class USDS-denominated facilities, Maple × Kraken warehouse line, insurance sidecars (Athene / Global Atlantic / PIMCO PC), ABS securitization takeout (JPM, DB, GS, Wells).</td>
+    <td>Only reachable once a portfolio an underwriter can wrap exists. Not the first raise, not the second — the third.</td>
+  </tr>
+  <tr>
+    <td class="name copper">Parallel — Investor liquidity</td>
+    <td>Morpho Blue isolated markets, Fluid, Aave Horizon RWA vaults, Euler v2, RealT / RMM.</td>
+    <td>Usable from the moment tokens exist. Investor wraps yield-bearing Site SPE token, supplies as collateral, borrows USDC without selling. This is the earliest on-chain touch — earlier than any lending protocol.</td>
+  </tr>
+</table>
+
+<hr />
+
+<h2 class="large">Vertical 1 — M Helen / CRE hospitality: on-chain is exit liquidity, not origination</h2>
+
+<p>The 2026 hospitality CMBS market is in a refi cycle — CMBS loans are coming due and forcing operators to reset. Rates: 5.85-6.85% on limited-service flagged properties, 6.50-7.50% on full-service. CMBS lenders want 13.5%+ debt yield. This is the exact market window into which the M Helen refinance times.</p>
+
+<h3>Stage-1 origination — the TradFi stack for a $25M single-asset hospitality</h3>
+
+<table class="data">
+  <tr><th>Lender</th><th>Product</th><th>Fit</th></tr>
+  <tr>
+    <td class="name">Peachtree Group</td>
+    <td>Senior bridge (up to $150M+ single deals)</td>
+    <td>Direct comparable. Peachtree closed a 4-hotel, 997-key $150M bridge in &lt;45 days for a Winter Garden, FL portfolio (July 2026), with JLL as arranger. This is the model M Helen refi should follow — Peachtree as senior bridge to a CMBS takeout.</td>
+  </tr>
+  <tr>
+    <td class="name">Wells Fargo Hospitality Real Estate</td>
+    <td>CMBS conduit, revolver, first-mortgage senior</td>
+    <td>Largest hospitality CMBS conduit in the 2026 market. Wells Fargo-led issuance is currently the deepest hotel-CMBS liquidity for 100+ key properties.</td>
+  </tr>
+  <tr>
+    <td class="name">Deutsche Bank / JP Morgan / Citi / Goldman Sachs / Morgan Stanley / Argentic / KeyBank</td>
+    <td>CMBS conduit (loan pool aggregators)</td>
+    <td>The active 2026 conduit lender list. Any $25-100M single-asset hospitality first-mortgage gets syndicated across this set.</td>
+  </tr>
+  <tr>
+    <td class="name">Access Point Financial</td>
+    <td>Hospitality-specialty bridge and CMBS-eligible senior</td>
+    <td>Middle-market focus ($10-50M keys value). Recorded Chicago hotel push in 2026 CRE trade press. Natural fit for regional/limited-service assets in the pipeline.</td>
+  </tr>
+  <tr>
+    <td class="name">JLL Hotels &amp; Hospitality</td>
+    <td>Debt-and-equity placement (arranger, not lender)</td>
+    <td>Arranged Peachtree's $150M Disney bridge. Access channel to every senior CMBS / bridge lender above. LD Capital's optimal arranger for the first Stage-2 refinance.</td>
+  </tr>
+</table>
+
+<h3>USDA rural senior — the geography advantage</h3>
+
+<p>Every GA-RWA-EDGE site sits inside a statutorily-rural OZ tract. That geography unlocks USDA B&amp;I: up to $25M / project, 80-85% federal guarantee. Precedent: $12.5M rural hospitality project with $10M B&amp;I guarantee (published USDA data). No public record of a data center financed through B&amp;I through 1H 2026 — GA-RWA-EDGE compute would be an early such structure.</p>
+
+<ul>
+  <li><b>USDA B&amp;I Guaranteed Loan</b> — up to $25M / project; 80-85% federal guarantee</li>
+  <li><b>USDA REDLG</b> — 0% interest RUS pass-through, up to $2M / project (subordinate layering)</li>
+  <li><b>Live Oak Bank</b> — top-3 USDA lender nationally; faster processing</li>
+  <li><b>United Community Bank (UCBI)</b> — approved B&amp;I lender with Georgia footprint</li>
+  <li><b>GLS (Government Lending Solutions)</b> — B&amp;I structuring/packaging advisor for first-time issuers</li>
+</ul>
+
+<h3>QROF equity — the RIA / family-office channel</h3>
+
+<p>$84B+ has been placed into QROFs since 2018. OZ 2.0 (post-July 2025 legislation) reset the eligible-gain window with a 30% basis step-up for rural tracts — which is the exact geography Barak and M Helen occupy.</p>
+
+<table class="data">
+  <tr><th>Comparable operator</th><th>Access strategy</th></tr>
+  <tr>
+    <td class="name">Cresset Diversified QOZ Fund II</td>
+    <td>Direct model comparable. LP acquisition through <em>referral channel</em> — RIAs and MFOs whose clients have exhausted Cresset allocation and want additional QROF exposure with different asset mix (hospitality + rural DC).</td>
+  </tr>
+  <tr>
+    <td class="name">Belpointe OZ (NYSE American: OZ)</td>
+    <td>Only publicly-traded QOZ fund. Sets benchmark expectations for LP terms.</td>
+  </tr>
+  <tr>
+    <td class="name">Caliber Companies (NASDAQ: CWD)</td>
+    <td>Hospitality-flagged QROF precedent. Direct vertical validation.</td>
+  </tr>
+  <tr>
+    <td class="name">Origin Investments QOZ Fund III</td>
+    <td>Multifamily QROF competing for the same LP allocation ledger.</td>
+  </tr>
+</table>
+
+<p><b>Reg D 506(c) distribution platforms</b> for accredited-verified general solicitation: CrowdStreet (~350k accredited members, CRE-native), YieldStreet (~500k accredited members, structured products), Republic (RealT integration for tokenized RE), Moonfare (HNW alt-asset feeder), AngelList RUV (equity-story pitches).</p>
+
+<h3>On-chain role for CRE — EXIT LIQUIDITY, not origination</h3>
+
+<p>Once M Helen equity or senior debt is tokenized under ERC-3643 (T-REX), the token holder gets on-chain liquidity via:</p>
+
+<ul>
+  <li><b>Morpho Blue</b> — isolated market for ERC-3643 tokens as collateral / USDC borrow. ~$6.8B TVL, 200+ isolated markets. Same rails Apollo's sACRED runs on (Securitize + Gauntlet cleared the legal template).</li>
+  <li><b>Fluid</b> — clean investor-liquidity primitive.</li>
+  <li><b>Aave Horizon RWA vaults</b> — layer-1 protocol legitimacy for permissioned-RWA collateral.</li>
+  <li><b>Euler v2</b> — modular alternative to Morpho Blue.</li>
+</ul>
+
+<p>Path to Stage-2 mid-book scaling (Centrifuge / Maple pools): <em>12+ months of clean attested cash flow across more than one asset</em>. One hotel is not poolable. Aggregating 3-5 seasoned hospitality assets into a pool is the origination work that unlocks Centrifuge/Maple takeout.</p>
+
+<hr />
+
+<h2 class="large">Vertical 2 — Atlanta OZ compute: the sharper wedge</h2>
+
+<div class="callout copper">
+<span class="head">This is where on-chain private credit is actually deploying billions right now</span>
+Unlike hospitality, AI compute infrastructure fits the on-chain private credit template <em>at origination</em>. The mechanics are the CMBS pattern applied to hardware: cash flows wrapped into a financing vehicle, tokens issued as senior notes / ABS / receivables pools with waterfalls and covenants. The oracle-attestation + metered-telemetry layer LD Capital / Unykorn already have skills for is the thing that makes this vertical fundable.
+</div>
+
+<h3>Live GPU-collateralized on-chain credit facilities (Stage-1 origination)</h3>
+
+<table class="data">
+  <tr><th>Facility</th><th>Structure</th><th>Direct fit</th></tr>
+  <tr>
+    <td class="name">USD.AI</td>
+    <td>$1.2B+ approved GPU-backed facilities. Verified GPU deployments as tokenized collateral. Non-recourse. <em>No traditional credit checks.</em></td>
+    <td>The clearest single fit for Barak / Atlanta OZ compute. Non-recourse means the SPE structure GA-RWA-EDGE already uses is directly compatible. Requires deployed, metered GPU / hardware with credible attestation — not a diligence platform, not a greenfield site.</td>
+  </tr>
+  <tr>
+    <td class="name">Trad.Fi &amp; W3 (Avalanche)</td>
+    <td>$650M equipment-finance pipeline being moved on-chain on Avalanche.</td>
+    <td>Second live GPU/hardware credit rail. Different chain, same structural template. Diversification lender.</td>
+  </tr>
+  <tr>
+    <td class="name">Framework AI Infrastructure Fund</td>
+    <td>$400M fund. Blockchain positioned as the financing layer for AI infrastructure.</td>
+    <td>Institutional-scale AI infra credit specifically structured to deploy on-chain. GA-RWA-EDGE compute site is exactly the kind of asset the fund is capitalized to fund.</td>
+  </tr>
+  <tr>
+    <td class="name">CoreWeave DDTL 4.0 ($8.5B, July 2026)</td>
+    <td>Investment-grade GPU-backed DDTL, delayed-draw against contracted customer cash flows. Rated A3 / A(low).</td>
+    <td>Not a direct lender to us — this is the market-defining <em>benchmark</em>. Its existence proves the asset class is investment-grade rateable. Every off-CoreWeave GPU credit facility (USD.AI et al.) prices in reference to it.</td>
+  </tr>
+  <tr>
+    <td class="name">Nscale $1.4B GPU DDTL (Feb 2026)</td>
+    <td>Delayed-draw GPU purchase financing.</td>
+    <td>Mid-market precedent proving the structure works below CoreWeave scale.</td>
+  </tr>
+  <tr>
+    <td class="name">Lambda ~$500M NVIDIA GPU ABL</td>
+    <td>GPU + operating cash flow collateral.</td>
+    <td>Comparable to Site SPE II economics — GPU fleet + PPA-locked cash flow. Direct precedent for the Barak-plus-adjacent-site scaled model.</td>
+  </tr>
+</table>
+
+<h3>The honest constraint</h3>
+
+<p>On-chain capital is a <em>slice</em>, not the whole. Tokenized RWAs reached only ~$28.9B in May 2026, against AI infrastructure spend that hyperscalers plan to push past $5 trillion by 2030. What USD.AI / Trad.Fi / Framework fund is <em>deployed, metered GPU / hardware with credible attestation</em>. They are not a diligence platform and they do not fund greenfield sites. The path is:</p>
+
+<ol>
+  <li>Site is powered on with a PPA locked (Barak: already done at 4.9¢/kWh, 5 MW, 721 miners live)</li>
+  <li>Oracle attestation of GPU deployment + metered telemetry emitting on-chain (Unykorn compliance rail — already deployed)</li>
+  <li>Cash flow wrapped into ERC-3643 senior notes with waterfall (LD Capital tokenization architecture — already deployed)</li>
+  <li>Non-recourse pledge to USD.AI (or Trad.Fi/W3 / Framework) against tokenized GPU cash flow → drawdown into USDC / USDS</li>
+  <li>USDC deployed into next site expansion — recycling capital without touching TradFi</li>
+</ol>
+
+<h3>Stack for a $20-50M Atlanta OZ compute site</h3>
+
+<table class="data">
+  <tr><th>Layer</th><th>% of stack</th><th>Source</th></tr>
+  <tr>
+    <td class="name copper">Sponsor equity</td>
+    <td>5%</td>
+    <td>LD Capital LLC balance sheet</td>
+  </tr>
+  <tr>
+    <td class="name copper">QROF cap-gains equity</td>
+    <td>15-20%</td>
+    <td>Family offices via RIA channel + Reg D 506(c) via CrowdStreet/YieldStreet</td>
+  </tr>
+  <tr>
+    <td class="name copper">USDA B&amp;I subordinate</td>
+    <td>up to $25M (or 15-20%)</td>
+    <td>Live Oak / United Community + GLS-packaged. 80-85% federal guarantee.</td>
+  </tr>
+  <tr>
+    <td class="name copper">GPU / hardware credit (on-chain)</td>
+    <td>40-50%</td>
+    <td>USD.AI non-recourse GPU-backed / Trad.Fi &amp; W3 equipment finance / Framework AI infra fund — priced against attested metered deployment</td>
+  </tr>
+  <tr>
+    <td class="name copper">Equipment vendor financing</td>
+    <td>10-15%</td>
+    <td>NVIDIA financing partner or vendor-direct (typical for pre-attestation stage)</td>
+  </tr>
+</table>
+
+<hr />
+
+<h2 class="large">Where this leaves the stack — three options</h2>
+
+<p>The architecture is already aligned with what these rails require: BitGo custody is the approved posture, ERC-3643 is the equity-token benchmark, LD Capital waterfall logic is the debt-token structure. The gap is not architecture — it is <b>seasoned, attested cash flow and a live tokenized book</b>. No protocol closes that for you. Three paths:</p>
+
+<div class="grid">
+  <div class="card">
+    <span class="tag copper">Option A · Recommended</span>
+    <h3>Lead with compute, not real estate</h3>
+    <p>Structure the Atlanta OZ compute site as a metered-hardware credit vehicle (attestation → tokenized senior notes). Target USD.AI / Trad.Fi / Framework-class GPU-credit lenders as Stage-1 originators plus QROF equity slice. Best product-market fit in the current market; fastest path to a real, citable funding relationship rather than a claim.</p>
+    <div class="actions"><a class="action" href="locations.html">Atlanta OZ site →</a></div>
+  </div>
+  <div class="card">
+    <span class="tag copper">Option B</span>
+    <h3>M Helen as tokenization proof, TradFi as capital</h3>
+    <p>Fund M Helen origination conventionally (Peachtree bridge + CMBS + Reg D). Tokenize the equity/debt on ERC-3643 for investor liquidity via Morpho. Use the seasoned cash flow to earn into a Centrifuge/Maple pool at Stage 2 alongside a second and third hospitality asset. Slower, but produces the credibility artifact.</p>
+    <div class="actions"><a class="action" href="whitepaper.html#waterfall">CMBS waterfall →</a></div>
+  </div>
+  <div class="card">
+    <span class="tag copper">Option C</span>
+    <h3>Build the poolable book first</h3>
+    <p>Neither single asset is Stage-3-fundable alone. If institutional warehouse scale is the real goal, the near-term work is aggregating 3-5 seasoned assets into an SPV a lender can wrap — a 12-18 month origination problem, not a protocol-selection problem. Highest ceiling, longest timeline.</p>
+    <div class="actions"><a class="action" href="requirements.html">Originator intake →</a></div>
+  </div>
+</div>
+
+<hr />
+
+<h2 class="large">Protocol reference — where each rail actually sits today</h2>
+
+<table class="data">
+  <tr><th>Protocol / Facility</th><th>2026 H2 posture</th><th>Correct usage for this stack</th></tr>
+  <tr>
+    <td class="name">Maple Finance</td>
+    <td>~$3.9B TVL mid-2026. Institutional pools. On-chain warehouse with Kraken launched 25 June 2026. Explicit RWA collateral roadmap.</td>
+    <td><b>Stage 2 / 3.</b> Not an originator. Reachable once GA-RWA-EDGE has seasoned pooled paper.</td>
+  </tr>
+  <tr>
+    <td class="name">Centrifuge V3</td>
+    <td>~$500M cumulative, ~$150M+ in real-estate financing across many small pools. Distributed origination model.</td>
+    <td><b>Stage 2.</b> Modest per-deal checks; excellent structural template. Pool multiple hospitality assets first.</td>
+  </tr>
+  <tr>
+    <td class="name">Clearpool</td>
+    <td>Crypto-institutional lending pools with tightened underwriting post-2023.</td>
+    <td><b>Stage 2.</b> Adjacent to Maple. Same seasoning requirement.</td>
+  </tr>
+  <tr>
+    <td class="name">Grove / Basin</td>
+    <td>Grove is warehouse lender; Galaxy Digital originates loans against BTC/ETH held at Anchorage/BitGo, denominated in USDS. Basin is the RWA-facing product.</td>
+    <td><b>Stage 3.</b> The correction: the deployed $500M is crypto collateral, not RWA. But BitGo custody rail is already approved — Kevan's stack sits on the correct plumbing.</td>
+  </tr>
+  <tr>
+    <td class="name">Morpho Blue</td>
+    <td>~$6.8B TVL across 200+ isolated markets. Apollo sACRED template already onchain via Securitize + Gauntlet.</td>
+    <td><b>Parallel investor liquidity.</b> Earliest on-chain touch. Usable the moment tokens exist.</td>
+  </tr>
+  <tr>
+    <td class="name">Fluid</td>
+    <td>Clean isolated-market lending primitive.</td>
+    <td><b>Parallel investor liquidity.</b> Backup / diversification alongside Morpho.</td>
+  </tr>
+  <tr>
+    <td class="name">USD.AI</td>
+    <td>$1.2B+ GPU-backed facilities. Non-recourse, verified GPU deployments as tokenized collateral, no traditional credit checks.</td>
+    <td><b>Stage 1 origination for compute.</b> The sharpest single fit for Atlanta OZ / Barak once GPU is deployed and metered.</td>
+  </tr>
+  <tr>
+    <td class="name">Trad.Fi &amp; W3 (Avalanche)</td>
+    <td>$650M equipment-finance pipeline moving on-chain.</td>
+    <td><b>Stage 1 origination for compute.</b> Alternate chain rail.</td>
+  </tr>
+  <tr>
+    <td class="name">Framework AI Infra Fund</td>
+    <td>$400M fund; blockchain positioned as financing layer for AI infrastructure.</td>
+    <td><b>Stage 1 origination for compute.</b> Institutional-scale credit.</td>
+  </tr>
+  <tr>
+    <td class="name">Apollo sACRED (via Securitize + Gauntlet + Morpho)</td>
+    <td>Legal-clearing template only. Apollo is not a lender to third-party SPEs on this basis.</td>
+    <td>Structural reference — the wrap-and-list-on-Morpho pattern is directly transferable to Site SPE tokens.</td>
+  </tr>
+</table>
+
+<h2 class="large">Contact — access these channels</h2>
+
+<div class="grid">
+  <div class="card">
+    <span class="tag copper">Investors</span>
+    <h3>Accredited portal</h3>
+    <p>Verify accreditation and see the current deal book — including Site SPE I (Barak) and M Helen refi.</p>
+    <div class="actions"><a class="action" href="investor-portal/index.html">Enter →</a></div>
+  </div>
+  <div class="card">
+    <span class="tag copper">Originators</span>
+    <h3>Submit a site</h3>
+    <p>Track-A external sponsor licensing. Bring the deal, we bring the stack above.</p>
+    <div class="actions"><a class="action" href="requirements.html">Requirements →</a></div>
+  </div>
+  <div class="card">
+    <span class="tag copper">Introductory</span>
+    <h3>Intro offer</h3>
+    <p>Pre-Reg D structure to commit capital early on deepest terms.</p>
+    <div class="actions"><a class="action" href="introductory-offer.html">Read →</a></div>
+  </div>
+</div>
+
+</div></main>
+
+<footer class="foot"><div class="wrap">
+  <div class="cols">
+    <div>
+      <h5>Funding sources — honest map</h5>
+      <p style="color:var(--muted);font-size:12.5px">Separating origination (Stage 1) from levering seasoned book (Stage 2-3). Two verticals: CRE hospitality vs. AI compute. Current as of 2026 H2.</p>
+    </div>
+    <div>
+      <h5>Related</h5>
+      <a href="revenue-model.html">Revenue model</a>
+      <a href="liquidity-composability.html">Composability</a>
+      <a href="partners.html">Partners</a>
+    </div>
+    <div>
+      <h5>Portal</h5>
+      <a href="investor-portal/index.html">Accredited portal</a>
+    </div>
+  </div>
+  <div class="disclaimer">
+    <p>© 2026 FTH Trading LLC · Unykorn LLC · LD Capital LLC. Named counterparties for informational context only. Not an endorsement, engagement, or guarantee of participation. Not tax, legal, or investment advice. Sources include: Peachtree Group / Asian Hospitality; Wells Fargo CIB Hospitality; Crittenden Report 2026 Hotel Financing outlook; USDA Rural Development B&amp;I; UCBI USDA lending; MMCG Rural Data Center feasibility analysis; Cresset Family Wealth Report; Belpointe OZ 2026 filings; CoreWeave DDTL 4.0 disclosure; Nscale / Lambda market reports; Quartz &amp; Forbes GPU-collateralized debt analysis; Maple Finance × Kraken launch (June 25, 2026); Grove / Galaxy $500M facility (BTC/ETH collateral, Anchorage + BitGo custody, USDS-denominated); Grove Basin launch (May 14, 2026); Blocklr RWA Tokenization 2026 overview; VaaSBlock On-Chain Private Credit 2026 analysis; USD.AI, Trad.Fi &amp; W3, Framework AI infrastructure fund public disclosures.</p>
+  </div>
+</div></footer>
+
+</body>
+</html>
